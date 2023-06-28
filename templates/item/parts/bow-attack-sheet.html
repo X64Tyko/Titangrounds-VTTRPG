@@ -1,0 +1,29 @@
+<div class="attacks-list">
+  <div class="sheet-header">
+    <div class="grid grid-2col">
+      <div class="resource">
+        <label class="resource-label">Draw Level <i class="has-descriptor fa-duotone fa-bow-arrow" title="attack charge level"></i></label>
+        <div class="resource grid-2col">
+          <input type="number" name="activeWeapon.system.resourceBars.draw.value" value="{{system.resourceBars.draw.value}}" data-dtype="Number">
+          <span class="resource-uneditable"> / {{system.resourceBars.draw.max}} </span>
+        </div>
+      </div>
+      <div class="resource">
+        <label class="resource-label">Active Ammo <i class="has-descriptor fa-solid fa-bone-break" title="Power Charge Active"></i></label>
+        <div class="resource grid-2col">
+          <input type="text" name="activeWeapon.system.ammo" value="{{system.ammo}}">
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  {{!-- Attacks Tab --}}
+  <div class="attack-window">
+  
+    <ul class="attacks-list">
+      {{#each attacks}}
+        {{> "systems/monhunsys/templates/item/parts/bow-attack-card.html" }}
+      {{/each}}
+    </ul>
+  </div>
+</div>

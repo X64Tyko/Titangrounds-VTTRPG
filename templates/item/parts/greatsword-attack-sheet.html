@@ -1,0 +1,24 @@
+<div>
+  <div class="item-fixed-header">
+    <div class="grid grid-2col">
+      <div class="resource">
+        <label class="resource-label">Wind-up Level <i class="has-descriptor fa-solid fa-bolt" title="attack wind-up level"></i></label>
+        <input type="number" name="activeWeapon.system.resourceBars.windup.value" value="{{system.resourceBars.windup.value}}" data-dtype="Number">
+      </div>
+      <div class="resource">
+        <label class="resource-label">Hit Weakpoint <i class="has-descriptor fa-solid fa-bone-break" title="previous attack hit a weak point"></i></label>
+        <input type="checkbox" name="activeWeapon.system.resourceBools.hitWeakpoint.active" {{checked system.resourceBools.hitWeakpoint.active}}>
+      </div>
+    </div>
+  </div>
+  
+  {{!-- Attacks Tab --}}
+  <div class="attack-window">
+
+    <ul class="attacks-list">
+      {{#each attacks}}
+      {{> "systems/monhunsys/templates/item/parts/greatsword-attack-card.html" }}
+      {{/each}}
+    </ul>
+  </div>
+</div>

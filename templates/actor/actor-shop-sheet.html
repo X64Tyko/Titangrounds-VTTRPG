@@ -1,0 +1,32 @@
+<form class="{{cssClass}} {{actor.type}} flexcol" autocomplete="off">
+
+  {{!-- Sheet Header --}}
+  <header class="sheet-header">
+    <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="100" width="100"/>
+    <div class="header-fields">
+      <h1 class="charname"><input name="name" type="text" value="{{actor.name}}" placeholder="Name"/></h1>
+    </div>
+  </header>
+
+  {{!-- Sheet Body --}}
+  <section class="sheet-body ItemSale">
+
+    <div class="gridChest chestGrid grid-10col">
+      {{#each gear as |item id|}}
+      <div class="item item-name item-bag" data-item-id="{{item._id}}">
+        <div class="chestGridSlot">
+          <div class="item-image">
+            <img src="{{item.img}}" title="{{item.name}}" width="50" height="50"/>
+            <div class="item-inBag"> {{item.system.inBag}} </div>
+            {{#if ../inTown}}
+            <div class="item-sale">${{item.system.cost}} </div>
+            {{/if}}
+          </div>
+        </div>
+      </div>
+      {{/each}}
+    </div>
+
+  </section>
+</form>
+

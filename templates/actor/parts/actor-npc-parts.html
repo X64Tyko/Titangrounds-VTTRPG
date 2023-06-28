@@ -1,0 +1,72 @@
+<ol class="parts-list">
+  <div class="item-controls">
+  <a class="item-control part-create" title="Create Part" data-type="part"><i class="fas fa-plus"></i> Create Part</a>
+</div>
+  {{#each system.parts as |part key|}}
+  <li class="part flexrow" data-part-id="{{@key}}">
+    <div>
+      <div class="part-data">
+        <div class="part-header">
+          <input name="system.parts.{{@key}}.name" type="text" value="{{part.name}}">
+          <input type="text" name="system.parts.{{@key}}.breakReward" value="{{part.breakReward}}">
+          <input type="text" name="system.parts.{{@key}}.breakDamageType" value="{{part.breakDamageType}}">
+          <input type="text" name="system.parts.{{@key}}.staggerType" value="{{part.staggerType}}">
+          <a class="item-control part-delete" title="Delete Part"><i class="fas fa-trash"></i></a>
+        </div>
+        <div class="part-damage">
+          {{#each part.resistances as |resistance key|}}
+          <div class="part-icon">
+            <img class="has-descriptor" src="Icons/SheetIcons/{{@key}}.png" title="{{@key}}" height="18" width="18"/>
+            <input type="text" name="system.parts.{{@../key}}.resistances.{{@key}}" value="{{this}}">
+          </div>
+          {{/each}}
+          <div class="part-icon">
+            <i class="fa-solid fa-bone-break" height="18" width="18"></i>
+            <input type="text" name="system.parts.{{@key}}.breakPercent" value="{{part.breakPercent}}">
+          </div>
+          <div class="part-icon">
+            <i class="fa-solid fa-face-spiral-eyes" height="18" width="18"></i>
+            <input type="text" name="system.parts.{{@key}}.staggerPercent" value="{{part.staggerPercent}}">
+          </div>
+        </div>
+      </div>
+    </div>
+  </li>
+  {{/each}}
+  <div class="item-controls">
+    <label>Status Data</label>
+  </div>
+  {{#each system.statusData as |status key|}}
+  <li class="part flexrow" data-status-id="{{@key}}">
+    <div>
+      <div class="part-data">
+        <div class="part-header">
+          <label>{{@key}}</label>
+          <div class="part-damage">
+            <div class="part-icon">
+              <label>Effectivity</label>
+              <input type="number" name="system.statusData.{{@key}}.effectivity" value="{{status.effectivity}}"/>
+            </div>
+            <div class="part-icon">
+              <label>Initial Res</label>
+              <input type="number" name="system.statusData.{{@key}}.initialRes" value="{{status.initialRes}}"/>
+            </div>
+            <div class="part-icon">
+              <label>Next Res</label>
+              <input type="number" name="system.statusData.{{@key}}.nextRes" value="{{status.nextRes}}"/>
+            </div>
+            <div class="part-icon">
+              <label>Max Res</label>
+              <input type="number" name="system.statusData.{{@key}}.maxRes" value="{{status.maxRes}}"/>
+            </div>
+            <div class="part-icon">
+              <label>Degradation</label>
+              <input type="number" name="system.statusData.{{@key}}.Degradation" value="{{status.Degradation}}"/>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </li>
+  {{/each}}
+</ol>

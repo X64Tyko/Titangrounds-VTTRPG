@@ -1,0 +1,50 @@
+.resource-label {
+  font-weight: bold;
+}
+
+.resource-label-small {
+  font-weight: lighter;
+  font-size: 0.75rem;
+}
+
+.resource-sharpness {
+  background-color: var(--sharpness-color);
+}
+
+.resource-sharpness-uneditable {
+  background-color: var(--sharpness-color);
+  font-size: 16px;
+  border: 1px solid black;
+  border-radius: 4px;
+  .center {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.resource-uneditable {
+  padding: 3px;
+  font-size: 16px;
+}
+
+.resource-light-label {
+  padding: 3px;
+  font-size: 12px;
+  justify-content: flex-end;
+}
+
+.resource-justify-right {
+  justify-self: flex-end;
+}
+
+.side-scroll {
+  display: flex;
+  flex-grow: 1;
+  overflow-y: scroll;
+}
+
+.flex-container {
+  display: flex;
+}

@@ -1,0 +1,26 @@
+<form class="{{cssClass}}" autocomplete="off">
+    <header class="sheet-header">
+      <img class="profile-img" src="{{item.img}}" data-edit="img" title="{{item.name}}"/>
+      <div class="header-fields">
+        <h1 class="charname"><input name="name" type="text" value="{{item.name}}" placeholder="Name"></h1>
+        <div class="grid grid-3col">
+          <div class="resource">
+            <label class="resource-label">Damage Die</label>
+            <input type="number" name="system.die" value="{{system.die}}" data-dtype="Number">
+          </div>
+          <div class="resource">
+            <label class="resource-label">Damage Bonus</label>
+            <input type="number" name="system.bonus" value="{{system.bonus}}" data-dtype="Number">
+          </div>
+          <div class="resource">
+            <label class="resource-label">Max Sharpness</label>
+            <input type="number" name="system.sharpness.max" value="{{system.sharpness.max}}" data-dtype="Number">
+          </div>
+        </div>
+      </div>
+    </header>
+
+  <div>
+  {{> (weaponPartial) }}
+  </div>
+</form>

@@ -1,0 +1,30 @@
+<div>
+  <div class="item-fixed-header">
+    <div class="grid grid-3col">
+      <div class="resource">
+        <label class="resource-label">Soul Gauge <i class="has-descriptor fa-solid fa-ghost" title="Demon Gauge"></i></label>
+        <div class="grid grid-2col">
+          <input type="number" name="activeWeapon.system.resourceBars.soulGague.value" value="{{system.resourceBars.soulGague.value}}" data-dtype="Number">
+          <span class="resource-uneditable"> / {{system.resourceBars.soulGague.max}} </span>
+        </div>
+      </div>
+      <div class="resource">
+        <label class="resource-label">Soul Level <i class="has-descriptor fa-regular fa-gauge" title="is Demon Mode active"></i></label>
+        <div class="grid grid-2col">
+          <input type="number" name="activeWeapon.system.resourceBars.soulLevel.value" value="{{system.resourceBars.soulLevel.value}}" data-dtype="Number">
+          <span class="resource-uneditable"> / {{system.resourceBars.soulLevel.max}} </span>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  {{!-- Attacks Tab --}}
+  <div class="attack-window">
+
+    <ul class="attacks-list">
+      {{#each attacks}}
+      {{> "systems/monhunsys/templates/item/parts/longsword-attack-card.html" }}
+      {{/each}}
+    </ul>
+  </div>
+</div>

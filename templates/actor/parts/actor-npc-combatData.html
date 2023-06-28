@@ -1,0 +1,58 @@
+<ol class="combat-data-list">
+  {{#each system.parts as |part key|}}
+  <li class="part flexrow" data-part-id="{{@key}}">
+    <div>
+      <div class="combat-data">
+        <div class="combat-data-header">
+          <label><b>{{part.name}}</b></label>
+          <label> Stagger Num: {{part.staggerNum}}</label>
+          <label> Stagger: {{part.staggerDamage}}/{{part.staggerLimit}}</label>
+          <label> Stagger Type: {{part.staggerType}}</label>
+        </div>
+        <div class="combat-data-header">
+          <label></label>
+          <label> Break Num: {{part.breakNum}}</label>
+          <label> Break: {{part.breakDamage}}/{{part.breakLimit}}</label>
+        </div>
+      </div>
+    </div>
+  </li>
+  {{/each}}
+  <div class="item-controls">
+    <label>Status Data</label>
+  </div>
+  {{#each system.statusData as |status key|}}
+  <li class="part flexrow" data-status-id="{{@key}}">
+    <div>
+      <div class="combat-data">
+        <div class="combat-data-header">
+          <label>{{@key}}</label>
+          <label> Current: {{status.value}}/{{status.currentLimit}}</label>
+          <label> Rounds Remaining: {{status.roundsRemaining}}</label>
+        </div>
+      </div>
+    </div>
+  </li>
+  {{/each}}
+  <div class="item-controls">
+    <button class="has-descriptor combat-round"><b>TICK ROUND</b></button>
+  </div>
+  <div class="item-controls">
+    <label class="has-descriptor combat-round"> </label>
+  </div>
+  <div class="item-controls">
+    <label><b>DAMAGE LOG</b></label>
+  </div>
+  {{#each system.damageLog as |log key|}}
+  <li class="part flexrow" data-status-id="{{@key}}">
+    <div>
+      <div class="combat-data">
+        <div class="combat-data-header">
+          <label>{{@key}}</label>
+          <label> Total Damage: {{log.total}}</label>
+        </div>
+      </div>
+    </div>
+  </li>
+  {{/each}}
+</ol>

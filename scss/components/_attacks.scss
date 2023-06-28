@@ -1,0 +1,117 @@
+/* ----------------------------------------- */
+/*  attacks Lists                              */
+/* ----------------------------------------- */
+
+.attacks-list {
+  --spacing : 1rem;
+  --radius  : 10px;
+  --list-color: #222;
+  margin: 0;
+  padding: 5px;
+  bottom: 5px;
+  overflow-y: hidden;
+  border: 2px solid black;
+  
+  .attack-data {
+    flex: 1 1 100%;
+    height: 100%;
+    flex-direction: column;
+    background: rgba(0, 0, 0, 0.05);
+    border: $border-groove;
+    .attack-header {
+      display: flex;
+      flex-direction: row;
+    }
+    .attack-damage {
+      display: flex;
+      flex: 1 1;
+      flex-direction: row;
+      justify-content: center;
+      gap: 5px;
+      .attack-rollable {
+        flex: 0 0 40px;
+        text-align: center;
+        &:hover {
+          background: rgba(255, 0, 0, 0.05);
+        }
+      }
+    }
+    .attack-rollable-mini {
+      flex: 0 0 40px;
+      font-size: 11px;
+      text-align: center;
+      background: rgba(0, 0, 0, 0.05);
+      border: $border-groove;
+      &:hover {
+        background: rgba(255, 0, 0, 0.05);
+      }
+    }
+    .attack-name {
+      flex: 1 1 100%;
+      overflow: hidden;
+      font-size: 14px;
+      text-align: left;
+      h3, h4, h5 {
+        margin: 0;
+        font-weight: bold;
+        white-space: nowrap;
+        overflow-x: hidden;
+      }
+    }
+    .attack-icon {
+      flex: 0 0 40px;
+      text-align: center;
+      font-weight: bold;
+      vertical-align: middle;
+    }
+    .has-descriptor {
+      &:hover {
+        text-shadow: 0 0 10px blue;
+      }
+    }
+  }
+}
+
+.attack-block {
+  display:flex;
+}
+
+.attack-chain {
+  flex: 0 0 20px;
+}
+
+.attacks-list li{
+  display      : block;
+  position     : relative;
+  padding-left : calc(2 * var(--spacing) - var(--radius) - 2px);
+}
+
+.attacks-list ul{
+  margin-left  : calc(var(--radius) - var(--spacing));
+  padding-left : 0;
+}
+
+.attacks-list ul li{
+  border-left : 2px solid var(--list-color);
+}
+
+.attacks-list ul li:last-child{
+  border-color : transparent;
+}
+
+.attacks-list ul li::before{
+  content      : '';
+  display      : block;
+  position     : absolute;
+  top          : calc(var(--spacing) / -2);
+  left         : -2px;
+  width        : calc(var(--spacing) + 2px);
+  height       : calc(var(--spacing) + 1px);
+  border       : solid var(--list-color);
+  border-width : 0 0 2px 2px;
+}
+
+.attacks-list li::marker,
+.attacks-list li::-webkit-details-marker{
+  display : none;
+}

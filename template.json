@@ -1,0 +1,582 @@
+{
+  "Actor": {
+    "types": ["character", "npc", "shop"],
+    "templates": {
+      "base": {
+        "health": {
+          "value": 100,
+          "min": 0,
+          "max": 100,
+          "base": 100,
+          "bonus": 0,
+          "temp": 0
+        },
+        "stamina": {
+          "value": 50,
+          "min": 0,
+          "mod": 4
+        },
+        "biography": "This is text",
+        "clock": 0,
+        "bagSize": 0
+      }
+    },
+    "htmlFields": ["biography", "biography", "description"],
+    "character": {
+      "templates": ["base"],
+      "attributes": {
+        "level": {
+          "value": 1
+        },
+        "init": {
+          "ability": "",
+          "bonus": ""
+        },
+        "movement": {
+          "Sheathed": 60,
+          "Unsheathed": 30,
+          "units": "ft",
+          "hover": false
+        }
+      },
+      "sharpness": {
+        "value": 100,
+        "min": 0,
+        "max": 100,
+        "base": 0,
+        "bonus": 0,
+        "temp": 0
+      },
+      "money": 0,
+      "qi": 0,
+      "Disciplines": {
+        "Zoology": {
+          "Alg": {
+            "description": "Algology: Oozes",
+            "img": "Icons/SheetIcons/Algology.png",
+            "value": 1,
+            "bonus": 0,
+            "temp": 0
+          },
+          "Bat": {
+            "description": "Batrachology: Amphibians",
+            "img": "Icons/SheetIcons/Batrachology.png",
+            "value": 1,
+            "bonus": 0,
+            "temp": 0
+          },
+          "Cyn": {
+            "description": "Cynology: Canids",
+            "img": "Icons/SheetIcons/Cynology.png",
+            "value": 1,
+            "bonus": 0,
+            "temp": 0
+          },
+          "Dra": {
+            "description": "Dracology: Dragons",
+            "img": "Icons/SheetIcons/Dracology.png",
+            "value": 1,
+            "bonus": 0,
+            "temp": 0
+          },
+          "Ent": {
+            "description": "Entomology: Insects",
+            "img": "Icons/SheetIcons/Entomology.svg",
+            "value": 1,
+            "bonus": 0,
+            "temp": 0
+          },
+          "Fel": {
+            "description": "Felinology: Felines",
+            "img": "Icons/SheetIcons/Felinology.png",
+            "value": 1,
+            "bonus": 0,
+            "temp": 0
+          },
+          "Hpt": {
+            "description": "Herpetology: Reptiles",
+            "img": "Icons/SheetIcons/Herpetology.png",
+            "value": 1,
+            "bonus": 0,
+            "temp": 0
+          },
+          "Ich": {
+            "description": "Ichthyology: Fish",
+            "img": "Icons/SheetIcons/Ichthyology.png",
+            "value": 1,
+            "bonus": 0,
+            "temp": 0
+          },
+          "Orn": {
+            "description": "Ornithology: Aves",
+            "img": "Icons/SheetIcons/Ornithology.png",
+            "value": 1,
+            "bonus": 0,
+            "temp": 0
+          },
+          "Pat": {
+            "description": "Pathology: (Un)Dead",
+            "img": "Icons/SheetIcons/Pathology.png",
+            "value": 1,
+            "bonus": 0,
+            "temp": 0
+          },
+          "Phy": {
+            "description": "Phytology: Plants",
+            "img": "Icons/SheetIcons/Phytology.png",
+            "value": 1,
+            "bonus": 0,
+            "temp": 0
+          },
+          "Prm": {
+            "description": "Primatology: Primates",
+            "img": "Icons/SheetIcons/Primatology.webp",
+            "value": 1,
+            "bonus": 0,
+            "temp": 0
+          }
+        },
+        "Ecology": {
+          "Bio": {
+            "description": "Bioecology: Tracking",
+            "img": "Icons/SheetIcons/Bioecology.webp",
+            "value": 1,
+            "bonus": 0,
+            "temp": 0
+          },
+          "Hrb": {
+            "description": "Herbology: Herbs",
+            "img": "Icons/SheetIcons/Herbology.png",
+            "value": 1,
+            "bonus": 0,
+            "temp": 0
+          },
+          "Het": {
+            "description": "Heteroptology: Bugs",
+            "img": "Icons/SheetIcons/Heteroptology.png",
+            "value": 1,
+            "bonus": 0,
+            "temp": 0
+          },
+          "Min": {
+            "description": "Mineralogy: Minerals",
+            "img": "Icons/SheetIcons/Mineralogy.png",
+            "value": 1,
+            "bonus": 0,
+            "temp": 0
+          },
+          "Myc": {
+            "description": "Mycology: Mushrooms",
+            "img": "Icons/SheetIcons/Mycology.png",
+            "value": 1,
+            "bonus": 0,
+            "temp": 0
+          },
+          "Spm": {
+            "description": "Spermology: Nuts and Seeds",
+            "img": "Icons/SheetIcons/Spermology.png",
+            "value": 1,
+            "bonus": 0,
+            "temp": 0
+          }
+        }
+      },
+      "resistances": {
+          "Slashing": {
+            "img": "Icons/SheetIcons/slashing.png",
+            "value": 0,
+            "bonus": 0,
+            "temp": 0
+          },
+          "Blunt": {
+            "img": "Icons/SheetIcons/blunt.png",
+            "value": 0,
+            "bonus": 0,
+            "temp": 0
+          },
+          "Explosive": {
+            "img": "Icons/SheetIcons/explosion.png",
+            "value": 0,
+            "bonus": 0,
+            "temp": 0
+          },
+          "Piercing": {
+            "img": "Icons/SheetIcons/piercing.png",
+            "value": 0,
+            "bonus": 0,
+            "temp": 0
+          },
+          "Sonic": {
+            "img": "Icons/SheetIcons/sonic",
+            "value": 0,
+            "bonus": 0,
+            "temp": 0
+          },
+          "Water": {
+            "img": "Icons/SheetIcons/water.png",
+            "value": 0,
+            "bonus": 0,
+            "temp": 0
+          },
+          "Fire": {
+            "img": "Icons/SheetIcons/fire.png",
+            "value": 0,
+            "bonus": 0,
+            "temp": 0
+          },
+          "Lightning": {
+            "img": "Icons/SheetIcons/lightning.png",
+            "value": 0,
+            "bonus": 0,
+            "temp": 0
+          },
+          "Ice": {
+            "img": "Icons/SheetIcons/ice.png",
+            "value": 0,
+            "bonus": 0,
+            "temp": 0
+          },
+          "Dragon": {
+            "img": "Icons/SheetIcons/dragon.png",
+            "value": 0,
+            "bonus": 0,
+            "temp": 0
+          }
+      },
+      "abilities": {
+        "str": {
+          "img": "",
+          "value": 5,
+          "bonus": 0,
+          "temp": 0
+        },
+        "con": {
+          "img": "",
+          "value": 5,
+          "bonus": 0,
+          "temp": 0
+        },
+        "spr": {
+          "img": "",
+          "value": 5,
+          "bonus": 0,
+          "temp": 0
+        },
+        "int": {
+          "img": "",
+          "value": 5,
+          "bonus": 0,
+          "temp": 0
+        }
+      },
+      "skills": {
+        "acr": {
+          "img": "",
+          "value": 5,
+          "bonus": 0,
+          "temp": 0
+        },
+        "apr": {
+          "img": "",
+          "value": 5,
+          "bonus": 0,
+          "temp": 0
+        },
+        "dec": {
+          "img": "",
+          "value": 5,
+          "bonus": 0,
+          "temp": 0
+        },
+        "ins": {
+          "img": "",
+          "value": 5,
+          "bonus": 0,
+          "temp": 0
+        },
+        "int": {
+          "img": "",
+          "value": 5,
+          "bonus": 0,
+          "temp": 0
+        },
+        "per": {
+          "img": "",
+          "value": 5,
+          "bonus": 0,
+          "temp": 0
+        }
+      },
+      "activeWeaponID": 0,
+      "abilityEditing": false,
+      "resistanceEditing": false,
+      "skillEditing": false,
+      "ZoologyEditing": false,
+      "EcologyEditing": false
+    },
+    "shop": {
+      "templates": ["base"]
+    },
+    "npc": {
+      "templates": ["base"],
+      "parts": {
+        "Part0": {
+          "name": "Body",
+          "resistances": {
+            "Slashing": 5,
+            "Blunt": 5,
+            "Explosive": 5,
+            "Piercing": 5,
+            "Sonic": 5,
+            "Water": 1,
+            "Fire": 1,
+            "Lightning": 1,
+            "Ice": 1,
+            "Dragon": 1
+          },
+          "breakReward": "none",
+          "breakPercent": 10,
+          "breakDamageType": "Any",
+          "staggerPercent": 8,
+          "staggerType": "flinch"
+        }
+      },
+      "statusData": {
+        "sleep": {
+          "effectivity": 1,
+          "initialRes": 1,
+          "nextRes": 1,
+          "maxRes": 1,
+          "Degradation": 1
+        },
+        "poison": {
+          "effectivity": 1,
+          "initialRes": 1,
+          "nextRes": 1,
+          "maxRes": 1,
+          "Degradation": 1
+        },
+        "paralysis": {
+          "effectivity": 1,
+          "initialRes": 1,
+          "nextRes": 1,
+          "maxRes": 1,
+          "Degradation": 1
+        },
+        "stun": {
+          "effectivity": 1,
+          "initialRes": 1,
+          "nextRes": 1,
+          "maxRes": 1,
+          "Degradation": 1
+        },
+        "bleed": {
+          "effectivity": 1,
+          "initialRes": 1,
+          "nextRes": 1,
+          "maxRes": 1,
+          "Degradation": 1
+        }
+      },
+      "enrage": {
+        "value": 0,
+        "thresholdPercent": 30,
+        "damageBoost": 1.1,
+        "duration": 10
+      }
+    }
+  },
+  "Item": {
+    "types": ["item", "feature", "spell", "greatsword", "hammer", "dualblade", "longsword",
+      "bow", "fan", "armor"],
+    "templates": {
+      "base": {
+        "description": ""
+      },
+      "weapon": {
+        "type": "weapon",
+        "die": 6,
+        "bonus": 0,
+        "sharpness": 100,
+        "speed": 0,
+        "scratch": 0,
+        "crit": 0,
+        "element": {
+          "type": "N/A",
+          "strength": 0,
+          "formula": "1d4"
+        },
+        "equipped": true
+      }
+    },
+    "item": {
+      "templates": ["base"],
+      "quantity": 1,
+      "weight": 0,
+      "formula": "d20 + @str.mod + ceil(@lvl / 2)",
+      "stackSize": 9,
+      "inBag": 0,
+      "inChest": 0,
+      "salePrice": 0,
+      "cost": 0,
+      "highQuality": false
+    },
+    "feature": {
+      "templates": ["base"]
+    },
+    "spell": {
+      "templates": ["base"],
+      "spellLevel": 1
+    },
+    "armor" : {
+      "templates": ["base"],
+      "resistances": {
+        "Slashing": {
+          "img": "Icons/SheetIcons/Slashing.png",
+          "value": 0
+        },
+        "Blunt": {
+          "img": "Icons/SheetIcons/Blunt.png",
+          "value": 0
+        },
+        "Explosive": {
+          "img": "Icons/SheetIcons/Explosive.png",
+          "value": 0
+        },
+        "Piercing": {
+          "img": "Icons/SheetIcons/Piercing.png",
+          "value": 0
+        },
+        "Sonic": {
+          "img": "Icons/SheetIcons/Sonic.png",
+          "value": 0
+        },
+        "Water": {
+          "img": "Icons/SheetIcons/Water.png",
+          "value": 0
+        },
+        "Fire": {
+          "img": "Icons/SheetIcons/Fire.png",
+          "value": 0
+        },
+        "Lightning": {
+          "img": "Icons/SheetIcons/Lightning.png",
+          "value": 0
+        },
+        "Ice": {
+          "img": "Icons/SheetIcons/Ice.png",
+          "value": 0
+        },
+        "Dragon": {
+          "img": "Icons/SheetIcons/Dragon.png",
+          "value": 0
+        }
+      },
+      "abilities": {},
+      "materials": {},
+      "slot": "none",
+      "equipped": true
+    },
+    "greatsword": {
+      "templates": ["base", "weapon"],
+      "resourceBars": {
+        "windup": {
+          "img": "",
+          "min": 0,
+          "max": 3,
+          "value": 0
+        }
+      },
+      "resourceBools": {
+        "hitWeakpoint": {
+          "img": "",
+          "active": false
+        }
+      },
+      "attacks": []
+    },
+    "hammer": {
+      "templates": ["base", "weapon"],
+      "resourceBars": {
+        "charge": {
+          "img": "",
+          "min": 0,
+          "max": 3,
+          "value": 0
+        }
+      },
+      "resourceBools": {
+        "powerCharge": {
+          "img": "",
+          "active": false
+        }
+      },
+      "attacks": []
+    },
+    "dualblade": {
+      "templates": ["base", "weapon"],
+      "resourceBars": {
+        "demonGauge": {
+          "img": "",
+          "min": 0,
+          "max": 25,
+          "value": 0
+        }
+      },
+      "resourceBools": {
+        "demonMode": {
+          "img": "",
+          "active": false
+        },
+        "archDemonMode": {
+          "img": "",
+          "active": false
+        }
+      },
+      "attacks": []
+    },
+    "longsword": {
+      "templates": ["base", "weapon"],
+      "resourceBars": {
+        "soulGague": {
+          "img": "",
+          "min": 0,
+          "max": 50,
+          "value": 0
+        },
+        "soulLevel": {
+          "img": "",
+          "min": 0,
+          "max": 3,
+          "value": 0
+        }
+      },
+      "attacks": []
+    },
+    "bow": {
+      "templates": ["base", "weapon"],
+      "resourceBars": {
+        "draw": {
+          "img": "",
+          "min": 0,
+          "max": 3,
+          "value": 0
+        }
+      },
+      "ammo": "Basic Arrow",
+      "attacks": []
+    },
+    "fan": {
+      "templates": ["base", "weapon"],
+      "resourceBars": {
+        "cycloneGauge": {
+          "img": "",
+          "min": 0,
+          "max": 15,
+          "value": 0
+        }
+      },
+      "attacks": []
+    }
+  }
+}

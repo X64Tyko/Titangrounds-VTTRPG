@@ -1,0 +1,10 @@
+.sheet.journal-entry {
+  .journal-entry-page {
+    position: relative;
+    height: 98%;
+
+    * {
+      height: 100%;
+    }
+  }
+}

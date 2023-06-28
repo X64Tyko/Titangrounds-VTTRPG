@@ -1,0 +1,5103 @@
+﻿{
+  "greatsword": [
+    {
+      "name": "Dodge Roll",
+      "clock": 1,
+      "rollOut": false,
+      "lockedIn": false,
+      "charges": false,
+      "interrupt": false,
+      "damage": {
+      },
+      "damageType": "",
+      "note": "Roll 10ft in any hex direction.",
+      "attackGridSize": "3",
+      "attackGridHeight": "5",
+      "attackGrid": {
+        "row1a": ["0","m","0"],
+        "row1b":   ["0","0"],
+        "row2a": ["m","0","m"],
+        "row2b":   ["0","0"],
+        "row3a": ["0","p","0"],
+        "row3b":   ["0","0"],
+        "row4a": ["m","0","m"],
+        "row4b":   ["0","0"],
+        "row5a": ["0","m","0"]
+      },
+      "opener": true,
+      "followups": [
+        "Tackle"
+      ]
+    },
+    {
+      "name": "Wind-up Slash",
+      "clock": 0,
+      "rollOut": false,
+      "lockedIn": true,
+      "charges": true,
+      "interrupt": false,
+      "damage": {
+        "0": {
+          "windupLv": 1,
+          "weakpoint": false,
+          "values": {
+            "hit1": 48
+          }
+        },
+        "1": {
+          "windupLv": 2,
+          "weakpoint": false,
+          "values": {
+            "hit1": 77
+          }
+        },
+        "2": {
+          "windupLv": 3,
+          "weakpoint": false,
+          "values": {
+            "hit1": 110
+          }
+        }
+      },
+      "damageType": "Slashing",
+      "note": "Can be released immediately or charged up to 2 extra levels before releasing. \n Charge can be canceled into a Tackle.",
+      "attackGridSize": "2",
+      "attackGridHeight": "4",
+      "attackGrid": {
+        "row1a": ["0","0"],
+        "row1b":   ["a"],
+        "row2a": ["0","0"],
+        "row2b":   ["a"],
+        "row3a": ["0","0"],
+        "row3b":   ["p"],
+        "row4a": ["0","0"],
+        "row4b":   ["0"]
+      },
+      "opener": true,
+      "followups": [
+        "Tackle",
+        "Strong Wind-up Slash",
+        "Side Blow",
+        "Recovery"
+      ]
+    },
+    {
+      "name": "Strong Wind-up Slash",
+      "clock": 1,
+      "rollOut": false,
+      "lockedIn": true,
+      "charges": true,
+      "interrupt": false,
+      "damage": {
+        "0": {
+          "windupLv": 1,
+          "weakpoint": false,
+          "values": {
+            "hit1": 82
+          }
+        },
+        "1": {
+          "windupLv": 2,
+          "weakpoint": false,
+          "values": {
+            "hit1": 111
+          }
+        },
+        "2": {
+          "windupLv": 3,
+          "weakpoint": false,
+          "values": {
+            "hit1": 131
+          }
+        }
+      },
+      "damageType": "Slashing",
+      "note": "Can be released immediately or charged up to 2 extra levels before releasing. \n Charge can be canceled into a Tackle.",
+      "attackGridSize": "2",
+      "attackGridHeight": "4",
+      "attackGrid": {
+        "row1a": ["0","0"],
+        "row1b":   ["a"],
+        "row2a": ["0","0"],
+        "row2b":   ["a"],
+        "row3a": ["0","0"],
+        "row3b":   ["p"],
+        "row4a": ["0","0"],
+        "row4b":   ["0"]
+      },
+      "opener": false,
+      "followups": [
+        "Tackle",
+        "True Wind-up Slash I",
+        "Strong Wide Slash",
+        "Side Blow",
+        "Recovery"
+      ]
+    },
+    {
+      "name": "True Wind-up Slash I",
+      "clock": 0,
+      "rollOut": false,
+      "lockedIn": true,
+      "charges": true,
+      "interrupt": false,
+      "damage": {
+        "0": {
+          "windupLv": 1,
+          "weakpoint": false,
+          "values": {
+            "hit1": 15
+          }
+        },
+        "1": {
+          "windupLv": 2,
+          "weakpoint": false,
+          "values": {
+            "hit1": 20
+          }
+        },
+        "2": {
+          "windupLv": 3,
+          "weakpoint": false,
+          "values": {
+            "hit1": 22
+          }
+        }
+      },
+      "damageType": "Slashing",
+      "note": "Can be released immediately or charged up to 2 extra levels before releasing.",
+      "attackGridSize": "2",
+      "attackGridHeight": "4",
+      "attackGrid": {
+        "row1a": ["0","0"],
+        "row1b":   ["a"],
+        "row2a": ["0","0"],
+        "row2b":   ["b"],
+        "row3a": ["0","0"],
+        "row3b":   ["p"],
+        "row4a": ["0","0"],
+        "row4b":   ["0"]
+      },
+      "opener": false,
+      "followups": [
+        "True Wind-up Slash II"
+      ]
+    },
+    {
+      "name": "True Wind-up Slash II",
+      "clock": 1,
+      "rollOut": false,
+      "lockedIn": true,
+      "charges": true,
+      "interrupt": false,
+      "damage": {
+        "0": {
+          "windupLv": 1,
+          "weakpoint": false,
+          "values": {
+            "hit1": 120
+          }
+        },
+        "1": {
+          "windupLv": 2,
+          "weakpoint": false,
+          "values": {
+            "hit1": 175
+          }
+        },
+        "2": {
+          "windupLv": 3,
+          "weakpoint": false,
+          "values": {
+            "hit1": 211
+          }
+        },
+        "3": {
+          "windupLv": 1,
+          "weakpoint": true,
+          "values": {
+            "hit1": 144
+          }
+        },
+        "4": {
+          "windupLv": 2,
+          "weakpoint": true,
+          "values": {
+            "hit1": 210
+          }
+        },
+        "5": {
+          "windupLv": 3,
+          "weakpoint": true,
+          "values": {
+            "hit1": 264
+          }
+        }
+      },
+      "damageType": "Slashing",
+      "note": "Inherits it's charge level from True Wind-up Slash I. \n If True Wind-up Slash I hit a weak point this attack does extra damage.",
+      "attackGridSize": "2",
+      "attackGridHeight": "4",
+      "attackGrid": {
+        "row1a": ["0","0"],
+        "row1b":   ["a"],
+        "row2a": ["0","0"],
+        "row2b":   ["a"],
+        "row3a": ["0","0"],
+        "row3b":   ["p"],
+        "row4a": ["0","0"],
+        "row4b":   ["0"]
+      },
+      "opener": false,
+      "followups": [
+        "Side Blow",
+        "Recovery"
+      ]
+    },
+    {
+      "name": "Strong Wide Slash",
+      "clock": 1,
+      "rollOut": false,
+      "lockedIn": false,
+      "charges": true,
+      "interrupt": false,
+      "damage": {
+        "0": {
+          "windupLv": 1,
+          "weakpoint": false,
+          "values": {
+            "hit1": 59
+          }
+        },
+        "1": {
+          "windupLv": 2,
+          "weakpoint": false,
+          "values": {
+            "hit1": 66
+          }
+        },
+        "2": {
+          "windupLv": 3,
+          "weakpoint": false,
+          "values": {
+            "hit1": 78
+          }
+        }
+      },
+      "damageType": "Slashing",
+      "note": "",
+      "attackGridSize": "2",
+      "attackGridHeight": "4",
+      "attackGrid": {
+        "row1a": ["0","0"],
+        "row1b":   ["0"],
+        "row2a": ["0","0"],
+        "row2b":   ["a"],
+        "row3a": ["a","a"],
+        "row3b":   ["p"],
+        "row4a": ["0","0"],
+        "row4b":   ["0"]
+      },
+      "opener": false,
+      "followups": [
+      ]
+    },
+    {
+      "name": "Rising Slash",
+      "clock": 0,
+      "rollOut": false,
+      "lockedIn": false,
+      "charges": false,
+      "interrupt": false,
+      "damage": {
+        "0": {
+          "windupLv": 1,
+          "weakpoint": false,
+          "values": {
+            "hit1": 38
+          }
+        }
+      },
+      "damageType": "Slashing",
+      "note": "",
+      "attackGridSize": "2",
+      "attackGridHeight": "4",
+      "attackGrid": {
+        "row1a": ["0","0"],
+        "row1b":   ["a"],
+        "row2a": ["0","0"],
+        "row2b":   ["a"],
+        "row3a": ["0","0"],
+        "row3b":   ["p"],
+        "row4a": ["0","0"],
+        "row4b":   ["a"]
+      },
+      "opener": true,
+      "followups": [
+      ]
+    },
+    {
+      "name": "Wide Slash",
+      "clock": 0,
+      "rollOut": false,
+      "lockedIn": false,
+      "charges": false,
+      "interrupt": false,
+      "damage": {
+        "0": {
+          "windupLv": 1,
+          "weakpoint": false,
+          "values": {
+            "hit1": 26
+          }
+        }
+      },
+      "damageType": "Slashing",
+      "note": "",
+      "attackGridSize": "2",
+      "attackGridHeight": "4",
+      "attackGrid": {
+        "row1a": ["0","0"],
+        "row1b":   ["0"],
+        "row2a": ["0","0"],
+        "row2b":   ["a"],
+        "row3a": ["a","a"],
+        "row3b":   ["p"],
+        "row4a": ["0","0"],
+        "row4b":   ["0"]
+      },
+      "opener": true,
+      "followups": [
+      ]
+    },
+    {
+      "name": "Tackle",
+      "clock": 0,
+      "rollOut": false,
+      "lockedIn": false,
+      "charges": true,
+      "interrupt": true,
+      "damage": {
+        "0": {
+          "windupLv": 1,
+          "weakpoint": false,
+          "values": {
+            "hit1": 26
+          }
+        },
+        "1": {
+          "windupLv": 2,
+          "weakpoint": false,
+          "values": {
+            "hit1": 35
+          }
+        },
+        "2": {
+          "windupLv": 3,
+          "weakpoint": false,
+          "values": {
+            "hit1": 48
+          }
+        }
+      },
+      "damageType": "Blunt",
+      "note": "Halves incoming damage until the end of the round. \n Inherits charge level from Wind-up attack.",
+      "attackGridSize": "2",
+      "attackGridHeight": "4",
+      "attackGrid": {
+        "row1a": ["0","0"],
+        "row1b":   ["0"],
+        "row2a": ["0","0"],
+        "row2b":   ["b"],
+        "row3a": ["0","0"],
+        "row3b":   ["p"],
+        "row4a": ["0","0"],
+        "row4b":   ["0"]
+      },
+      "opener": false,
+      "followups": [
+        "Strong Wind-up Slash",
+        "True Wind-up Slash I",
+        "Jumping Wide Slash"
+      ]
+    },
+    {
+      "name": "Jumping Wide Slash",
+      "clock": 1,
+      "rollOut": false,
+      "lockedIn": false,
+      "charges": false,
+      "interrupt": false,
+      "damage": {
+        "0": {
+          "windupLv": 1,
+          "weakpoint": false,
+          "values": {
+            "hit1": 75
+          }
+        },
+        "1": {
+          "windupLv": 2,
+          "weakpoint": false,
+          "values": {
+            "hit1": 98
+          }
+        },
+        "2": {
+          "windupLv": 3,
+          "weakpoint": false,
+          "values": {
+            "hit1": 118
+          }
+        }
+      },
+      "damageType": "Slashing",
+      "note": "Inherits charge level from Tackle",
+      "attackGridSize": "2",
+      "attackGridHeight": "4",
+      "attackGrid": {
+        "row1a": ["0","0"],
+        "row1b":   ["0"],
+        "row2a": ["0","0"],
+        "row2b":   ["a"],
+        "row3a": ["a","a"],
+        "row3b":   ["p"],
+        "row4a": ["0","0"],
+        "row4b":   ["0"]
+      },
+      "opener": false,
+      "followups": [
+        "Side Blow"
+      ]
+    },
+    {
+      "name": "Side Blow",
+      "clock": 1,
+      "rollOut": false,
+      "lockedIn": true,
+      "charges": false,
+      "interrupt": false,
+      "damage": {
+        "0": {
+          "windupLv": 1,
+          "weakpoint": false,
+          "values": {
+            "hit1": 16
+          }
+        }
+      },
+      "damageType": "Blunt",
+      "note": "",
+      "attackGridSize": "2",
+      "attackGridHeight": "4",
+      "attackGrid": {
+        "row1a": ["0","0"],
+        "row1b":   ["0"],
+        "row2a": ["0","0"],
+        "row2b":   ["a"],
+        "row3a": ["0","0"],
+        "row3b":   ["p"],
+        "row4a": ["0","0"],
+        "row4b":   ["0"]
+      },
+      "opener": false,
+      "followups": [
+        "Strong Wide Slash",
+        "Recovery"
+      ]
+    },
+    {
+      "name": "Kick",
+      "clock": 0,
+      "rollOut": false,
+      "lockedIn": false,
+      "charges": false,
+      "interrupt": false,
+      "damage": {
+        "0": {
+          "windupLv": 1,
+          "weakpoint": false,
+          "values": {
+            "hit1": 5
+          }
+        }
+      },
+      "damageType": "Blunt",
+      "note": "",
+      "attackGridSize": "2",
+      "attackGridHeight": "4",
+      "attackGrid": {
+        "row1a": ["0","0"],
+        "row1b":   ["0"],
+        "row2a": ["0","0"],
+        "row2b":   ["a"],
+        "row3a": ["0","0"],
+        "row3b":   ["p"],
+        "row4a": ["0","0"],
+        "row4b":   ["0"]
+      },
+      "opener": true,
+      "followups": [
+      ]
+    },
+    {
+      "name": "Midair Wind-up Slash",
+      "clock": 0,
+      "rollOut": false,
+      "lockedIn": false,
+      "charges": true,
+      "interrupt": false,
+      "damage": {
+        "0": {
+          "windupLv": 1,
+          "weakpoint": false,
+          "values": {
+            "hit1": 58
+          }
+        },
+        "1": {
+          "windupLv": 2,
+          "weakpoint": false,
+          "values": {
+            "hit1": 69
+          }
+        },
+        "2": {
+          "windupLv": 3,
+          "weakpoint": false,
+          "values": {
+            "hit1": 87
+          }
+        }
+      },
+      "damageType": "Slashing",
+      "note": "Charge increases by 1 every 5ft fallen.",
+      "attackGridSize": "2",
+      "attackGridHeight": "4",
+      "attackGrid": {
+        "row1a": ["0","0"],
+        "row1b":   ["a"],
+        "row2a": ["0","0"],
+        "row2b":   ["a"],
+        "row3a": ["0","0"],
+        "row3b":   ["p"],
+        "row4a": ["0","0"],
+        "row4b":   ["0"]
+      },
+      "opener": true,
+      "followups": [
+      ]
+    },
+    {
+      "name": "Recovery",
+      "clock": 2,
+      "rollOut": true,
+      "lockedIn": false,
+      "charges": false,
+      "interrupt": false,
+      "damage": [
+      ],
+      "damageType": "",
+      "note": "\n\n\n",
+      "attackGridSize": "2",
+      "attackGridHeight": "4",
+      "attackGrid": {
+        "row1a": ["0","0"],
+        "row1b":   ["0"],
+        "row2a": ["0","0"],
+        "row2b":   ["0"],
+        "row3a": ["0","0"],
+        "row3b":   ["p"],
+        "row4a": ["0","0"],
+        "row4b":   ["0"]
+      },
+      "opener": false,
+      "followups": [
+      ]
+    },
+    {
+      "name": "Guard",
+      "clock": "X",
+      "rollOut": false,
+      "lockedIn": false,
+      "charges": false,
+      "interrupt": false,
+      "damage": [
+      ],
+      "damageType": "",
+      "note": "Halves incoming damage and adds knockback immunity to attacks from directly in front of the hunter.\n -4 Stamina when blocking a hit. \n No Stamina recovery",
+      "attackGridSize": "2",
+      "attackGridHeight": "4",
+      "attackGrid": {
+        "row1a": ["0","0"],
+        "row1b":   ["0"],
+        "row2a": ["0","0"],
+        "row2b":   ["0"],
+        "row3a": ["0","0"],
+        "row3b":   ["p"],
+        "row4a": ["0","0"],
+        "row4b":   ["0"]
+      },
+      "opener": true,
+      "followups": [
+        "Kick"
+      ]
+    }
+  ],
+  "hammer": [
+    {
+      "name": "Dodge Roll",
+      "clock": 1,
+      "rollOut": false,
+      "lockedIn": false,
+      "charges": false,
+      "interrupt": false,
+      "damage": {
+      },
+      "damageType": "",
+      "note": "Roll 10ft in any hex direction.",
+      "attackGridSize": "3",
+      "attackGridHeight": "5",
+      "attackGrid": {
+        "row1a": ["0","m","0"],
+        "row1b":   ["0","0"],
+        "row2a": ["m","0","m"],
+        "row2b":   ["0","0"],
+        "row3a": ["0","p","0"],
+        "row3b":   ["0","0"],
+        "row4a": ["m","0","m"],
+        "row4b":   ["0","0"],
+        "row5a": ["0","m","0"]
+      },
+      "opener": true,
+      "followups": [
+      ]
+    },
+    {
+      "name": "Charge I",
+      "clock": 0,
+      "rollOut": true,
+      "lockedIn": true,
+      "charges": false,
+      "interrupt": false,
+      "damage": {
+      },
+      "damageType": "N/A",
+      "note": "Increases Charge Level by 1 \n\n Charge level resets at the end of the combo.",
+      "attackGridSize": "2",
+      "attackGridHeight": "4",
+      "attackGrid": {
+        "row1a": ["0","0"],
+        "row1b":   ["0"],
+        "row2a": ["0","0"],
+        "row2b":   ["m"],
+        "row3a": ["m","m"],
+        "row3b":   ["p"],
+        "row4a": ["m","m"],
+        "row4b":   ["m"]
+      },
+      "opener": true,
+      "followups": [
+        "Power Charge",
+        "Charge II",
+        "Charged Upswing",
+        "Charged Spinning Bludgeon"
+      ]
+    },
+    {
+      "name": "Charge II",
+      "clock": 0,
+      "rollOut": true,
+      "lockedIn": true,
+      "charges": false,
+      "interrupt": false,
+      "damage": {
+      },
+      "damageType": "N/A",
+      "note": "Increases Charge Level by 1 \n\n Charge level resets at the end of the combo.",
+      "attackGridSize": "2",
+      "attackGridHeight": "4",
+      "attackGrid": {
+        "row1a": ["0","0"],
+        "row1b":   ["0"],
+        "row2a": ["0","0"],
+        "row2b":   ["m"],
+        "row3a": ["m","m"],
+        "row3b":   ["p"],
+        "row4a": ["m","m"],
+        "row4b":   ["m"]
+      },
+      "opener": false,
+      "followups": [
+        "Power Charge",
+        "Charged Big Bang",
+        "Charged Spinning Bludgeon"
+      ]
+    },
+    {
+      "name": "Power Charge",
+      "clock": 0,
+      "rollOut": false,
+      "lockedIn": false,
+      "charges": false,
+      "interrupt": false,
+      "damage": {
+      },
+      "damageType": "N/A",
+      "note": "Activates Power Charge until knocked down or the weapon is sheathed.",
+      "attackGridSize": "2",
+      "attackGridHeight": "4",
+      "attackGrid": {
+        "row1a": ["0","0"],
+        "row1b":   ["0"],
+        "row2a": ["0","0"],
+        "row2b":   ["0"],
+        "row3a": ["0","0"],
+        "row3b":   ["p"],
+        "row4a": ["0","0"],
+        "row4b":   ["0"]
+      },
+      "opener": false,
+      "followups": [
+      ]
+    },
+    {
+      "name": "Overhead Smash I",
+      "clock": 0,
+      "rollOut": false,
+      "lockedIn": true,
+      "charges": false,
+      "interrupt": false,
+      "damage": {
+        "0": {
+          "ChargeLv": 0,
+          "powerCharged": false,
+          "values": {
+            "hit1": 37
+          }
+        },
+        "1": {
+          "ChargeLv": 0,
+          "powerCharged": true,
+          "values": {
+            "hit1": 42
+          }
+        }
+      },
+      "damageType": "Blunt",
+      "note": "",
+      "attackGridSize": "2",
+      "attackGridHeight": "4",
+      "attackGrid": {
+        "row1a": ["0","0"],
+        "row1b":   ["0"],
+        "row2a": ["0","0"],
+        "row2b":   ["a"],
+        "row3a": ["0","0"],
+        "row3b":   ["p"],
+        "row4a": ["0","0"],
+        "row4b":   ["0"]
+      },
+      "opener": true,
+      "followups": [
+        "Overhead Smash II",
+        "Recovery"
+      ]
+    },
+    {
+      "name": "Overhead Smash II",
+      "clock": 0,
+      "rollOut": false,
+      "lockedIn": true,
+      "charges": false,
+      "interrupt": false,
+      "damage": {
+        "0": {
+          "ChargeLv": 0,
+          "powerCharged": false,
+          "values": {
+            "hit1": 23
+          }
+        },
+        "1": {
+          "ChargeLv": 0,
+          "powerCharged": true,
+          "values": {
+            "hit1": 28
+          }
+        }
+      },
+      "damageType": "Blunt",
+      "note": "",
+      "attackGridSize": "2",
+      "attackGridHeight": "4",
+      "attackGrid": {
+        "row1a": ["0","0"],
+        "row1b":   ["0"],
+        "row2a": ["0","0"],
+        "row2b":   ["a"],
+        "row3a": ["0","0"],
+        "row3b":   ["p"],
+        "row4a": ["0","0"],
+        "row4b":   ["0"]
+      },
+      "opener": false,
+      "followups": [
+        "Upswing",
+        "Recovery"
+      ]
+    },
+    {
+      "name": "Upswing",
+      "clock": 1,
+      "rollOut": false,
+      "lockedIn": false,
+      "charges": false,
+      "interrupt": false,
+      "damage": {
+        "0": {
+          "ChargeLv": 0,
+          "powerCharged": false,
+          "values": {
+            "hit1": 86
+          }
+        },
+        "1": {
+          "ChargeLv": 0,
+          "powerCharged": true,
+          "values": {
+            "hit1": 91
+          }
+        }
+      },
+      "damageType": "Blunt",
+      "note": "",
+      "attackGridSize": "2",
+      "attackGridHeight": "4",
+      "attackGrid": {
+        "row1a": ["0","0"],
+        "row1b":   ["0"],
+        "row2a": ["0","0"],
+        "row2b":   ["b"],
+        "row3a": ["a","a"],
+        "row3b":   ["p"],
+        "row4a": ["0","0"],
+        "row4b":   ["0"]
+      },
+      "opener": false,
+      "followups": [
+      ]
+    },
+    {
+      "name": "Swing",
+      "clock": 0,
+      "rollOut": false,
+      "lockedIn": true,
+      "charges": false,
+      "interrupt": false,
+      "damage": {
+        "0": {
+          "ChargeLv": 0,
+          "powerCharged": false,
+          "values": {
+            "hit1": 20
+          }
+        },
+        "1": {
+          "ChargeLv": 0,
+          "powerCharged": true,
+          "values": {
+            "hit1": 25
+          }
+        }
+      },
+      "damageType": "Blunt",
+      "note": "",
+      "attackGridSize": "2",
+      "attackGridHeight": "4",
+      "attackGrid": {
+        "row1a": ["0","0"],
+        "row1b":   ["0"],
+        "row2a": ["0","0"],
+        "row2b":   ["a"],
+        "row3a": ["a","a"],
+        "row3b":   ["p"],
+        "row4a": ["0","0"],
+        "row4b":   ["0"]
+      },
+      "opener": true,
+      "followups": [
+        "Backswing",
+        "Recovery"
+      ]
+    },
+    {
+      "name": "Backswing",
+      "clock": 0,
+      "rollOut": false,
+      "lockedIn": true,
+      "charges": false,
+      "interrupt": false,
+      "damage": {
+        "0": {
+          "ChargeLv": 0,
+          "powerCharged": false,
+          "values": {
+            "hit1": 16
+          }
+        },
+        "1": {
+          "ChargeLv": 0,
+          "powerCharged": true,
+          "values": {
+            "hit1": 21
+          }
+        }
+      },
+      "damageType": "Blunt",
+      "note": "",
+      "attackGridSize": "2",
+      "attackGridHeight": "4",
+      "attackGrid": {
+        "row1a": ["0","0"],
+        "row1b":   ["0"],
+        "row2a": ["0","0"],
+        "row2b":   ["a"],
+        "row3a": ["0","0"],
+        "row3b":   ["p"],
+        "row4a": ["0","0"],
+        "row4b":   ["0"]
+      },
+      "opener": true,
+      "followups": [
+        "Overhead Smash I",
+        "Recovery"
+      ]
+    },
+    {
+      "name": "Charged Big Bang",
+      "clock": 1,
+      "rollOut": false,
+      "lockedIn": false,
+      "charges": false,
+      "interrupt": false,
+      "damage": {
+        "0": {
+          "ChargeLv": 2,
+          "powerCharged": false,
+          "values": {
+            "hit1": 15,
+            "hit2": 76
+          }
+        },
+        "1": {
+          "ChargeLv": 2,
+          "powerCharged": true,
+          "values": {
+            "hit1": 15,
+            "hit2": 15,
+            "hit3": 85
+          }
+        }
+      },
+      "damageType": "Explosive",
+      "note": "Requires charge level 2",
+      "attackGridSize": "2",
+      "attackGridHeight": "4",
+      "attackGrid": {
+        "row1a": ["0","0"],
+        "row1b":   ["a"],
+        "row2a": ["a","a"],
+        "row2b":   ["a"],
+        "row3a": ["a","a"],
+        "row3b":   ["p"],
+        "row4a": ["0","0"],
+        "row4b":   ["0"]
+      },
+      "opener": false,
+      "followups": [
+      ]
+    },
+    {
+      "name": "Big Bang I",
+      "clock": 0,
+      "rollOut": false,
+      "lockedIn": true,
+      "charges": false,
+      "interrupt": false,
+      "damage": {
+        "0": {
+          "ChargeLv": 0,
+          "powerCharged": false,
+          "values": {
+            "hit1": 28
+          }
+        },
+        "1": {
+          "ChargeLv": 0,
+          "powerCharged": true,
+          "values": {
+            "hit1": 33
+          }
+        }
+      },
+      "damageType": "Blunt",
+      "note": "Cancel combo and enter Recovery if it misses",
+      "attackGridSize": "2",
+      "attackGridHeight": "4",
+      "attackGrid": {
+        "row1a": ["0","0"],
+        "row1b":   ["0"],
+        "row2a": ["0","0"],
+        "row2b":   ["a"],
+        "row3a": ["0","0"],
+        "row3b":   ["p"],
+        "row4a": ["0","0"],
+        "row4b":   ["0"]
+      },
+      "opener": true,
+      "followups": [
+        "Big Bang II",
+        "Recovery"
+      ]
+    },
+    {
+      "name": "Big Bang II",
+      "clock": 0,
+      "rollOut": false,
+      "lockedIn": true,
+      "charges": false,
+      "interrupt": false,
+      "damage": {
+        "0": {
+          "ChargeLv": 0,
+          "powerCharged": false,
+          "values": {
+            "hit1": 32
+          }
+        },
+        "1": {
+          "ChargeLv": 0,
+          "powerCharged": true,
+          "values": {
+            "hit1": 37
+          }
+        }
+      },
+      "damageType": "Blunt",
+      "note": "Cancel combo and enter Recovery if it misses",
+      "attackGridSize": "2",
+      "attackGridHeight": "4",
+      "attackGrid": {
+        "row1a": ["0","0"],
+        "row1b":   ["0"],
+        "row2a": ["0","0"],
+        "row2b":   ["a"],
+        "row3a": ["0","0"],
+        "row3b":   ["p"],
+        "row4a": ["0","0"],
+        "row4b":   ["0"]
+      },
+      "opener": false,
+      "followups": [
+        "Big Bang III",
+        "Recovery"
+      ]
+    },
+    {
+      "name": "Big Bang III",
+      "clock": 0,
+      "rollOut": false,
+      "lockedIn": true,
+      "charges": false,
+      "interrupt": false,
+      "damage": {
+        "0": {
+          "ChargeLv": 0,
+          "powerCharged": false,
+          "values": {
+            "hit1": 45
+          }
+        },
+        "1": {
+          "ChargeLv": 0,
+          "powerCharged": true,
+          "values": {
+            "hit1": 50
+          }
+        }
+      },
+      "damageType": "Blunt",
+      "note": "Cancel combo and enter Recovery if it misses",
+      "attackGridSize": "2",
+      "attackGridHeight": "4",
+      "attackGrid": {
+        "row1a": ["0","0"],
+        "row1b":   ["0"],
+        "row2a": ["0","0"],
+        "row2b":   ["a"],
+        "row3a": ["0","0"],
+        "row3b":   ["p"],
+        "row4a": ["0","0"],
+        "row4b":   ["0"]
+      },
+      "opener": false,
+      "followups": [
+        "Big Bang IV",
+        "Recovery"
+      ]
+    },
+    {
+      "name": "Big Bang IV",
+      "clock": 0,
+      "rollOut": false,
+      "lockedIn": true,
+      "charges": false,
+      "interrupt": false,
+      "damage": {
+        "0": {
+          "ChargeLv": 0,
+          "powerCharged": false,
+          "values": {
+            "hit1": 65
+          }
+        },
+        "1": {
+          "ChargeLv": 0,
+          "powerCharged": true,
+          "values": {
+            "hit1": 70
+          }
+        }
+      },
+      "damageType": "Blunt",
+      "note": "Cancel combo and enter Recovery if it misses",
+      "attackGridSize": "2",
+      "attackGridHeight": "4",
+      "attackGrid": {
+        "row1a": ["0","0"],
+        "row1b":   ["0"],
+        "row2a": ["0","0"],
+        "row2b":   ["a"],
+        "row3a": ["0","0"],
+        "row3b":   ["p"],
+        "row4a": ["0","0"],
+        "row4b":   ["0"]
+      },
+      "opener": false,
+      "followups": [
+        "Big Bang V",
+        "Recovery"
+      ]
+    },
+    {
+      "name": "Big Bang V",
+      "clock": 2,
+      "rollOut": true,
+      "lockedIn": false,
+      "charges": false,
+      "interrupt": false,
+      "damage": {
+        "0": {
+          "ChargeLv": 0,
+          "powerCharged": false,
+          "values": {
+            "hit1": 28,
+            "hit2": 28,
+            "hit3": 100
+          }
+        },
+        "1": {
+          "ChargeLv": 0,
+          "powerCharged": true,
+          "values": {
+            "hit1": 33,
+            "hit2": 33,
+            "hit3": 105
+          }
+        }
+      },
+      "damageType": "Blunt",
+      "note": "",
+      "attackGridSize": "2",
+      "attackGridHeight": "4",
+      "attackGrid": {
+        "row1a": ["0","0"],
+        "row1b":   ["0"],
+        "row2a": ["0","0"],
+        "row2b":   ["a"],
+        "row3a": ["0","0"],
+        "row3b":   ["p"],
+        "row4a": ["0","0"],
+        "row4b":   ["0"]
+      },
+      "opener": false,
+      "followups": [
+      ]
+    },
+    {
+      "name": "Charged Side Blow",
+      "clock": 0,
+      "rollOut": false,
+      "lockedIn": true,
+      "charges": false,
+      "interrupt": false,
+      "damage": {
+        "0": {
+          "ChargeLv": 0,
+          "powerCharged": false,
+          "values": {
+            "hit1": 18
+          }
+        },
+        "1": {
+          "ChargeLv": 0,
+          "powerCharged": true,
+          "values": {
+            "hit1": 23
+          }
+        }
+      },
+      "damageType": "Blunt",
+      "note": "",
+      "attackGridSize": "2",
+      "attackGridHeight": "4",
+      "attackGrid": {
+        "row1a": ["0","0"],
+        "row1b":   ["0"],
+        "row2a": ["0","0"],
+        "row2b":   ["a"],
+        "row3a": ["a","a"],
+        "row3b":   ["p"],
+        "row4a": ["0","0"],
+        "row4b":   ["0"]
+      },
+      "opener": true,
+      "followups": [
+        "Charged Follow-up",
+        "Side Smash",
+        "Recovery"
+      ]
+    },
+    {
+      "name": "Charged Follow-up",
+      "clock": 0,
+      "rollOut": false,
+      "lockedIn": true,
+      "charges": false,
+      "interrupt": false,
+      "damage": {
+        "0": {
+          "ChargeLv": 0,
+          "powerCharged": false,
+          "values": {
+            "hit1": 25
+          }
+        },
+        "1": {
+          "ChargeLv": 0,
+          "powerCharged": true,
+          "values": {
+            "hit1": 25
+          }
+        }
+      },
+      "damageType": "Blunt",
+      "note": "",
+      "attackGridSize": "2",
+      "attackGridHeight": "4",
+      "attackGrid": {
+        "row1a": ["0","0"],
+        "row1b":   ["0"],
+        "row2a": ["0","0"],
+        "row2b":   ["a"],
+        "row3a": ["0","0"],
+        "row3b":   ["p"],
+        "row4a": ["0","0"],
+        "row4b":   ["0"]
+      },
+      "opener": false,
+      "followups": [
+        "Overhead Smash I",
+        "Recovery"
+      ]
+    },
+    {
+      "name": "Side Smash",
+      "clock": 1,
+      "rollOut": false,
+      "lockedIn": true,
+      "charges": false,
+      "interrupt": false,
+      "damage": {
+        "0": {
+          "ChargeLv": 0,
+          "powerCharged": false,
+          "values": {
+            "hit1": 15
+          }
+        },
+        "1": {
+          "ChargeLv": 0,
+          "powerCharged": true,
+          "values": {
+            "hit1": 20
+          }
+        }
+      },
+      "damageType": "Blunt",
+      "note": "",
+      "attackGridSize": "2",
+      "attackGridHeight": "4",
+      "attackGrid": {
+        "row1a": ["0","0"],
+        "row1b":   ["0"],
+        "row2a": ["0","0"],
+        "row2b":   ["a"],
+        "row3a": ["0","0"],
+        "row3b":   ["p"],
+        "row4a": ["0","0"],
+        "row4b":   ["0"]
+      },
+      "opener": false,
+      "followups": [
+        "Overhead Smash I",
+        "Recovery"
+      ]
+    },
+    {
+      "name": "Charged Upswing",
+      "clock": 1,
+      "rollOut": false,
+      "lockedIn": false,
+      "charges": false,
+      "interrupt": false,
+      "damage": {
+        "0": {
+          "ChargeLv": 1,
+          "powerCharged": false,
+          "values": {
+            "hit1": 38
+          }
+        },
+        "1": {
+          "ChargeLv": 1,
+          "powerCharged": true,
+          "values": {
+            "hit1": 45
+          }
+        }
+      },
+      "damageType": "Blunt",
+      "note": "Requires Charge Level 1",
+      "attackGridSize": "2",
+      "attackGridHeight": "4",
+      "attackGrid": {
+        "row1a": ["0","0"],
+        "row1b":   ["0"],
+        "row2a": ["0","0"],
+        "row2b":   ["a"],
+        "row3a": ["0","0"],
+        "row3b":   ["p"],
+        "row4a": ["0","0"],
+        "row4b":   ["0"]
+      },
+      "opener": false,
+      "followups": [
+        "Side Smash"
+      ]
+    },
+    {
+      "name": "Charged Spinning Bludgeon I",
+      "clock": 0,
+      "rollOut": false,
+      "lockedIn": true,
+      "charges": false,
+      "interrupt": false,
+      "damage": {
+        "0": {
+          "ChargeLv": 0,
+          "powerCharged": false,
+          "values": {
+            "hit1": 26,
+            "hit2": 17
+          }
+        },
+        "1": {
+          "ChargeLv": 0,
+          "powerCharged": true,
+          "values": {
+            "hit1": 31,
+            "hit2": 22
+          }
+        }
+      },
+      "damageType": "Blunt",
+      "note": "Move up to your full movement speed while performing this move.",
+      "attackGridSize": "2",
+      "attackGridHeight": "4",
+      "attackGrid": {
+        "row1a": ["m","m"],
+        "row1b":   ["m"],
+        "row2a": ["m","m"],
+        "row2b":   ["b"],
+        "row3a": ["b","b"],
+        "row3b":   ["p"],
+        "row4a": ["m","m"],
+        "row4b":   ["m"]
+      },
+      "opener": true,
+      "followups": [
+        "Charged Spinning Bludgeon II",
+        "Spinning Side Smash"
+      ]
+    },
+    {
+      "name": "Charged Spinning Bludgeon II",
+      "clock": 0,
+      "rollOut": false,
+      "lockedIn": true,
+      "charges": false,
+      "interrupt": false,
+      "damage": {
+        "0": {
+          "ChargeLv": 0,
+          "powerCharged": false,
+          "values": {
+            "hit1": 18
+          }
+        },
+        "1": {
+          "ChargeLv": 0,
+          "powerCharged": true,
+          "values": {
+            "hit1": 23
+          }
+        }
+      },
+      "damageType": "Blunt",
+      "note": "Move up to your full movement speed while performing this move.",
+      "attackGridSize": "2",
+      "attackGridHeight": "4",
+      "attackGrid": {
+        "row1a": ["m","m"],
+        "row1b":   ["m"],
+        "row2a": ["m","m"],
+        "row2b":   ["b"],
+        "row3a": ["b","b"],
+        "row3b":   ["p"],
+        "row4a": ["m","m"],
+        "row4b":   ["m"]
+      },
+      "opener": false,
+      "followups": [
+        "Charged Spinning Bludgeon III",
+        "Spinning Follow-up"
+      ]
+    },
+    {
+      "name": "Charged Spinning Bludgeon III",
+      "clock": 0,
+      "rollOut": false,
+      "lockedIn": true,
+      "charges": false,
+      "interrupt": false,
+      "damage": {
+        "0": {
+          "ChargeLv": 0,
+          "powerCharged": false,
+          "values": {
+            "hit1": 18
+          }
+        },
+        "1": {
+          "ChargeLv": 0,
+          "powerCharged": true,
+          "values": {
+            "hit1": 23
+          }
+        }
+      },
+      "damageType": "Blunt",
+      "note": "Move up to your full movement speed while performing this move.",
+      "attackGridSize": "2",
+      "attackGridHeight": "4",
+      "attackGrid": {
+        "row1a": ["m","m"],
+        "row1b":   ["m"],
+        "row2a": ["m","m"],
+        "row2b":   ["b"],
+        "row3a": ["b","b"],
+        "row3b":   ["p"],
+        "row4a": ["m","m"],
+        "row4b":   ["m"]
+      },
+      "opener": false,
+      "followups": [
+        "Charged Spinning Bludgeon IV",
+        "Spinning Follow-up"
+      ]
+    },
+    {
+      "name": "Charged Spinning Bludgeon IV",
+      "clock": 0,
+      "rollOut": false,
+      "lockedIn": true,
+      "charges": false,
+      "interrupt": false,
+      "damage": {
+        "0": {
+          "ChargeLv": 0,
+          "powerCharged": false,
+          "values": {
+            "hit1": 18
+          }
+        },
+        "1": {
+          "ChargeLv": 0,
+          "powerCharged": true,
+          "values": {
+            "hit1": 23
+          }
+        }
+      },
+      "damageType": "Blunt",
+      "note": "Move up to your full movement speed while performing this move.",
+      "attackGridSize": "2",
+      "attackGridHeight": "4",
+      "attackGrid": {
+        "row1a": ["m","m"],
+        "row1b":   ["m"],
+        "row2a": ["m","m"],
+        "row2b":   ["b"],
+        "row3a": ["b","b"],
+        "row3b":   ["p"],
+        "row4a": ["m","m"],
+        "row4b":   ["m"]
+      },
+      "opener": false,
+      "followups": [
+        "Spinning Strong Upswing",
+        "Spinning Swing"
+      ]
+    },
+    {
+      "name": "Spinning Side Smash",
+      "clock": 1,
+      "rollOut": false,
+      "lockedIn": false,
+      "charges": false,
+      "interrupt": false,
+      "damage": {
+        "0": {
+          "ChargeLv": 0,
+          "powerCharged": false,
+          "values": {
+            "hit1": 19
+          }
+        },
+        "1": {
+          "ChargeLv": 0,
+          "powerCharged": true,
+          "values": {
+            "hit1": 24
+          }
+        }
+      },
+      "damageType": "Blunt",
+      "note": "",
+      "attackGridSize": "2",
+      "attackGridHeight": "4",
+      "attackGrid": {
+        "row1a": ["0","0"],
+        "row1b":   ["0"],
+        "row2a": ["0","0"],
+        "row2b":   ["a"],
+        "row3a": ["a","a"],
+        "row3b":   ["p"],
+        "row4a": ["0","0"],
+        "row4b":   ["0"]
+      },
+      "opener": false,
+      "followups": [
+      ]
+    },
+    {
+      "name": "Spinning Follow-up",
+      "clock": 1,
+      "rollOut": false,
+      "lockedIn": false,
+      "charges": false,
+      "interrupt": false,
+      "damage": {
+        "0": {
+          "ChargeLv": 0,
+          "powerCharged": false,
+          "values": {
+            "hit1": 56
+          }
+        },
+        "1": {
+          "ChargeLv": 0,
+          "powerCharged": true,
+          "values": {
+            "hit1": 61
+          }
+        }
+      },
+      "damageType": "Blunt",
+      "note": "",
+      "attackGridSize": "2",
+      "attackGridHeight": "4",
+      "attackGrid": {
+        "row1a": ["0","0"],
+        "row1b":   ["0"],
+        "row2a": ["0","0"],
+        "row2b":   ["a"],
+        "row3a": ["a","a"],
+        "row3b":   ["p"],
+        "row4a": ["0","0"],
+        "row4b":   ["0"]
+      },
+      "opener": false,
+      "followups": [
+      ]
+    },
+    {
+      "name": "Spinning Strong Upswing",
+      "clock": 2,
+      "rollOut": false,
+      "lockedIn": false,
+      "charges": false,
+      "interrupt": false,
+      "damage": {
+        "0": {
+          "ChargeLv": 0,
+          "powerCharged": false,
+          "values": {
+            "hit1": 86
+          }
+        },
+        "1": {
+          "ChargeLv": 0,
+          "powerCharged": true,
+          "values": {
+            "hit1": 91
+          }
+        }
+      },
+      "damageType": "Blunt",
+      "note": "",
+      "attackGridSize": "2",
+      "attackGridHeight": "4",
+      "attackGrid": {
+        "row1a": ["0","0"],
+        "row1b":   ["0"],
+        "row2a": ["0","0"],
+        "row2b":   ["a"],
+        "row3a": ["a","a"],
+        "row3b":   ["p"],
+        "row4a": ["0","0"],
+        "row4b":   ["0"]
+      },
+      "opener": false,
+      "followups": [
+      ]
+    },
+    {
+      "name": "Spinning Swing",
+      "clock": 2,
+      "rollOut": true,
+      "lockedIn": false,
+      "charges": false,
+      "interrupt": false,
+      "damage": {
+        "0": {
+          "ChargeLv": 0,
+          "powerCharged": false,
+          "values": {
+            "hit1": 15
+          }
+        },
+        "1": {
+          "ChargeLv": 0,
+          "powerCharged": true,
+          "values": {
+            "hit1": 20
+          }
+        }
+      },
+      "damageType": "Blunt",
+      "note": "",
+      "attackGridSize": "2",
+      "attackGridHeight": "4",
+      "attackGrid": {
+        "row1a": ["0","0"],
+        "row1b":   ["0"],
+        "row2a": ["0","0"],
+        "row2b":   ["0"],
+        "row3a": ["a","0"],
+        "row3b":   ["p"],
+        "row4a": ["a","0"],
+        "row4b":   ["0"]
+      },
+      "opener": false,
+      "followups": [
+      ]
+    },
+    {
+      "name": "Recovery",
+      "clock": 0,
+      "rollOut": true,
+      "lockedIn": false,
+      "charges": false,
+      "interrupt": false,
+      "damage": {
+      },
+      "damageType": "N/A",
+      "note": "",
+      "attackGridSize": "2",
+      "attackGridHeight": "4",
+      "attackGrid": {
+        "row1a": ["0","0"],
+        "row1b":   ["0"],
+        "row2a": ["0","0"],
+        "row2b":   ["0"],
+        "row3a": ["0","0"],
+        "row3b":   ["p"],
+        "row4a": ["0","0"],
+        "row4b":   ["0"]
+      },
+      "opener": false,
+      "followups": [
+      ]
+    }
+  ],
+  "dualblade": [
+    {
+      "name": "Dodge Roll",
+      "clock": 1,
+      "rollOut": false,
+      "lockedIn": false,
+      "charges": false,
+      "interrupt": false,
+      "damage": {
+      },
+      "damageType": "",
+      "note": "Roll 10ft in any hex direction.",
+      "attackGridSize": "3",
+      "attackGridHeight": "5",
+      "attackGrid": {
+        "row1a": ["0","m","0"],
+        "row1b":   ["0","0"],
+        "row2a": ["m","0","m"],
+        "row2b":   ["0","0"],
+        "row3a": ["0","p","0"],
+        "row3b":   ["0","0"],
+        "row4a": ["m","0","m"],
+        "row4b":   ["0","0"],
+        "row5a": ["0","m","0"]
+      },
+      "opener": true,
+      "followups": [
+      ]
+    },
+    {
+      "name": "Demon Fangs",
+      "clock": 0,
+      "rollOut": false,
+      "lockedIn": false,
+      "charges": false,
+      "interrupt": false,
+      "damage": {
+        "0": {
+          "demonGauge": 1,
+          "archDemon": false,
+          "values": {
+            "hit1": 11
+          }
+        },
+        "1": {
+          "demonGauge": 0,
+          "archDemon": true,
+          "values": {
+            "hit1": 22
+          }
+        }
+      },
+      "damageType": "Slashing",
+      "note": "Demon Mode Only.",
+      "attackGridSize": "2",
+      "attackGridHeight": "4",
+      "attackGrid": {
+        "row1a": ["0","0"],
+        "row1b":   ["0"],
+        "row2a": ["0","0"],
+        "row2b":   ["b"],
+        "row3a": ["m","m"],
+        "row3b":   ["p"],
+        "row4a": ["0","0"],
+        "row4b":   ["0"]
+      },
+      "opener": true,
+      "followups": [
+        "Twofold Demon Slash"
+      ]
+    },
+    {
+      "name": "Twofold Demon Slash",
+      "clock": 0,
+      "rollOut": true,
+      "lockedIn": false,
+      "charges": false,
+      "interrupt": false,
+      "damage": {
+        "0": {
+          "demonGauge": 2,
+          "archDemon": false,
+          "values": {
+            "hit1": 14,
+            "hit2": 7
+          }
+        },
+        "1": {
+          "demonGauge": 0,
+          "archDemon": true,
+          "values": {
+            "hit1": 28,
+            "hit2": 14
+          }
+        }
+      },
+      "damageType": "Slashing",
+      "note": "Demon Mode Only.",
+      "attackGridSize": "2",
+      "attackGridHeight": "4",
+      "attackGrid": {
+        "row1a": ["0","0"],
+        "row1b":   ["0"],
+        "row2a": ["0","0"],
+        "row2b":   ["b"],
+        "row3a": ["m","m"],
+        "row3b":   ["p"],
+        "row4a": ["0","0"],
+        "row4b":   ["0"]
+      },
+      "opener": false,
+      "followups": [
+        "Rising Slash",
+        "Fade Slash",
+        "Sixfold Demon Slash I"
+      ]
+    },
+    {
+      "name": "Rising Slash",
+      "clock": 0,
+      "rollOut": false,
+      "lockedIn": false,
+      "charges": false,
+      "interrupt": false,
+      "damage": {
+        "0": {
+          "demonGauge": 2,
+          "archDemon": false,
+          "values": {
+            "hit1": 9
+          }
+        },
+        "1": {
+          "demonGauge": 0,
+          "archDemon": true,
+          "values": {
+            "hit1": 18
+          }
+        }
+      },
+      "damageType": "Slashing",
+      "note": "Demon Mode Only.",
+      "attackGridSize": "2",
+      "attackGridHeight": "4",
+      "attackGrid": {
+        "row1a": ["0","0"],
+        "row1b":   ["0"],
+        "row2a": ["0","0"],
+        "row2b":   ["a"],
+        "row3a": ["0","0"],
+        "row3b":   ["p"],
+        "row4a": ["0","0"],
+        "row4b":   ["0"]
+      },
+      "opener": false,
+      "followups": [
+      ]
+    },
+    {
+      "name": "Fade Slash",
+      "clock": 0,
+      "rollOut": false,
+      "lockedIn": false,
+      "charges": false,
+      "interrupt": false,
+      "damage": {
+        "0": {
+          "demonGauge": 2,
+          "archDemon": false,
+          "values": {
+            "hit1": 7
+          }
+        },
+        "1": {
+          "demonGauge": 0,
+          "archDemon": true,
+          "values": {
+            "hit1": 14
+          }
+        }
+      },
+      "damageType": "Slashing",
+      "note": "Demon Mode Only. attack and movement must be in the same direction. Either left or right.",
+      "attackGridSize": "2",
+      "attackGridHeight": "4",
+      "attackGrid": {
+        "row1a": ["0","0"],
+        "row1b":   ["0"],
+        "row2a": ["0","0"],
+        "row2b":   ["0"],
+        "row3a": ["b","b"],
+        "row3b":   ["p"],
+        "row4a": ["0","0"],
+        "row4b":   ["0"]
+      },
+      "opener": false,
+      "followups": [
+      ]
+    },
+    {
+      "name": "Sixfold Demon Slash I",
+      "clock": 0,
+      "rollOut": false,
+      "lockedIn": true,
+      "charges": false,
+      "interrupt": false,
+      "damage": {
+        "0": {
+          "demonGauge": 1,
+          "archDemon": false,
+          "values": {
+            "hit1": 9,
+            "hit2": 9
+          }
+        },
+        "1": {
+          "demonGauge": 0,
+          "archDemon": true,
+          "values": {
+            "hit1": 18,
+            "hit2": 18
+          }
+        }
+      },
+      "damageType": "Slashing",
+      "note": "Demon Mode Only.",
+      "attackGridSize": "2",
+      "attackGridHeight": "4",
+      "attackGrid": {
+        "row1a": ["0","0"],
+        "row1b":   ["0"],
+        "row2a": ["0","0"],
+        "row2b":   ["a"],
+        "row3a": ["0","0"],
+        "row3b":   ["p"],
+        "row4a": ["0","0"],
+        "row4b":   ["0"]
+      },
+      "opener": false,
+      "followups": [
+        "Sixfold Demon Slash II"
+      ]
+    },
+    {
+      "name": "Sixfold Demon Slash II",
+      "clock": 0,
+      "rollOut": false,
+      "lockedIn": true,
+      "charges": false,
+      "interrupt": false,
+      "damage": {
+        "0": {
+          "demonGauge": 1,
+          "archDemon": false,
+          "values": {
+            "hit1": 10,
+            "hit2": 10
+          }
+        },
+        "1": {
+          "demonGauge": 0,
+          "archDemon": true,
+          "values": {
+            "hit1": 20,
+            "hit2": 20
+          }
+        }
+      },
+      "damageType": "Slashing",
+      "note": "Demon Mode Only.",
+      "attackGridSize": "2",
+      "attackGridHeight": "4",
+      "attackGrid": {
+        "row1a": ["0","0"],
+        "row1b":   ["0"],
+        "row2a": ["0","0"],
+        "row2b":   ["a"],
+        "row3a": ["0","0"],
+        "row3b":   ["p"],
+        "row4a": ["0","0"],
+        "row4b":   ["0"]
+      },
+      "opener": false,
+      "followups": [
+        "Sixfold Demon Slash III"
+      ]
+    },
+    {
+      "name": "Sixfold Demon Slash III",
+      "clock": 0,
+      "rollOut": false,
+      "lockedIn": false,
+      "charges": false,
+      "interrupt": false,
+      "damage": {
+        "0": {
+          "demonGauge": 2,
+          "archDemon": false,
+          "values": {
+            "hit1": 16,
+            "hit2": 16
+          }
+        },
+        "1": {
+          "demonGauge": 0,
+          "archDemon": true,
+          "values": {
+            "hit1": 32,
+            "hit2": 32
+          }
+        }
+      },
+      "damageType": "Slashing",
+      "note": "Demon Mode Only.",
+      "attackGridSize": "2",
+      "attackGridHeight": "4",
+      "attackGrid": {
+        "row1a": ["0","0"],
+        "row1b":   ["0"],
+        "row2a": ["0","0"],
+        "row2b":   ["a"],
+        "row3a": ["0","0"],
+        "row3b":   ["p"],
+        "row4a": ["0","0"],
+        "row4b":   ["0"]
+      },
+      "opener": false,
+      "followups": [
+      ]
+    },
+    {
+      "name": "Demon Flurry Rush",
+      "clock": 0,
+      "rollOut": false,
+      "lockedIn": false,
+      "charges": false,
+      "interrupt": false,
+      "damage": {
+        "0": {
+          "demonGauge": 1,
+          "archDemon": false,
+          "values": {
+            "hit1": 8,
+            "hit2": 10,
+            "hit3": 16
+          }
+        },
+        "1": {
+          "demonGauge": 0,
+          "archDemon": true,
+          "values": {
+            "hit1": 16,
+            "hit2": 20,
+            "hit3": 32
+          }
+        }
+      },
+      "damageType": "Slashing",
+      "note": "Demon Mode Only.",
+      "attackGridSize": "2",
+      "attackGridHeight": "4",
+      "attackGrid": {
+        "row1a": ["0","0"],
+        "row1b":   ["0"],
+        "row2a": ["0","0"],
+        "row2b":   ["b"],
+        "row3a": ["m","m"],
+        "row3b":   ["p"],
+        "row4a": ["0","0"],
+        "row4b":   ["0"]
+      },
+      "opener": true,
+      "followups": [
+        "Rising Slash",
+        "Right Roundslash"
+      ]
+    },
+    {
+      "name": "Right Roundslash",
+      "clock": 0,
+      "rollOut": true,
+      "lockedIn": false,
+      "charges": false,
+      "interrupt": false,
+      "damage": {
+        "0": {
+          "demonGauge": 1,
+          "archDemon": false,
+          "values": {
+            "hit1": 5,
+            "hit2": 7,
+            "hit3": 17
+          }
+        },
+        "1": {
+          "demonGauge": 0,
+          "archDemon": true,
+          "values": {
+            "hit1": 10,
+            "hit2": 14,
+            "hit3": 34
+          }
+        }
+      },
+      "damageType": "Slashing",
+      "note": "Demon Mode Only.",
+      "attackGridSize": "2",
+      "attackGridHeight": "4",
+      "attackGrid": {
+        "row1a": ["0","0"],
+        "row1b":   ["0"],
+        "row2a": ["0","0"],
+        "row2b":   ["0"],
+        "row3a": ["0","b"],
+        "row3b":   ["p"],
+        "row4a": ["0","m"],
+        "row4b":   ["0"]
+      },
+      "opener": false,
+      "followups": [
+        "Right Double Roundslash"
+      ]
+    },
+    {
+      "name": "Right Double Roundslash",
+      "clock": 0,
+      "rollOut": true,
+      "lockedIn": false,
+      "charges": false,
+      "interrupt": false,
+      "damage": {
+        "0": {
+          "demonGauge": 1,
+          "archDemon": false,
+          "values": {
+            "hit1": 7,
+            "hit2": 11,
+            "hit3": 19
+          }
+        },
+        "1": {
+          "demonGauge": 0,
+          "archDemon": true,
+          "values": {
+            "hit1": 14,
+            "hit2": 22,
+            "hit3": 38
+          }
+        }
+      },
+      "damageType": "Slashing",
+      "note": "Demon Mode Only.",
+      "attackGridSize": "2",
+      "attackGridHeight": "4",
+      "attackGrid": {
+        "row1a": ["0","0"],
+        "row1b":   ["0"],
+        "row2a": ["0","0"],
+        "row2b":   ["0"],
+        "row3a": ["0","b"],
+        "row3b":   ["p"],
+        "row4a": ["0","m"],
+        "row4b":   ["0"]
+      },
+      "opener": false,
+      "followups": [
+        "Claw Strike I"
+      ]
+    },
+    {
+      "name": "Claw Strike I",
+      "clock": 0,
+      "rollOut": false,
+      "lockedIn": true,
+      "charges": false,
+      "interrupt": false,
+      "damage": {
+        "0": {
+          "demonGauge": 1,
+          "archDemon": false,
+          "values": {
+            "hit1": 7,
+            "hit2": 11
+          }
+        },
+        "1": {
+          "demonGauge": 0,
+          "archDemon": true,
+          "values": {
+            "hit1": 14,
+            "hit2": 22
+          }
+        }
+      },
+      "damageType": "Slashing",
+      "note": "Demon Mode Only.",
+      "attackGridSize": "2",
+      "attackGridHeight": "4",
+      "attackGrid": {
+        "row1a": ["0","0"],
+        "row1b":   ["0"],
+        "row2a": ["0","0"],
+        "row2b":   ["a"],
+        "row3a": ["0","0"],
+        "row3b":   ["p"],
+        "row4a": ["0","0"],
+        "row4b":   ["0"]
+      },
+      "opener": false,
+      "followups": [
+        "Claw Strike II"
+      ]
+    },
+    {
+      "name": "Claw Strike II",
+      "clock": 0,
+      "rollOut": false,
+      "lockedIn": false,
+      "charges": false,
+      "interrupt": false,
+      "damage": {
+        "0": {
+          "demonGauge": 2,
+          "archDemon": false,
+          "values": {
+            "hit1": 19
+          }
+        },
+        "1": {
+          "demonGauge": 0,
+          "archDemon": true,
+          "values": {
+            "hit1": 38
+          }
+        }
+      },
+      "damageType": "Slashing",
+      "note": "Demon Mode Only.",
+      "attackGridSize": "2",
+      "attackGridHeight": "4",
+      "attackGrid": {
+        "row1a": ["0","0"],
+        "row1b":   ["0"],
+        "row2a": ["0","0"],
+        "row2b":   ["a"],
+        "row3a": ["0","0"],
+        "row3b":   ["p"],
+        "row4a": ["0","0"],
+        "row4b":   ["0"]
+      },
+      "opener": false,
+      "followups": [
+        "Spinning Rising Slash"
+      ]
+    },
+    {
+      "name": "Spinning Rising Slash",
+      "clock": 0,
+      "rollOut": false,
+      "lockedIn": false,
+      "charges": false,
+      "interrupt": false,
+      "damage": {
+        "0": {
+          "demonGauge": 2,
+          "archDemon": false,
+          "values": {
+            "hit1": 7,
+            "hit2": 11,
+            "hit3": 19
+          }
+        },
+        "1": {
+          "demonGauge": 0,
+          "archDemon": true,
+          "values": {
+            "hit1": 14,
+            "hit2": 22,
+            "hit3": 38
+          }
+        }
+      },
+      "damageType": "Slashing",
+      "note": "Demon Mode Only.",
+      "attackGridSize": "2",
+      "attackGridHeight": "4",
+      "attackGrid": {
+        "row1a": ["0","0"],
+        "row1b":   ["0"],
+        "row2a": ["0","0"],
+        "row2b":   ["a"],
+        "row3a": ["0","0"],
+        "row3b":   ["p"],
+        "row4a": ["0","0"],
+        "row4b":   ["0"]
+      },
+      "opener": false,
+      "followups": [
+      ]
+    },
+    {
+      "name": "Demon Dance I",
+      "clock": 0,
+      "rollOut": false,
+      "lockedIn": true,
+      "charges": false,
+      "interrupt": false,
+      "damage": {
+        "0": {
+          "demonGauge": 0,
+          "archDemon": false,
+          "values": {
+            "hit1": 17,
+            "hit2": 17,
+            "hit3": 6
+          }
+        },
+        "1": {
+          "demonGauge": 0,
+          "archDemon": true,
+          "values": {
+            "hit1": 34,
+            "hit2": 34,
+            "hit3": 12
+          }
+        }
+      },
+      "damageType": "Slashing",
+      "note": "Demon Mode Only.",
+      "attackGridSize": "2",
+      "attackGridHeight": "4",
+      "attackGrid": {
+        "row1a": ["0","0"],
+        "row1b":   ["0"],
+        "row2a": ["0","0"],
+        "row2b":   ["a"],
+        "row3a": ["0","0"],
+        "row3b":   ["p"],
+        "row4a": ["0","0"],
+        "row4b":   ["0"]
+      },
+      "opener": true,
+      "followups": [
+        "Demon Dance II"
+      ]
+    },
+    {
+      "name": "Demon Dance II",
+      "clock": 0,
+      "rollOut": false,
+      "lockedIn": true,
+      "charges": false,
+      "interrupt": false,
+      "damage": {
+        "0": {
+          "demonGauge": 0,
+          "archDemon": false,
+          "values": {
+            "hit1": 6,
+            "hit2": 10,
+            "hit3": 10
+          }
+        },
+        "1": {
+          "demonGauge": 0,
+          "archDemon": true,
+          "values": {
+            "hit1": 12,
+            "hit2": 20,
+            "hit3": 20
+          }
+        }
+      },
+      "damageType": "Slashing",
+      "note": "Demon Mode Only.",
+      "attackGridSize": "2",
+      "attackGridHeight": "4",
+      "attackGrid": {
+        "row1a": ["0","0"],
+        "row1b":   ["0"],
+        "row2a": ["0","0"],
+        "row2b":   ["a"],
+        "row3a": ["0","0"],
+        "row3b":   ["p"],
+        "row4a": ["0","0"],
+        "row4b":   ["0"]
+      },
+      "opener": false,
+      "followups": [
+        "Demon Dance III"
+      ]
+    },
+    {
+      "name": "Demon Dance III",
+      "clock": 0,
+      "rollOut": false,
+      "lockedIn": true,
+      "charges": false,
+      "interrupt": false,
+      "damage": {
+        "0": {
+          "demonGauge": 0,
+          "archDemon": false,
+          "values": {
+            "hit1": 9,
+            "hit2": 9,
+            "hit3": 11
+          }
+        },
+        "1": {
+          "demonGauge": 0,
+          "archDemon": true,
+          "values": {
+            "hit1": 18,
+            "hit2": 18,
+            "hit3": 22
+          }
+        }
+      },
+      "damageType": "Slashing",
+      "note": "Demon Mode Only.",
+      "attackGridSize": "2",
+      "attackGridHeight": "4",
+      "attackGrid": {
+        "row1a": ["0","0"],
+        "row1b":   ["0"],
+        "row2a": ["0","0"],
+        "row2b":   ["a"],
+        "row3a": ["0","0"],
+        "row3b":   ["p"],
+        "row4a": ["0","0"],
+        "row4b":   ["0"]
+      },
+      "opener": false,
+      "followups": [
+        "Demon Dance IV"
+      ]
+    },
+    {
+      "name": "Demon Dance IV",
+      "clock": 0,
+      "rollOut": false,
+      "lockedIn": true,
+      "charges": false,
+      "interrupt": false,
+      "damage": {
+        "0": {
+          "demonGauge": 0,
+          "archDemon": false,
+          "values": {
+            "hit1": 11,
+            "hit2": 9,
+            "hit3": 9
+          }
+        },
+        "1": {
+          "demonGauge": 0,
+          "archDemon": true,
+          "values": {
+            "hit1": 22,
+            "hit2": 18,
+            "hit3": 18
+          }
+        }
+      },
+      "damageType": "Slashing",
+      "note": "Demon Mode Only.",
+      "attackGridSize": "2",
+      "attackGridHeight": "4",
+      "attackGrid": {
+        "row1a": ["0","0"],
+        "row1b":   ["0"],
+        "row2a": ["0","0"],
+        "row2b":   ["a"],
+        "row3a": ["0","0"],
+        "row3b":   ["p"],
+        "row4a": ["0","0"],
+        "row4b":   ["0"]
+      },
+      "opener": false,
+      "followups": [
+        "Demon Dance V"
+      ]
+    },
+    {
+      "name": "Demon Dance V",
+      "clock": 0,
+      "rollOut": false,
+      "lockedIn": false,
+      "charges": false,
+      "interrupt": false,
+      "damage": {
+        "0": {
+          "demonGauge": 0,
+          "archDemon": false,
+          "values": {
+            "hit1": 12,
+            "hit2": 12,
+            "hit3": 7,
+            "hit4": 20
+          }
+        },
+        "1": {
+          "demonGauge": 0,
+          "archDemon": true,
+          "values": {
+            "hit1": 24,
+            "hit2": 24,
+            "hit3": 14,
+            "hit4": 40
+          }
+        }
+      },
+      "damageType": "Slashing",
+      "note": "Demon Mode Only.",
+      "attackGridSize": "2",
+      "attackGridHeight": "4",
+      "attackGrid": {
+        "row1a": ["0","0"],
+        "row1b":   ["0"],
+        "row2a": ["0","0"],
+        "row2b":   ["a"],
+        "row3a": ["0","0"],
+        "row3b":   ["p"],
+        "row4a": ["0","0"],
+        "row4b":   ["0"]
+      },
+      "opener": false,
+      "followups": [
+      ]
+    },
+    {
+      "name": "Midair Double Slash",
+      "clock": 0,
+      "rollOut": false,
+      "lockedIn": true,
+      "charges": false,
+      "interrupt": false,
+      "damage": {
+        "0": {
+          "demonGauge": 1,
+          "archDemon": false,
+          "values": {
+            "hit1": 9,
+            "hit2": 12
+          }
+        },
+        "1": {
+          "demonGauge": 0,
+          "archDemon": true,
+          "values": {
+            "hit1": 18,
+            "hit2": 24
+          }
+        }
+      },
+      "damageType": "Slashing",
+      "note": "Only available while airborne",
+      "attackGridSize": "2",
+      "attackGridHeight": "4",
+      "attackGrid": {
+        "row1a": ["0","0"],
+        "row1b":   ["0"],
+        "row2a": ["0","0"],
+        "row2b":   ["a"],
+        "row3a": ["0","0"],
+        "row3b":   ["p"],
+        "row4a": ["0","0"],
+        "row4b":   ["0"]
+      },
+      "opener": true,
+      "followups": [
+        "Heavenly Blade Dance"
+      ]
+    },
+    {
+      "name": "Heavenly Blade Dance",
+      "clock": 0,
+      "rollOut": false,
+      "lockedIn": false,
+      "charges": false,
+      "interrupt": false,
+      "damage": {
+        "0": {
+          "demonGauge": 0,
+          "archDemon": false,
+          "values": {
+            "hit1": 10
+          }
+        },
+        "1": {
+          "demonGauge": 0,
+          "archDemon": true,
+          "values": {
+            "hit1": 20
+          }
+        }
+      },
+      "damageType": "Slashing",
+      "note": "Demon Mode Only. If the first hit connects with a target the attack continues in a straight line across the target, dealing the same amount of damage to each hex it makes contact with.",
+      "attackGridSize": "2",
+      "attackGridHeight": "4",
+      "attackGrid": {
+        "row1a": ["0","0"],
+        "row1b":   ["0"],
+        "row2a": ["0","0"],
+        "row2b":   ["a"],
+        "row3a": ["0","0"],
+        "row3b":   ["p"],
+        "row4a": ["0","0"],
+        "row4b":   ["0"]
+      },
+      "opener": false,
+      "followups": [
+      ]
+    },
+    {
+      "name": "Double Slash",
+      "clock": 0,
+      "rollOut": false,
+      "lockedIn": false,
+      "charges": false,
+      "interrupt": false,
+      "damage": {
+        "0": {
+          "demonGauge": 0,
+          "archDemon": false,
+          "values": {
+            "hit1": 8,
+            "hit2": 10
+          }
+        }
+      },
+      "damageType": "Slashing",
+      "note": "Only available while not in Demon Mode",
+      "attackGridSize": "2",
+      "attackGridHeight": "4",
+      "attackGrid": {
+        "row1a": ["0","0"],
+        "row1b":   ["0"],
+        "row2a": ["0","0"],
+        "row2b":   ["b"],
+        "row3a": ["m","m"],
+        "row3b":   ["p"],
+        "row4a": ["0","0"],
+        "row4b":   ["0"]
+      },
+      "opener": true,
+      "followups": [
+        "Turn Slash",
+        "Double Slash Return"
+      ]
+    },
+    {
+      "name": "Turn Slash",
+      "clock": 0,
+      "rollOut": false,
+      "lockedIn": false,
+      "charges": false,
+      "interrupt": false,
+      "damage": {
+        "0": {
+          "demonGauge": 0,
+          "archDemon": false,
+          "values": {
+            "hit1": 5,
+            "hit2": 5
+          }
+        }
+      },
+      "damageType": "Slashing",
+      "note": "Only available while not in Demon Mode",
+      "attackGridSize": "2",
+      "attackGridHeight": "4",
+      "attackGrid": {
+        "row1a": ["0","0"],
+        "row1b":   ["0"],
+        "row2a": ["0","0"],
+        "row2b":   ["0"],
+        "row3a": ["a","a"],
+        "row3b":   ["p"],
+        "row4a": ["m","m"],
+        "row4b":   ["0"]
+      },
+      "opener": false,
+      "followups": [
+      ]
+    },
+    {
+      "name": "Double Slash Return Stroke",
+      "clock": 0,
+      "rollOut": false,
+      "lockedIn": false,
+      "charges": false,
+      "interrupt": false,
+      "damage": {
+        "0": {
+          "demonGauge": 0,
+          "archDemon": false,
+          "values": {
+            "hit1": 9,
+            "hit2": 10
+          }
+        }
+      },
+      "damageType": "Slashing",
+      "note": "Only available while not in Demon Mode",
+      "attackGridSize": "2",
+      "attackGridHeight": "4",
+      "attackGrid": {
+        "row1a": ["0","0"],
+        "row1b":   ["0"],
+        "row2a": ["0","0"],
+        "row2b":   ["a"],
+        "row3a": ["0","0"],
+        "row3b":   ["p"],
+        "row4a": ["m","m"],
+        "row4b":   ["0"]
+      },
+      "opener": false,
+      "followups": [
+        "Lunging Strike I",
+        "Circle Slash I"
+      ]
+    },
+    {
+      "name": "Circle Slash I",
+      "clock": 0,
+      "rollOut": false,
+      "lockedIn": true,
+      "charges": false,
+      "interrupt": false,
+      "damage": {
+        "0": {
+          "demonGauge": 0,
+          "archDemon": false,
+          "values": {
+            "hit1": 9,
+            "hit2": 11
+          }
+        }
+      },
+      "damageType": "Slashing",
+      "note": "Only available while not in Demon Mode",
+      "attackGridSize": "2",
+      "attackGridHeight": "4",
+      "attackGrid": {
+        "row1a": ["0","0"],
+        "row1b":   ["0"],
+        "row2a": ["0","0"],
+        "row2b":   ["a"],
+        "row3a": ["a","a"],
+        "row3b":   ["p"],
+        "row4a": ["0","0"],
+        "row4b":   ["0"]
+      },
+      "opener": false,
+      "followups": [
+        "Circle Slash II"
+      ]
+    },
+    {
+      "name": "Circle Slash II",
+      "clock": 0,
+      "rollOut": false,
+      "lockedIn": false,
+      "charges": false,
+      "interrupt": false,
+      "damage": {
+        "0": {
+          "demonGauge": 0,
+          "archDemon": false,
+          "values": {
+            "hit1": 11
+          }
+        }
+      },
+      "damageType": "Slashing",
+      "note": "Only available while not in Demon Mode",
+      "attackGridSize": "2",
+      "attackGridHeight": "4",
+      "attackGrid": {
+        "row1a": ["0","0"],
+        "row1b":   ["0"],
+        "row2a": ["0","0"],
+        "row2b":   ["a"],
+        "row3a": ["a","a"],
+        "row3b":   ["p"],
+        "row4a": ["0","0"],
+        "row4b":   ["0"]
+      },
+      "opener": false,
+      "followups": [
+        "Demon Dance I"
+      ]
+    },
+    {
+      "name": "Lunging Strike I",
+      "clock": 0,
+      "rollOut": false,
+      "lockedIn": true,
+      "charges": false,
+      "interrupt": false,
+      "damage": {
+        "0": {
+          "demonGauge": 0,
+          "archDemon": false,
+          "values": {
+            "hit1": 3,
+            "hit2": 3
+          }
+        }
+      },
+      "damageType": "Slashing",
+      "note": "Only available while not in Demon Mode. Movement and attack must be in the same direction. either left or right.",
+      "attackGridSize": "2",
+      "attackGridHeight": "4",
+      "attackGrid": {
+        "row1a": ["0","0"],
+        "row1b":   ["0"],
+        "row2a": ["0","0"],
+        "row2b":   ["0"],
+        "row3a": ["b","b"],
+        "row3b":   ["p"],
+        "row4a": ["0","0"],
+        "row4b":   ["0"]
+      },
+      "opener": true,
+      "followups": [
+        "Lunging Strike II"
+      ]
+    },
+    {
+      "name": "Lunging Strike II",
+      "clock": 0,
+      "rollOut": false,
+      "lockedIn": false,
+      "charges": false,
+      "interrupt": false,
+      "damage": {
+        "0": {
+          "demonGauge": 0,
+          "archDemon": false,
+          "values": {
+            "hit1": 5,
+            "hit2": 5
+          }
+        }
+      },
+      "damageType": "Slashing",
+      "note": "Only available while not in Demon Mode. Movement and attack must be in the same direction. either left or right.",
+      "attackGridSize": "2",
+      "attackGridHeight": "4",
+      "attackGrid": {
+        "row1a": ["0","0"],
+        "row1b":   ["0"],
+        "row2a": ["0","0"],
+        "row2b":   ["0"],
+        "row3a": ["b","b"],
+        "row3b":   ["p"],
+        "row4a": ["0","0"],
+        "row4b":   ["0"]
+      },
+      "opener": false,
+      "followups": [
+        "Left Roundslash"
+      ]
+    },
+    {
+      "name": "Left Roundslash",
+      "clock": 0,
+      "rollOut": false,
+      "lockedIn": false,
+      "charges": false,
+      "interrupt": false,
+      "damage": {
+        "0": {
+          "demonGauge": 0,
+          "archDemon": false,
+          "values": {
+            "hit1": 5,
+            "hit2": 7,
+            "hit3": 17
+          }
+        }
+      },
+      "damageType": "Slashing",
+      "note": "Only available while not in Demon Mode",
+      "attackGridSize": "2",
+      "attackGridHeight": "4",
+      "attackGrid": {
+        "row1a": ["0","0"],
+        "row1b":   ["0"],
+        "row2a": ["0","0"],
+        "row2b":   ["0"],
+        "row3a": ["b","0"],
+        "row3b":   ["p"],
+        "row4a": ["m","0"],
+        "row4b":   ["0"]
+      },
+      "opener": false,
+      "followups": [
+      ]
+    }
+  ],
+  "bow": [
+    {
+      "name": "Dodge Roll",
+      "clock": 1,
+      "rollOut": false,
+      "lockedIn": false,
+      "charges": false,
+      "interrupt": false,
+      "damage": {
+      },
+      "damageType": "",
+      "note": "Roll 10ft in any hex direction.",
+      "attackGridSize": "3",
+      "attackGridHeight": "5",
+      "attackGrid": {
+        "row1a": ["0","m","0"],
+        "row1b":   ["0","0"],
+        "row2a": ["m","0","m"],
+        "row2b":   ["0","0"],
+        "row3a": ["0","p","0"],
+        "row3b":   ["0","0"],
+        "row4a": ["m","0","m"],
+        "row4b":   ["0","0"],
+        "row5a": ["0","m","0"]
+      },
+      "opener": true,
+      "followups": [
+      ]
+    },
+    {
+      "name": "Draw",
+      "clock": 0,
+      "rollOut": false,
+      "lockedIn": true,
+      "charges": false,
+      "interrupt": false,
+      "damage": {
+      },
+      "damageType": "",
+      "note": "Half Unsheathed movement (rounded down to the nearest 5ft) while Drawing. \n\n Increases Draw Level by 1",
+      "attackGridSize": "0",
+      "attackGridHeight": "0",
+      "attackGrid": {
+      },
+      "opener": true,
+      "followups": [
+        "Draw",
+        "Rapid Shot",
+        "Dragon Piercer"
+      ]
+    },
+    {
+      "name": "Rapid Shot",
+      "clock": 0,
+      "rollOut": false,
+      "lockedIn": false,
+      "charges": false,
+      "interrupt": false,
+      "damage": {
+        "0": {
+          "draw": 1,
+          "drawCharge": 1,
+          "values": {
+            "hit1": 11
+          }
+        },
+        "1": {
+          "draw": 2,
+          "drawCharge": 1,
+          "values": {
+            "hit1": 9,
+            "hit2": 9
+          }
+        },
+        "2": {
+          "draw": 3,
+          "drawCharge": 1,
+          "values": {
+            "hit1": 10,
+            "hit2": 10,
+            "hit3": 10
+          }
+        }
+      },
+      "damageType": "Piercing",
+      "note": "",
+      "attackGridSize": "5",
+      "attackGridHeight": "7",
+      "attackGrid": {
+        "row1a": ["n","n","n","n","n"],
+        "row1b":   ["n","n","n","n"],
+        "row2a": ["n","n","h","n","n"],
+        "row2b":   ["n","n","n","n"],
+        "row3a": ["n","n","h","n","n"],
+        "row3b":   ["n","n","n","n"],
+        "row4a": ["n","n","a","n","n"],
+        "row4b":   ["n","n","n","n"],
+        "row5a": ["n","n","h","n","n"],
+        "row5b":   ["n","n","n","n"],
+        "row6a": ["n","n","h","n","n"],
+        "row6b":   ["n","n","n","n"],
+        "row7a": ["n","n","p","n","n"],
+        "row7b":   ["n","n","n","n"]
+      },
+      "opener": true,
+      "followups": [
+        "Charging Sidestep",
+        "Power Shot",
+        "Dragon Piercer",
+        "Rapid Shot"
+      ]
+    },
+    {
+      "name": "Quick Shot",
+      "clock": 0,
+      "rollOut": false,
+      "lockedIn": false,
+      "charges": false,
+      "interrupt": false,
+      "damage": {
+        "0": {
+          "draw": 1,
+          "drawCharge": 1,
+          "values": {
+            "hit1": 6
+          }
+        }
+      },
+      "damageType": "Piercing",
+      "note": "",
+      "attackGridSize": "5",
+      "attackGridHeight": "7",
+      "attackGrid": {
+        "row1a": ["n","n","n","n","n"],
+        "row1b":   ["n","n","n","n"],
+        "row2a": ["n","n","h","n","n"],
+        "row2b":   ["n","n","n","n"],
+        "row3a": ["n","n","h","n","n"],
+        "row3b":   ["n","n","n","n"],
+        "row4a": ["h","n","h","n","h"],
+        "row4b":   ["h","n","n","h"],
+        "row5a": ["n","h","a","h","n"],
+        "row5b":   ["n","a","a","n"],
+        "row6a": ["n","n","h","n","n"],
+        "row6b":   ["n","n","n","n"],
+        "row7a": ["n","n","p","n","n"],
+        "row7b":   ["n","n","n","n"]
+      },
+      "opener": true,
+      "followups": [
+        "Power Shot"
+      ]
+    },
+    {
+      "name": "Arc Shot",
+      "clock": 0,
+      "rollOut": false,
+      "lockedIn": false,
+      "charges": false,
+      "interrupt": false,
+      "damage": {
+        "0": {
+          "draw": 1,
+          "drawCharge": 0,
+          "values": {
+            "hit1": 2
+          }
+        },
+        "1": {
+          "draw": 2,
+          "drawCharge": 0,
+          "values": {
+            "hit1": 3
+          }
+        },
+        "2": {
+          "draw": 3,
+          "drawCharge": 0,
+          "values": {
+            "hit1": 5
+          }
+        }
+      },
+      "damageType": "Blunt",
+      "note": "Draw Levels 1 and 2 last for 3 rounds, Level 3 lasts for 5 rounds.",
+      "attackGridSize": "5",
+      "attackGridHeight": "7",
+      "attackGrid": {
+        "row1a": ["","","","",""],
+        "row1b":  ["","","",""],
+        "row2a": ["","","","",""],
+        "row2b":  ["","","",""],
+        "row3a": ["","","a","",""],
+        "row3b":  ["","a","a",""],
+        "row4a": ["","","a","",""],
+        "row4b":  ["","a","a",""],
+        "row5a": ["","","a","",""],
+        "row5b":  ["","","",""],
+        "row6a": ["","","","",""],
+        "row6b":  ["","","",""],
+        "row7a": ["","","p","",""],
+        "row7b":  ["","","",""]
+      },
+      "opener": false,
+      "followups": [
+        "Power Shot",
+        "Dragon Piercer"
+      ]
+    },
+    {
+      "name": "Power Shot",
+      "clock": 0,
+      "rollOut": false,
+      "lockedIn": false,
+      "charges": false,
+      "interrupt": false,
+      "damage": {
+        "0": {
+          "draw": 2,
+          "drawCharge": 1,
+          "values": {
+            "hit1": 9
+          }
+        },
+        "1": {
+          "draw": 3,
+          "drawCharge": 1,
+          "values": {
+            "hit1": 11,
+            "hit2": 11
+          }
+        }
+      },
+      "damageType": "Piercing",
+      "note": "",
+      "attackGridSize": "5",
+      "attackGridHeight": "7",
+      "attackGrid": {
+        "row1a": ["","","","",""],
+        "row1b":  ["","","",""],
+        "row2a": ["","","h","",""],
+        "row2b":  ["","","",""],
+        "row3a": ["","","h","",""],
+        "row3b":  ["","","",""],
+        "row4a": ["","","a","",""],
+        "row4b":  ["","","",""],
+        "row5a": ["","","h","",""],
+        "row5b":  ["","","",""],
+        "row6a": ["","","h","",""],
+        "row6b":  ["","","",""],
+        "row7a": ["","","p","",""],
+        "row7b":  ["","","",""]
+      },
+      "opener": false,
+      "followups": [
+        "Arc Shot",
+        "Dragon Piercer"
+      ]
+    },
+    {
+      "name": "Dragon Piercer",
+      "clock": 2,
+      "rollOut": false,
+      "lockedIn": false,
+      "charges": false,
+      "interrupt": false,
+      "damage": {
+        "0": {
+          "draw": 1,
+          "drawCharge": 0,
+          "values": {
+            "hit1": 19
+          }
+        },
+        "1": {
+          "draw": 2,
+          "drawCharge": 0,
+          "values": {
+            "hit1": 20
+          }
+        },
+        "2": {
+          "draw": 3,
+          "drawCharge": 0,
+          "values": {
+            "hit1": 23
+          }
+        }
+      },
+      "damageType": "Piercing",
+      "note": "Pierces the target allowing it to hit multiple times for each hex passed through.",
+      "attackGridSize": "5",
+      "attackGridHeight": "7",
+      "attackGrid": {
+        "row1a": ["","","a","",""],
+        "row1b":  ["","","",""],
+        "row2a": ["","","a","",""],
+        "row2b":  ["","","",""],
+        "row3a": ["","","a","",""],
+        "row3b":  ["","","",""],
+        "row4a": ["","","a","",""],
+        "row4b":  ["","","",""],
+        "row5a": ["","","a","",""],
+        "row5b":  ["","","",""],
+        "row6a": ["","","a","",""],
+        "row6b":  ["","","",""],
+        "row7a": ["","","p","",""],
+        "row7b":  ["","","",""]
+      },
+      "opener": false,
+      "followups": [
+      ]
+    },
+    {
+      "name": "Charging Sidestep",
+      "clock": 0,
+      "rollOut": false,
+      "lockedIn": false,
+      "charges": false,
+      "interrupt": false,
+      "damage": {
+      },
+      "damageType": "Piercing",
+      "note": "Increases Draw Level by 1",
+      "attackGridSize": "5",
+      "attackGridHeight": "7",
+      "attackGrid": {
+        "row1a": ["","","","",""],
+        "row1b":  ["","","",""],
+        "row2a": ["","","","",""],
+        "row2b":  ["","","",""],
+        "row3a": ["","","","",""],
+        "row3b":  ["","","",""],
+        "row4a": ["","","","",""],
+        "row4b":  ["m","","","m"],
+        "row5a": ["m","","","","m"],
+        "row5b":  ["","","",""],
+        "row6a": ["m","","p","","m"],
+        "row6b":  ["","","",""],
+        "row7a": ["m","","","","m"],
+        "row7b":  ["m","","","m"]
+      },
+      "opener": false,
+      "followups": [
+        "Power Shot",
+        "Rapid Shot"
+      ]
+    },
+    {
+      "name": "Lunging Melee",
+      "clock": 0,
+      "rollOut": false,
+      "lockedIn": false,
+      "charges": false,
+      "interrupt": false,
+      "damage": {
+        "0": {
+          "draw": 1,
+          "drawCharge": 0,
+          "values": {
+            "hit1": 35
+          }
+        }
+      },
+      "damageType": "Slashing",
+      "note": "",
+      "attackGridSize": "5",
+      "attackGridHeight": "7",
+      "attackGrid": {
+        "row1a": ["","","","",""],
+        "row1b":  ["","","",""],
+        "row2a": ["","","","",""],
+        "row2b":  ["","","",""],
+        "row3a": ["","","","",""],
+        "row3b":  ["","","",""],
+        "row4a": ["","","","",""],
+        "row4b":  ["","","",""],
+        "row5a": ["","","","",""],
+        "row5b":  ["","","",""],
+        "row6a": ["","","b","",""],
+        "row6b":  ["","","",""],
+        "row7a": ["","","p","",""],
+        "row7b":  ["","","",""]
+      },
+      "opener": true,
+      "followups": [
+      ]
+    },
+    {
+      "name": "Jumping Melee",
+      "clock": 0,
+      "rollOut": false,
+      "lockedIn": false,
+      "charges": false,
+      "interrupt": false,
+      "damage": {
+        "0": {
+          "draw": 1,
+          "drawCharge": 0,
+          "values": {
+            "hit1": 10
+          }
+        }
+      },
+      "damageType": "Slashing",
+      "note": "",
+      "attackGridSize": "5",
+      "attackGridHeight": "7",
+      "attackGrid": {
+        "row1a": ["","","","",""],
+        "row1b":  ["","","",""],
+        "row2a": ["","","","",""],
+        "row2b":  ["","","",""],
+        "row3a": ["","","","",""],
+        "row3b":  ["","","",""],
+        "row4a": ["","","","",""],
+        "row4b":  ["","","",""],
+        "row5a": ["","","","",""],
+        "row5b":  ["","","",""],
+        "row6a": ["","","b","",""],
+        "row6b":  ["","","",""],
+        "row7a": ["","","p","",""],
+        "row7b":  ["","","",""]
+      },
+      "opener": true,
+      "followups": [
+      ]
+    }
+  ],
+  "longsword": [
+    {
+      "name": "Dodge Roll",
+      "clock": 1,
+      "rollOut": false,
+      "lockedIn": false,
+      "charges": false,
+      "interrupt": false,
+      "damage": {
+      },
+      "damageType": "",
+      "note": "Roll 10ft in any hex direction.",
+      "attackGridSize": "3",
+      "attackGridHeight": "5",
+      "attackGrid": {
+        "row1a": ["0","m","0"],
+        "row1b":   ["0","0"],
+        "row2a": ["m","0","m"],
+        "row2b":   ["0","0"],
+        "row3a": ["0","p","0"],
+        "row3b":   ["0","0"],
+        "row4a": ["m","0","m"],
+        "row4b":   ["0","0"],
+        "row5a": ["0","m","0"]
+      },
+      "opener": true,
+      "followups": [
+      ]
+    },
+    {
+      "name": "Step Slash",
+      "clock": 0,
+      "rollOut": false,
+      "lockedIn": false,
+      "charges": false,
+      "interrupt": false,
+      "damage": {
+        "0": {
+          "spiritLevel": "",
+          "spiritGaugeMin": 0,
+          "spiritGain": "+5",
+          "spiritLevelGain": "",
+          "values": {
+            "hit1": 24
+          }
+        }
+      },
+      "damageType": "Slashing",
+      "note": "",
+      "attackGridSize": "4",
+      "attackGridHeight": "5",
+      "attackGrid": {
+        "row1a": ["","","",""],
+        "row1b":  ["","",""],
+        "row2a": ["","","",""],
+        "row2b":  ["","a",""],
+        "row3a": ["","","",""],
+        "row3b":  ["","b",""],
+        "row4a": ["","","",""],
+        "row4b":  ["","p",""],
+        "row5a": ["","","",""],
+        "row5b":  ["","",""]
+      },
+      "opener": true,
+      "followups": [
+        "Thrust",
+        "Overhead Slash",
+        "Iai Sheathe",
+        "Fade Slash",
+        "Foresight Slash"
+      ]
+    },
+    {
+      "name": "Overhead Slash",
+      "clock": 0,
+      "rollOut": true,
+      "lockedIn": false,
+      "charges": false,
+      "interrupt": false,
+      "damage": {
+        "0": {
+          "spiritLevel": "",
+          "spiritGaugeMin": 0,
+          "spiritGain": "+10",
+          "spiritLevelGain": "",
+          "values": {
+            "hit1": 21
+          }
+        }
+      },
+      "damageType": "Slashing",
+      "note": "",
+      "attackGridSize": "4",
+      "attackGridHeight": "5",
+      "attackGrid": {
+        "row1a": ["","","",""],
+        "row1b":  ["","",""],
+        "row2a": ["","","",""],
+        "row2b":  ["","a",""],
+        "row3a": ["","","",""],
+        "row3b":  ["","a",""],
+        "row4a": ["","","",""],
+        "row4b":  ["","p",""],
+        "row5a": ["","","",""],
+        "row5b":  ["","",""]
+      },
+      "opener": false,
+      "followups": [
+        "Thrust",
+        "Iai Sheathe",
+        "Fade Slash",
+        "Foresight Slash"
+      ]
+    },
+    {
+      "name": "Thrust",
+      "clock": 0,
+      "rollOut": false,
+      "lockedIn": false,
+      "charges": false,
+      "interrupt": false,
+      "damage": {
+        "0": {
+          "spiritLevel": "",
+          "spiritGaugeMin": 0,
+          "spiritGain": "+6",
+          "spiritLevelGain": "",
+          "values": {
+            "hit1": 16
+          }
+        }
+      },
+      "damageType": "Slashing",
+      "note": "Can be chained inbetween Spirit Slash Combos. cannot be used to exit or enter the Spirit Slash combo.",
+      "attackGridSize": "4",
+      "attackGridHeight": "5",
+      "attackGrid": {
+        "row1a": ["","","",""],
+        "row1b":  ["","",""],
+        "row2a": ["","","",""],
+        "row2b":  ["","a",""],
+        "row3a": ["","","",""],
+        "row3b":  ["","b",""],
+        "row4a": ["","","",""],
+        "row4b":  ["","p",""],
+        "row5a": ["","","",""],
+        "row5b":  ["","",""]
+      },
+      "opener": true,
+      "followups": [
+        "Rising Slash",
+        "Spirit Slash II",
+        "Spirit Slash III",
+        "Iai Sheathe",
+        "Fade Slash",
+        "Foresight Slash"
+      ]
+    },
+    {
+      "name": "Rising Slash",
+      "clock": 1,
+      "rollOut": true,
+      "lockedIn": false,
+      "charges": false,
+      "interrupt": false,
+      "damage": {
+        "0": {
+          "spiritLevel": "",
+          "spiritGaugeMin": 0,
+          "spiritGain": "+20",
+          "spiritLevelGain": "",
+          "values": {
+            "hit1": 16
+          }
+        }
+      },
+      "damageType": "Slashing",
+      "note": "",
+      "attackGridSize": "4",
+      "attackGridHeight": "5",
+      "attackGrid": {
+        "row1a": ["","","",""],
+        "row1b":  ["","",""],
+        "row2a": ["","","",""],
+        "row2b":  ["","a",""],
+        "row3a": ["","","",""],
+        "row3b":  ["","a",""],
+        "row4a": ["","","",""],
+        "row4b":  ["","p",""],
+        "row5a": ["","","",""],
+        "row5b":  ["","",""]
+      },
+      "opener": false,
+      "followups": [
+        "Overhead Slash",
+        "Iai Sheathe",
+        "Fade Slash",
+        "Foresight Slash"
+      ]
+    },
+    {
+      "name": "Fade Slash",
+      "clock": 1,
+      "rollOut": false,
+      "lockedIn": false,
+      "charges": false,
+      "interrupt": false,
+      "damage": {
+        "0": {
+          "spiritLevel": "",
+          "spiritGaugeMin": 0,
+          "spiritGain": "",
+          "spiritLevelGain": "",
+          "values": {
+            "hit1": 22
+          }
+        }
+      },
+      "damageType": "Slashing",
+      "note": "Attack lands at the beginning of next round, usable after any other attack as a valid combo move",
+      "attackGridSize": "4",
+      "attackGridHeight": "5",
+      "attackGrid": {
+        "row1a": ["","","",""],
+        "row1b":  ["","",""],
+        "row2a": ["","","",""],
+        "row2b":  ["","a",""],
+        "row3a": ["","a","a",""],
+        "row3b":  ["","a",""],
+        "row4a": ["","b","b",""],
+        "row4b":  ["","p",""],
+        "row5a": ["","m","m",""],
+        "row5b":  ["","m",""]
+      },
+      "opener": false,
+      "followups": [
+        "Spirit Jumping Slash"
+      ]
+    },
+    {
+      "name": "Spirit Jumping Slash",
+      "clock": 0,
+      "rollOut": true,
+      "lockedIn": false,
+      "charges": false,
+      "interrupt": false,
+      "damage": {
+        "0": {
+          "spiritLevel": "",
+          "spiritGaugeMin": 0,
+          "spiritGain": "-7",
+          "spiritLevelGain": "",
+          "values": {
+            "hit1": 18
+          }
+        },
+        "1": {
+          "spiritLevel": "",
+          "spiritGaugeMin": 10,
+          "spiritGain": "-7",
+          "spiritLevelGain": "",
+          "values": {
+            "hit1": 28
+          }
+        }
+      },
+      "damageType": "Slashing",
+      "note": "",
+      "attackGridSize": "4",
+      "attackGridHeight": "5",
+      "attackGrid": {
+        "row1a": ["","","",""],
+        "row1b":  ["","",""],
+        "row2a": ["","","",""],
+        "row2b":  ["","a",""],
+        "row3a": ["","","",""],
+        "row3b":  ["","a",""],
+        "row4a": ["","","",""],
+        "row4b":  ["","p",""],
+        "row5a": ["","","",""],
+        "row5b":  ["","",""]
+      },
+      "opener": false,
+      "followups": [
+        "Spirit Slash III",
+        "Iai Sheathe",
+        "Fade Slash",
+        "Foresight Slash"
+      ]
+    },
+    {
+      "name": "Spirit Slash I",
+      "clock": 0,
+      "rollOut": false,
+      "lockedIn": false,
+      "charges": false,
+      "interrupt": false,
+      "damage": {
+        "0": {
+          "spiritLevel": "",
+          "spiritGaugeMin": 0,
+          "spiritGain": "-5",
+          "spiritLevelGain": "",
+          "values": {
+            "hit1": 14
+          }
+        },
+        "1": {
+          "spiritLevel": "",
+          "spiritGaugeMin": 7,
+          "spiritGain": "-5",
+          "spiritLevelGain": "",
+          "values": {
+            "hit1": 26
+          }
+        }
+      },
+      "damageType": "Slashing",
+      "note": "",
+      "attackGridSize": "4",
+      "attackGridHeight": "5",
+      "attackGrid": {
+        "row1a": ["","","",""],
+        "row1b":  ["","",""],
+        "row2a": ["","","",""],
+        "row2b":  ["","a",""],
+        "row3a": ["","a","a",""],
+        "row3b":  ["","a",""],
+        "row4a": ["","a","a",""],
+        "row4b":  ["","p",""],
+        "row5a": ["","","",""],
+        "row5b":  ["","",""]
+      },
+      "opener": true,
+      "followups": [
+        "Spirit Slash II",
+        "Thrust",
+        "Iai Sheathe",
+        "Fade Slash",
+        "Foresight Slash"
+      ]
+    },
+    {
+      "name": "Spirit Slash II",
+      "clock": 0,
+      "rollOut": true,
+      "lockedIn": false,
+      "charges": false,
+      "interrupt": false,
+      "damage": {
+        "0": {
+          "spiritLevel": "",
+          "spiritGaugeMin": 0,
+          "spiritGain": "-10",
+          "spiritLevelGain": "",
+          "values": {
+            "hit1": 30
+          }
+        }
+      },
+      "damageType": "Slashing",
+      "note": "",
+      "attackGridSize": "4",
+      "attackGridHeight": "5",
+      "attackGrid": {
+        "row1a": ["","","",""],
+        "row1b":  ["","",""],
+        "row2a": ["","","",""],
+        "row2b":  ["","a",""],
+        "row3a": ["","a","a",""],
+        "row3b":  ["","a",""],
+        "row4a": ["","a","a",""],
+        "row4b":  ["","p",""],
+        "row5a": ["","","",""],
+        "row5b":  ["","",""]
+      },
+      "opener": false,
+      "followups": [
+        "Spirit Slash III",
+        "Thrust",
+        "Iai Sheathe",
+        "Fade Slash",
+        "Foresight Slash"
+      ]
+    },
+    {
+      "name": "Spirit Slash III",
+      "clock": 1,
+      "rollOut": true,
+      "lockedIn": false,
+      "charges": false,
+      "interrupt": false,
+      "damage": {
+        "0": {
+          "spiritLevel": "",
+          "spiritGaugeMin": 0,
+          "spiritGain": "-10",
+          "spiritLevelGain": "",
+          "values": {
+            "hit1": 14,
+            "hit2": 19,
+            "hit3": 34
+          }
+        }
+      },
+      "damageType": "Slashing",
+      "note": "",
+      "attackGridSize": "4",
+      "attackGridHeight": "5",
+      "attackGrid": {
+        "row1a": ["","","",""],
+        "row1b":  ["","",""],
+        "row2a": ["","","",""],
+        "row2b":  ["","a",""],
+        "row3a": ["","a","a",""],
+        "row3b":  ["","a",""],
+        "row4a": ["","a","a",""],
+        "row4b":  ["","p",""],
+        "row5a": ["","","",""],
+        "row5b":  ["","",""]
+      },
+      "opener": false,
+      "followups": [
+        "Spirit Roundslash",
+        "Iai Sheathe",
+        "Fade Slash",
+        "Foresight Slash"
+      ]
+    },
+    {
+      "name": "Spirit Roundslash",
+      "clock": 1,
+      "rollOut": false,
+      "lockedIn": false,
+      "charges": false,
+      "interrupt": false,
+      "damage": {
+        "0": {
+          "spiritLevel": "",
+          "spiritGaugeMin": 0,
+          "spiritGain": "-15",
+          "spiritLevelGain": "+1",
+          "values": {
+            "hit1": 38
+          }
+        }
+      },
+      "damageType": "Slashing",
+      "note": "",
+      "attackGridSize": "4",
+      "attackGridHeight": "5",
+      "attackGrid": {
+        "row1a": ["","","",""],
+        "row1b":  ["","a",""],
+        "row2a": ["","","a",""],
+        "row2b":  ["","a","a"],
+        "row3a": ["","a","a","a"],
+        "row3b":  ["a","a","b"],
+        "row4a": ["","a","a",""],
+        "row4b":  ["a","p","m"],
+        "row5a": ["","","",""],
+        "row5b":  ["","",""]
+      },
+      "opener": false,
+      "followups": [
+        "Iai Sheathe",
+        "Fade Slash",
+        "Foresight Slash"
+      ]
+    },
+    {
+      "name": "Foresight Slash",
+      "clock": 1,
+      "rollOut": false,
+      "lockedIn": false,
+      "charges": false,
+      "interrupt": false,
+      "damage": {
+        "0": {
+          "spiritLevel": "",
+          "spiritGaugeMin": 0,
+          "spiritGain": "-all",
+          "spiritLevelGain": "",
+          "values": {
+            "hit1": 12
+          }
+        },
+        "1": {
+          "spiritLevel": "",
+          "spiritGaugeMin": 5,
+          "spiritGain": "-all",
+          "spiritLevelGain": "",
+          "values": {
+            "hit1": 26
+          }
+        }
+      },
+      "damageType": "Slashing",
+      "note": "I frames for first round, Max Soul Gauge if an attack was dodged and the attack hits a target",
+      "attackGridSize": "4",
+      "attackGridHeight": "5",
+      "attackGrid": {
+        "row1a": ["","","",""],
+        "row1b":  ["","",""],
+        "row2a": ["","","",""],
+        "row2b":  ["","a",""],
+        "row3a": ["","a","a",""],
+        "row3b":  ["","a",""],
+        "row4a": ["","a","a",""],
+        "row4b":  ["","p",""],
+        "row5a": ["","m","m",""],
+        "row5b":  ["","m",""]
+      },
+      "opener": false,
+      "followups": [
+        "Spirit Roundslash"
+      ]
+    },
+    {
+      "name": "Spirit Thrust",
+      "clock": 0,
+      "rollOut": false,
+      "lockedIn": true,
+      "charges": false,
+      "interrupt": false,
+      "damage": {
+        "0": {
+          "spiritLevel": "",
+          "spiritGaugeMin": 0,
+          "spiritGain": "",
+          "spiritLevelGain": "",
+          "values": {
+            "hit1": 26
+          }
+        }
+      },
+      "damageType": "Slashing",
+      "note": "",
+      "attackGridSize": "4",
+      "attackGridHeight": "5",
+      "attackGrid": {
+        "row1a": ["","","",""],
+        "row1b":  ["","",""],
+        "row2a": ["","","",""],
+        "row2b":  ["","a",""],
+        "row3a": ["","","",""],
+        "row3b":  ["","b",""],
+        "row4a": ["","","",""],
+        "row4b":  ["","p",""],
+        "row5a": ["","","",""],
+        "row5b":  ["","",""]
+      },
+      "opener": true,
+      "followups": [
+        "Spirit Helmbreaker",
+        "Iai Sheathe",
+        "Fade Slash",
+        "Foresight Slash"
+      ]
+    },
+    {
+      "name": "Spirit Helmbreaker",
+      "clock": 0,
+      "rollOut": false,
+      "lockedIn": false,
+      "charges": false,
+      "interrupt": false,
+      "damage": {
+        "0": {
+          "spiritLevel": "1",
+          "spiritGaugeMin": 0,
+          "spiritGain": "",
+          "spiritLevelGain": "-1",
+          "values": {
+            "hit1": 10,
+            "hit2": 10,
+            "hit3": 7
+          }
+        },
+        "1": {
+          "spiritLevel": "2",
+          "spiritGaugeMin": 0,
+          "spiritGain": "",
+          "spiritLevelGain": "-1",
+          "values": {
+            "hit1": 15,
+            "hit2": 15,
+            "hit3": 7
+          }
+        },
+        "2": {
+          "spiritLevel": "3",
+          "spiritGaugeMin": 0,
+          "spiritGain": "",
+          "spiritLevelGain": "-1",
+          "values": {
+            "hit1": 25,
+            "hit2": 25,
+            "hit3": 7
+          }
+        }
+      },
+      "damageType": "Slashing",
+      "note": "gain 5 Soul Gauge per round for 5 rounds if it hits a valid target",
+      "attackGridSize": "4",
+      "attackGridHeight": "5",
+      "attackGrid": {
+        "row1a": ["","","",""],
+        "row1b":  ["","a",""],
+        "row2a": ["","","",""],
+        "row2b":  ["","a",""],
+        "row3a": ["","","",""],
+        "row3b":  ["","a",""],
+        "row4a": ["","","",""],
+        "row4b":  ["","p",""],
+        "row5a": ["","","",""],
+        "row5b":  ["","",""]
+      },
+      "opener": false,
+      "followups": [
+        "Iai Sheathe",
+        "Fade Slash",
+        "Foresight Slash"
+      ]
+    },
+    {
+      "name": "Iai Slash",
+      "clock": 1,
+      "rollOut": false,
+      "lockedIn": false,
+      "charges": false,
+      "interrupt": false,
+      "damage": {
+        "0": {
+          "spiritLevel": "",
+          "spiritGaugeMin": 0,
+          "spiritGain": "",
+          "spiritLevelGain": "",
+          "values": {
+            "hit1": 18,
+            "hit2": 13
+          }
+        }
+      },
+      "damageType": "Slashing",
+      "note": "I-frames for first round, Can still be shoved, gain 5 Soul Gauge per round for 5 rounds if it hits a valid target",
+      "attackGridSize": "4",
+      "attackGridHeight": "5",
+      "attackGrid": {
+        "row1a": ["","","",""],
+        "row1b":  ["","",""],
+        "row2a": ["","","",""],
+        "row2b":  ["","a",""],
+        "row3a": ["","a","a",""],
+        "row3b":  ["","b",""],
+        "row4a": ["","a","a",""],
+        "row4b":  ["","p",""],
+        "row5a": ["","","",""],
+        "row5b":  ["","",""]
+      },
+      "opener": false,
+      "followups": [
+      ]
+    },
+    {
+      "name": "Iai Spirit Slash",
+      "clock": 2,
+      "rollOut": true,
+      "lockedIn": false,
+      "charges": false,
+      "interrupt": false,
+      "damage": {
+        "0": {
+          "spiritLevel": "0",
+          "spiritGaugeMin": 0,
+          "spiritGain": "",
+          "spiritLevelGain": "-1",
+          "values": {
+            "hit1": 17
+          }
+        },
+        "1": {
+          "spiritLevel": "1",
+          "spiritGaugeMin": 0,
+          "spiritGain": "",
+          "spiritLevelGain": "-1",
+          "values": {
+            "hit1": 19,
+            "hit2": 55
+          }
+        },
+        "2": {
+          "spiritLevel": "2",
+          "spiritGaugeMin": 0,
+          "spiritGain": "",
+          "spiritLevelGain": "-1",
+          "values": {
+            "hit1": 31,
+            "hit2": 72
+          }
+        },
+        "3": {
+          "spiritLevel": "3",
+          "spiritGaugeMin": 0,
+          "spiritGain": "",
+          "spiritLevelGain": "-1",
+          "values": {
+            "hit1": 39,
+            "hit2": 86
+          }
+        }
+      },
+      "damageType": "Slashing",
+      "note": "I-frames for first round, Can still be shoved, consume 1 Soul Level if an attack is not dodged, Move user 15ft forward through any creature",
+      "attackGridSize": "4",
+      "attackGridHeight": "5",
+      "attackGrid": {
+        "row1a": ["","","",""],
+        "row1b":  ["","m",""],
+        "row2a": ["","","",""],
+        "row2b":  ["","a",""],
+        "row3a": ["","a","a",""],
+        "row3b":  ["","a",""],
+        "row4a": ["","a","a",""],
+        "row4b":  ["","p",""],
+        "row5a": ["","","",""],
+        "row5b":  ["","",""]
+      },
+      "opener": false,
+      "followups": [
+      ]
+    },
+    {
+      "name": "Jumping Slash",
+      "clock": 0,
+      "rollOut": false,
+      "lockedIn": false,
+      "charges": false,
+      "interrupt": false,
+      "damage": {
+        "0": {
+          "spiritLevel": "",
+          "spiritGaugeMin": 0,
+          "spiritGain": "+4",
+          "spiritLevelGain": "",
+          "values": {
+            "hit1": 24
+          }
+        }
+      },
+      "damageType": "Slashing",
+      "note": "",
+      "attackGridSize": "4",
+      "attackGridHeight": "5",
+      "attackGrid": {
+        "row1a": ["","","",""],
+        "row1b":  ["","",""],
+        "row2a": ["","","",""],
+        "row2b":  ["","a",""],
+        "row3a": ["","","",""],
+        "row3b":  ["","b",""],
+        "row4a": ["","","",""],
+        "row4b":  ["","p",""],
+        "row5a": ["","","",""],
+        "row5b":  ["","",""]
+      },
+      "opener": true,
+      "followups": [
+        "Overhead Slash",
+        "Iai Sheathe",
+        "Fade Slash",
+        "Foresight Slash"
+      ]
+    },
+    {
+      "name": "Jumping Spirit Blade",
+      "clock": 1,
+      "rollOut": false,
+      "lockedIn": false,
+      "charges": false,
+      "interrupt": false,
+      "damage": {
+        "0": {
+          "spiritLevel": "0",
+          "spiritGaugeMin": 0,
+          "spiritGain": "-5",
+          "spiritLevelGain": "",
+          "values": {
+            "hit1": 30
+          }
+        },
+        "1": {
+          "spiritLevel": "1",
+          "spiritGaugeMin": 0,
+          "spiritGain": "",
+          "spiritLevelGain": "",
+          "values": {
+            "hit1": 4,
+            "hit2": 16
+          }
+        },
+        "2": {
+          "spiritLevel": "2",
+          "spiritGaugeMin": 0,
+          "spiritGain": "-5",
+          "spiritLevelGain": "",
+          "values": {
+            "hit1": 4,
+            "hit2": 16
+          }
+        },
+        "3": {
+          "spiritLevel": "3",
+          "spiritGaugeMin": 0,
+          "spiritGain": "-5",
+          "spiritLevelGain": "",
+          "values": {
+            "hit1": 4,
+            "hit2": 16,
+            "hit3": 18
+          }
+        }
+      },
+      "damageType": "Slashing",
+      "note": "",
+      "attackGridSize": "4",
+      "attackGridHeight": "5",
+      "attackGrid": {
+        "row1a": ["","","",""],
+        "row1b":  ["","",""],
+        "row2a": ["","","",""],
+        "row2b":  ["","a",""],
+        "row3a": ["","","",""],
+        "row3b":  ["","b",""],
+        "row4a": ["","","",""],
+        "row4b":  ["","p",""],
+        "row5a": ["","","",""],
+        "row5b":  ["","",""]
+      },
+      "opener": true,
+      "followups": [
+        "Iai Sheathe",
+        "Fade Slash",
+        "Foresight Slash"
+      ]
+    },
+    {
+      "name": "Iai Sheathe",
+      "clock": 0,
+      "rollOut": false,
+      "lockedIn": false,
+      "charges": false,
+      "interrupt": false,
+      "damage": {
+      },
+      "damageType": "Slashing",
+      "note": "Special sheathe action that allows Iai Slashes as follow-ups",
+      "attackGridSize": "4",
+      "attackGridHeight": "5",
+      "attackGrid": {
+        "row1a": ["","","",""],
+        "row1b":  ["","",""],
+        "row2a": ["","","",""],
+        "row2b":  ["","",""],
+        "row3a": ["","","",""],
+        "row3b":  ["","",""],
+        "row4a": ["","","",""],
+        "row4b":  ["","p",""],
+        "row5a": ["","","",""],
+        "row5b":  ["","",""]
+      },
+      "opener": false,
+      "followups": [
+        "Iai Slash",
+        "Iai Spirit Slash"
+      ]
+    }
+  ],
+  "fan": [
+    {
+      "name": "Dodge Roll",
+      "clock": 1,
+      "rollOut": false,
+      "lockedIn": false,
+      "charges": false,
+      "interrupt": false,
+      "damage": {
+      },
+      "damageType": "",
+      "note": "Roll 10ft in any hex direction.",
+      "attackGridSize": "3",
+      "attackGridHeight": "5",
+      "attackGrid": {
+        "row1a": ["0","m","0"],
+        "row1b":   ["0","0"],
+        "row2a": ["m","0","m"],
+        "row2b":   ["0","0"],
+        "row3a": ["0","p","0"],
+        "row3b":   ["0","0"],
+        "row4a": ["m","0","m"],
+        "row4b":   ["0","0"],
+        "row5a": ["0","m","0"]
+      },
+      "opener": true,
+      "followups": [
+      ]
+    },
+    {
+      "name": "Left Slash",
+      "clock": 0,
+      "rollOut": false,
+      "lockedIn": false,
+      "charges": false,
+      "interrupt": false,
+      "damage": {
+        "0": {
+          "cycloneGauge": "+1",
+          "values": {
+            "hit1": 11
+          }
+        }
+      },
+      "damageType": "Slashing",
+      "note": "",
+      "attackGridSize": "3",
+      "attackGridHeight": "6",
+      "attackGrid": {
+        "row1a": ["","",""],
+        "row1b":  ["",""],
+        "row2a": ["","",""],
+        "row2b":  ["",""],
+        "row3a": ["","a",""],
+        "row3b":  ["m",""],
+        "row4a": ["","p",""],
+        "row4b":  ["",""],
+        "row5a": ["","",""],
+        "row5b":  ["",""],
+        "row6a": ["","",""],
+        "row6b":  ["",""]
+      },
+      "opener": true,
+      "followups": [
+        "Thrust",
+        "Right Slash"
+      ]
+    },
+    {
+      "name": "Right Slash",
+      "clock": 0,
+      "rollOut": false,
+      "lockedIn": false,
+      "charges": false,
+      "interrupt": false,
+      "damage": {
+        "0": {
+          "cycloneGauge": "+1",
+          "values": {
+            "hit1": 14
+          }
+        }
+      },
+      "damageType": "Slashing",
+      "note": "",
+      "attackGridSize": "3",
+      "attackGridHeight": "6",
+      "attackGrid": {
+        "row1a": ["","",""],
+        "row1b":  ["",""],
+        "row2a": ["","",""],
+        "row2b":  ["",""],
+        "row3a": ["","a",""],
+        "row3b":  ["","m"],
+        "row4a": ["","p",""],
+        "row4b":  ["",""],
+        "row5a": ["","",""],
+        "row5b":  ["",""],
+        "row6a": ["","",""],
+        "row6b":  ["",""]
+      },
+      "opener": false,
+      "followups": [
+        "Thrust",
+        "Double Slash"
+      ]
+    },
+    {
+      "name": "Double Slash",
+      "clock": 0,
+      "rollOut": false,
+      "lockedIn": false,
+      "charges": false,
+      "interrupt": false,
+      "damage": {
+        "0": {
+          "cycloneGauge": "+2",
+          "values": {
+            "hit1": 13,
+            "hit2": 13
+          }
+        }
+      },
+      "damageType": "Slashing",
+      "note": "",
+      "attackGridSize": "3",
+      "attackGridHeight": "6",
+      "attackGrid": {
+        "row1a": ["","",""],
+        "row1b":  ["",""],
+        "row2a": ["","",""],
+        "row2b":  ["",""],
+        "row3a": ["","a",""],
+        "row3b":  ["",""],
+        "row4a": ["","p",""],
+        "row4b":  ["",""],
+        "row5a": ["","",""],
+        "row5b":  ["",""],
+        "row6a": ["","",""],
+        "row6b":  ["",""]
+      },
+      "opener": false,
+      "followups": [
+        "Circle Slash",
+        "Flourish"
+      ]
+    },
+    {
+      "name": "Thrust",
+      "clock": 0,
+      "rollOut": false,
+      "lockedIn": false,
+      "charges": false,
+      "interrupt": false,
+      "damage": {
+        "0": {
+          "cycloneGauge": "+1",
+          "values": {
+            "hit1": 7
+          }
+        }
+      },
+      "damageType": "Slashing",
+      "note": "",
+      "attackGridSize": "3",
+      "attackGridHeight": "6",
+      "attackGrid": {
+        "row1a": ["","",""],
+        "row1b":  ["",""],
+        "row2a": ["","",""],
+        "row2b":  ["",""],
+        "row3a": ["","b",""],
+        "row3b":  ["",""],
+        "row4a": ["","p",""],
+        "row4b":  ["",""],
+        "row5a": ["","",""],
+        "row5b":  ["",""],
+        "row6a": ["","",""],
+        "row6b":  ["",""]
+      },
+      "opener": true,
+      "followups": [
+        "Double Slash",
+        "Left Slash",
+        "Right Slash",
+        "Gust I"
+      ]
+    },
+    {
+      "name": "Circle Slash",
+      "clock": 0,
+      "rollOut": false,
+      "lockedIn": true,
+      "charges": false,
+      "interrupt": false,
+      "damage": {
+        "0": {
+          "cycloneGauge": "+1",
+          "values": {
+            "hit1": 9,
+            "hit2": 9
+          }
+        }
+      },
+      "damageType": "Slashing",
+      "note": "",
+      "attackGridSize": "3",
+      "attackGridHeight": "6",
+      "attackGrid": {
+        "row1a": ["","",""],
+        "row1b":  ["",""],
+        "row2a": ["","",""],
+        "row2b":  ["",""],
+        "row3a": ["","a",""],
+        "row3b":  ["a","a"],
+        "row4a": ["","p",""],
+        "row4b":  ["a","a"],
+        "row5a": ["","",""],
+        "row5b":  ["",""],
+        "row6a": ["","",""],
+        "row6b":  ["",""]
+      },
+      "opener": false,
+      "followups": [
+        "Cyclone Spin",
+        "Wind Dance I"
+      ]
+    },
+    {
+      "name": "Flourish",
+      "clock": 1,
+      "rollOut": false,
+      "lockedIn": false,
+      "charges": false,
+      "interrupt": false,
+      "damage": {
+        "0": {
+          "cycloneGauge": "+4",
+          "values": {
+            "hit1": 10,
+            "hit2": 10,
+            "hit3": 14,
+            "hit4": 28
+          }
+        }
+      },
+      "damageType": "Slashing",
+      "note": "",
+      "attackGridSize": "3",
+      "attackGridHeight": "6",
+      "attackGrid": {
+        "row1a": ["","",""],
+        "row1b":  ["",""],
+        "row2a": ["","",""],
+        "row2b":  ["",""],
+        "row3a": ["","a",""],
+        "row3b":  ["a","a"],
+        "row4a": ["","p",""],
+        "row4b":  ["",""],
+        "row5a": ["","",""],
+        "row5b":  ["",""],
+        "row6a": ["","",""],
+        "row6b":  ["",""]
+      },
+      "opener": false,
+      "followups": [
+      ]
+    },
+    {
+      "name": "Wind Dance I",
+      "clock": 1,
+      "rollOut": false,
+      "lockedIn": true,
+      "charges": false,
+      "interrupt": false,
+      "damage": {
+        "0": {
+          "cycloneGauge": "+3",
+          "values": {
+            "hit1": 30,
+            "hit2": 30
+          }
+        }
+      },
+      "damageType": "Slashing",
+      "note": "",
+      "attackGridSize": "3",
+      "attackGridHeight": "6",
+      "attackGrid": {
+        "row1a": ["","",""],
+        "row1b":  ["",""],
+        "row2a": ["","",""],
+        "row2b":  ["",""],
+        "row3a": ["","a",""],
+        "row3b":  ["b","b"],
+        "row4a": ["","p",""],
+        "row4b":  ["b","b"],
+        "row5a": ["","a",""],
+        "row5b":  ["",""],
+        "row6a": ["","",""],
+        "row6b":  ["",""]
+      },
+      "opener": false,
+      "followups": [
+        "Wind Dance II"
+      ]
+    },
+    {
+      "name": "Wind Dance II",
+      "clock": 1,
+      "rollOut": false,
+      "lockedIn": false,
+      "charges": false,
+      "interrupt": false,
+      "damage": {
+        "0": {
+          "cycloneGauge": "+3",
+          "values": {
+            "hit1": 45,
+            "hit2": 45
+          }
+        }
+      },
+      "damageType": "Slashing",
+      "note": "",
+      "attackGridSize": "3",
+      "attackGridHeight": "6",
+      "attackGrid": {
+        "row1a": ["","",""],
+        "row1b":  ["",""],
+        "row2a": ["","",""],
+        "row2b":  ["",""],
+        "row3a": ["","a",""],
+        "row3b":  ["b","b"],
+        "row4a": ["","p",""],
+        "row4b":  ["b","b"],
+        "row5a": ["","a",""],
+        "row5b":  ["",""],
+        "row6a": ["","",""],
+        "row6b":  ["",""]
+      },
+      "opener": false,
+      "followups": [
+      ]
+    },
+    {
+      "name": "Cyclone Spin",
+      "clock": 0,
+      "rollOut": false,
+      "lockedIn": false,
+      "charges": false,
+      "interrupt": false,
+      "damage": {
+        "0": {
+          "cycloneGauge": "-4",
+          "values": {
+            "hit1": 15,
+            "hit2": 9,
+            "hit3": 30
+          }
+        }
+      },
+      "damageType": "Blunt",
+      "note": "",
+      "attackGridSize": "3",
+      "attackGridHeight": "6",
+      "attackGrid": {
+        "row1a": ["","",""],
+        "row1b":  ["",""],
+        "row2a": ["","",""],
+        "row2b":  ["",""],
+        "row3a": ["","a",""],
+        "row3b":  ["a","a"],
+        "row4a": ["","p",""],
+        "row4b":  ["a","a"],
+        "row5a": ["","a",""],
+        "row5b":  ["",""],
+        "row6a": ["","",""],
+        "row6b":  ["",""]
+      },
+      "opener": false,
+      "followups": [
+        "Cyclone Slam"
+      ]
+    },
+    {
+      "name": "Cyclone Slam",
+      "clock": 0,
+      "rollOut": false,
+      "lockedIn": false,
+      "charges": false,
+      "interrupt": false,
+      "damage": {
+        "0": {
+          "cycloneGauge": "-2",
+          "values": {
+            "hit1": 30,
+            "hit2": 18,
+            "hit3": 48
+          }
+        }
+      },
+      "damageType": "Blunt",
+      "note": "",
+      "attackGridSize": "3",
+      "attackGridHeight": "6",
+      "attackGrid": {
+        "row1a": ["","",""],
+        "row1b":  ["",""],
+        "row2a": ["","",""],
+        "row2b":  ["",""],
+        "row3a": ["","a",""],
+        "row3b":  ["a","a"],
+        "row4a": ["","p",""],
+        "row4b":  ["a","a"],
+        "row5a": ["","a",""],
+        "row5b":  ["",""],
+        "row6a": ["","",""],
+        "row6b":  ["",""]
+      },
+      "opener": false,
+      "followups": [
+      ]
+    },
+    {
+      "name": "Gust I",
+      "clock": 0,
+      "rollOut": false,
+      "lockedIn": true,
+      "charges": false,
+      "interrupt": false,
+      "damage": {
+        "0": {
+          "cycloneGauge": "-1",
+          "values": {
+            "hit1": 28
+          }
+        }
+      },
+      "damageType": "Blunt",
+      "note": "",
+      "attackGridSize": "3",
+      "attackGridHeight": "6",
+      "attackGrid": {
+        "row1a": ["","",""],
+        "row1b":  ["",""],
+        "row2a": ["","a",""],
+        "row2b":  ["",""],
+        "row3a": ["","",""],
+        "row3b":  ["",""],
+        "row4a": ["","p",""],
+        "row4b":  ["",""],
+        "row5a": ["","m",""],
+        "row5b":  ["",""],
+        "row6a": ["","",""],
+        "row6b":  ["",""]
+      },
+      "opener": true,
+      "followups": [
+        "Gust II",
+        "Cyclone Spin",
+        "Windfall"
+      ]
+    },
+    {
+      "name": "Gust II",
+      "clock": 0,
+      "rollOut": false,
+      "lockedIn": true,
+      "charges": false,
+      "interrupt": false,
+      "damage": {
+        "0": {
+          "cycloneGauge": "-1",
+          "values": {
+            "hit1": 36
+          }
+        }
+      },
+      "damageType": "Blunt",
+      "note": "",
+      "attackGridSize": "3",
+      "attackGridHeight": "6",
+      "attackGrid": {
+        "row1a": ["","",""],
+        "row1b":  ["",""],
+        "row2a": ["","a",""],
+        "row2b":  ["",""],
+        "row3a": ["","",""],
+        "row3b":  ["",""],
+        "row4a": ["","p",""],
+        "row4b":  ["",""],
+        "row5a": ["","m",""],
+        "row5b":  ["",""],
+        "row6a": ["","",""],
+        "row6b":  ["",""]
+      },
+      "opener": false,
+      "followups": [
+        "Gust III",
+        "Storm Dance I"
+      ]
+    },
+    {
+      "name": "Gust III",
+      "clock": 0,
+      "rollOut": false,
+      "lockedIn": true,
+      "charges": false,
+      "interrupt": false,
+      "damage": {
+        "0": {
+          "cycloneGauge": "-1",
+          "values": {
+            "hit1": 50
+          }
+        }
+      },
+      "damageType": "Blunt",
+      "note": "",
+      "attackGridSize": "3",
+      "attackGridHeight": "6",
+      "attackGrid": {
+        "row1a": ["","",""],
+        "row1b":  ["",""],
+        "row2a": ["","a",""],
+        "row2b":  ["",""],
+        "row3a": ["","",""],
+        "row3b":  ["",""],
+        "row4a": ["","p",""],
+        "row4b":  ["",""],
+        "row5a": ["","m",""],
+        "row5b":  ["",""],
+        "row6a": ["","",""],
+        "row6b":  ["",""]
+      },
+      "opener": false,
+      "followups": [
+        "Empowered Flourish"
+      ]
+    },
+    {
+      "name": "Windfall",
+      "clock": 0,
+      "rollOut": false,
+      "lockedIn": false,
+      "charges": false,
+      "interrupt": false,
+      "damage": {
+        "0": {
+          "cycloneGauge": "-3",
+          "values": {
+            "hit1": 42,
+            "hit2": 42
+          }
+        }
+      },
+      "damageType": "Blunt",
+      "note": "",
+      "attackGridSize": "3",
+      "attackGridHeight": "6",
+      "attackGrid": {
+        "row1a": ["","",""],
+        "row1b":  ["a","a"],
+        "row2a": ["","a",""],
+        "row2b":  ["a","a"],
+        "row3a": ["","",""],
+        "row3b":  ["",""],
+        "row4a": ["","p",""],
+        "row4b":  ["",""],
+        "row5a": ["","m",""],
+        "row5b":  ["",""],
+        "row6a": ["","",""],
+        "row6b":  ["",""]
+      },
+      "opener": false,
+      "followups": [
+      ]
+    },
+    {
+      "name": "Storm Dance I",
+      "clock": 0,
+      "rollOut": false,
+      "lockedIn": true,
+      "charges": false,
+      "interrupt": false,
+      "damage": {
+        "0": {
+          "cycloneGauge": "-3",
+          "values": {
+            "hit1": 40,
+            "hit2": 45
+          }
+        }
+      },
+      "damageType": "Slashing",
+      "note": "",
+      "attackGridSize": "3",
+      "attackGridHeight": "6",
+      "attackGrid": {
+        "row1a": ["","",""],
+        "row1b":  ["",""],
+        "row2a": ["","a",""],
+        "row2b":  ["a","a"],
+        "row3a": ["a","","a"],
+        "row3b":  ["",""],
+        "row4a": ["a","p","a"],
+        "row4b":  ["",""],
+        "row5a": ["a","","a"],
+        "row5b":  ["a","a"],
+        "row6a": ["","a",""],
+        "row6b":  ["",""]
+      },
+      "opener": false,
+      "followups": [
+        "Storm Dance II"
+      ]
+    },
+    {
+      "name": "Storm Dance II",
+      "clock": 1,
+      "rollOut": false,
+      "lockedIn": false,
+      "charges": false,
+      "interrupt": false,
+      "damage": {
+        "0": {
+          "cycloneGauge": "-3",
+          "values": {
+            "hit1": 45,
+            "hit2": 60
+          }
+        }
+      },
+      "damageType": "Slashing",
+      "note": "",
+      "attackGridSize": "3",
+      "attackGridHeight": "6",
+      "attackGrid": {
+        "row1a": ["","",""],
+        "row1b":  ["",""],
+        "row2a": ["","a",""],
+        "row2b":  ["a","a"],
+        "row3a": ["a","","a"],
+        "row3b":  ["",""],
+        "row4a": ["a","p","a"],
+        "row4b":  ["",""],
+        "row5a": ["a","","a"],
+        "row5b":  ["a","a"],
+        "row6a": ["","a",""],
+        "row6b":  ["",""]
+      },
+      "opener": false,
+      "followups": [
+      ]
+    },
+    {
+      "name": "Empowered Flourish",
+      "clock": 1,
+      "rollOut": false,
+      "lockedIn": false,
+      "charges": false,
+      "interrupt": false,
+      "damage": {
+        "0": {
+          "cycloneGauge": "-4",
+          "values": {
+            "hit1": 25,
+            "hit2": 25,
+            "hit3": 30,
+            "hit4": 50
+          }
+        }
+      },
+      "damageType": "Slashing",
+      "note": "",
+      "attackGridSize": "3",
+      "attackGridHeight": "6",
+      "attackGrid": {
+        "row1a": ["","",""],
+        "row1b":  ["",""],
+        "row2a": ["","a",""],
+        "row2b":  ["a","a"],
+        "row3a": ["","a",""],
+        "row3b":  ["",""],
+        "row4a": ["","p",""],
+        "row4b":  ["",""],
+        "row5a": ["","",""],
+        "row5b":  ["",""],
+        "row6a": ["","",""],
+        "row6b":  ["",""]
+      },
+      "opener": false,
+      "followups": [
+      ]
+    },
+    {
+      "name": "Windbolt",
+      "clock": 0,
+      "rollOut": false,
+      "lockedIn": false,
+      "charges": false,
+      "interrupt": false,
+      "damage": {
+        "0": {
+          "cycloneGauge": "-2",
+          "values": {
+            "hit1": 25,
+            "hit2": 28
+          }
+        }
+      },
+      "damageType": "Blunt",
+      "note": "",
+      "attackGridSize": "3",
+      "attackGridHeight": "6",
+      "attackGrid": {
+        "row1a": ["","a",""],
+        "row1b":  ["",""],
+        "row2a": ["","a",""],
+        "row2b":  ["",""],
+        "row3a": ["","",""],
+        "row3b":  ["",""],
+        "row4a": ["","p",""],
+        "row4b":  ["",""],
+        "row5a": ["","",""],
+        "row5b":  ["",""],
+        "row6a": ["","m",""],
+        "row6b":  ["",""]
+      },
+      "opener": true,
+      "followups": [
+      ]
+    },
+    {
+      "name": "Windwalk",
+      "clock": 0,
+      "rollOut": false,
+      "lockedIn": false,
+      "charges": false,
+      "interrupt": false,
+      "damage": {
+        "0": {
+          "cycloneGauge": "",
+          "values": {
+            "hit1": 10,
+            "hit2": 10,
+            "hit3": 15
+          }
+        }
+      },
+      "damageType": "Slashing",
+      "note": "Airborne Only",
+      "attackGridSize": "3",
+      "attackGridHeight": "6",
+      "attackGrid": {
+        "row1a": ["","",""],
+        "row1b":  ["",""],
+        "row2a": ["","",""],
+        "row2b":  ["",""],
+        "row3a": ["","b",""],
+        "row3b":  ["",""],
+        "row4a": ["","p",""],
+        "row4b":  ["",""],
+        "row5a": ["","",""],
+        "row5b":  ["",""],
+        "row6a": ["","",""],
+        "row6b":  ["",""]
+      },
+      "opener": true,
+      "followups": [
+        "Empowered Windwalk"
+      ]
+    },
+    {
+      "name": "Empowered Windwalk",
+      "clock": 0,
+      "rollOut": false,
+      "lockedIn": false,
+      "charges": false,
+      "interrupt": false,
+      "damage": {
+        "0": {
+          "cycloneGauge": "-3",
+          "values": {
+            "hit1": 20,
+            "hit2": 30,
+            "hit3": 50
+          }
+        }
+      },
+      "damageType": "Slashing",
+      "note": "Airborne Only",
+      "attackGridSize": "3",
+      "attackGridHeight": "6",
+      "attackGrid": {
+        "row1a": ["","",""],
+        "row1b":  ["",""],
+        "row2a": ["","",""],
+        "row2b":  ["",""],
+        "row3a": ["","b",""],
+        "row3b":  ["",""],
+        "row4a": ["","p",""],
+        "row4b":  ["",""],
+        "row5a": ["","",""],
+        "row5b":  ["",""],
+        "row6a": ["","",""],
+        "row6b":  ["",""]
+      },
+      "opener": false,
+      "followups": [
+        "Empowered Windwalk"
+      ]
+    }
+  ]
+}

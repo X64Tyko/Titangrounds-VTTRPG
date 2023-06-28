@@ -1,0 +1,31 @@
+<div>
+  <div class="item-fixed-header">
+    <div class="grid grid-3col">
+      <div class="resource">
+        <label class="resource-label">Demon Gauge <i class="has-descriptor fa-solid fa-face-angry-horns" title="Demon Gauge"></i></label>
+        <div class="grid grid-2col">
+          <input type="number" name="activeWeapon.system.resourceBars.demonGauge.value" value="{{system.resourceBars.demonGauge.value}}" data-dtype="Number">
+          <span class="resource-uneditable"> / {{system.resourceBars.demonGauge.max}} </span>
+        </div>
+      </div>
+      <div class="resource">
+        <label class="resource-label">Demon Mode <i class="has-descriptor fa-regular fa-skull-cow" title="is Demon Mode active"></i></label>
+        <input type="checkbox" name="activeWeapon.system.resourceBools.demonMode.active" {{checked system.resourceBools.demonMode.active}}>
+      </div>
+      <div class="resource">
+        <label class="resource-label">Archdemon Mode <i class="has-descriptor fa-duotone fa-skull-cow" title="is Archdemon Mode active"></i></label>
+        <input type="checkbox" name="activeWeapon.system.resourceBools.archDemonMode.active" {{checked system.resourceBools.archDemonMode.active}}>
+      </div>
+    </div>
+  </div>
+  
+  {{!-- Attacks Tab --}}
+  <div class="attack-window">
+
+    <ul class="attacks-list">
+      {{#each attacks}}
+      {{> "systems/monhunsys/templates/item/parts/dualblade-attack-card.html" }}
+      {{/each}}
+    </ul>
+  </div>
+</div>

@@ -1,0 +1,20 @@
+<div>
+  <div class="item-fixed-header">
+    <div class="grid grid-2col">
+      <div class="resource">
+        <label class="resource-label">Cyclone Gauge <i class="has-descriptor fa-solid fa-tornado" title="Cyclone Gauge"></i></label>
+        <input type="number" name="activeWeapon.system.resourceBars.cycloneGauge.value" value="{{system.resourceBars.cycloneGauge.value}}" data-dtype="Number">
+      </div>
+    </div>
+  </div>
+  
+  {{!-- Attacks Tab --}}
+  <div class="attack-window">
+
+    <ul class="attacks-list">
+      {{#each attacks}}
+      {{> "systems/monhunsys/templates/item/parts/fan-attack-card.html" }}
+      {{/each}}
+    </ul>
+  </div>
+</div>

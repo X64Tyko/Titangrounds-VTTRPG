@@ -1,0 +1,100 @@
+<li>
+  <div class="attack-block" data-chain-id="{{chainID}}">
+    <div class="attack-chain">
+    {{#if chain}}
+      {{#if chainFlag}}
+      <i class="fas fa-chevron-up resource-light-label"></i>
+      {{else}}
+      <i class="fas fa-chevron-down resource-light-label"></i>
+      {{/if}}
+    {{else}}
+      <i class="fas fa-flag-checkered resource-light-label"></i>
+    {{/if}}
+    </div>
+    <div class="attack-data">
+      <div class="attack-header">
+        <div class="attack-name" data-attack-name="{{name}}"><h3>{{name}}</h3></div>
+        {{#if expanded}}
+        {{else}}
+        {{#each damage as |damage|}}
+        <div class="attack-rollable-mini" data-attack-string="{{../stringified}}" data-damage-values="{{damage.stringValues}}" data-attack-name="{{../name}}" data-attack-type="{{../damageType}}">
+          <div class="attack-icon">
+            {{#each damage.values}}
+            {{this}}
+            {{/each}}
+          </div>
+        </div>
+        {{/each}}
+        {{/if}}
+        {{#if rollOut}}
+        <i class="has-descriptor attack-icon fa-solid fa-arrows-spin" title="dodge roll even with clock"></i>
+        {{/if}}
+        {{#if lockedIn}}
+        <i class="has-descriptor attack-icon fa-solid fa-link" title="must perform a follow up"></i>
+        {{/if}}
+        {{#if charges}}
+        <i class="has-descriptor attack-icon fa-solid fa-bolt" title="attack can be charged"></i>
+        {{/if}}
+        {{#if interrupt}}
+        <i class="has-descriptor attack-icon fa-solid fa-triangle-exclamation" title="attack can interrupt charge"></i>
+        {{/if}}
+        <h4 class="attack-icon"> {{clock}} <i class="has-descriptor fa-solid fa-stopwatch" title="clock"></i></h4>
+      </div>
+      {{#if expanded}}
+      <div class="flexrow">
+        <div class="hexCrop" style="--cols: {{attackGridSize}}; --rows: {{attackGridHeight}};">
+          {{#each attackGrid as |gridrow|}}
+          <div class="hex-row">
+            {{#each gridrow}}
+            <div class="hex {{this}}"></div>
+            {{/each}}
+          </div>
+          {{/each}}
+        </div>
+        <div>
+          <div class="attack-note">
+            {{breaklines note}}
+          </div>
+          <div class="attack-damage">
+            {{#each damage as |damage|}}
+            <div class="attack-data">
+              <div class="attack-rollable" data-attack-string="{{../stringified}}" data-damage-values="{{damage.stringValues}}" data-attack-name="{{../name}}" data-attack-type="{{../damageType}}">
+                <div class="attack-icon">
+                  {{#if damage.spiritLevel}}
+                  {{damage.spiritLevel}}<i class="has-descriptor fa-solid fa-gauge" title="Minimum Soul Level"></i>
+                  {{/if}}
+                  {{#if damage.spiritGain}}
+                  {{damage.spiritGain}}<i class="has-descriptor fa-solid fa-ghost" title="Soul Gauge Change"></i>
+                  {{/if}}
+                  {{#if damage.spiritLevelGain}}
+                  {{damage.spiritLevelGain}}<i class="has-descriptor fa-regular fa-gauge" title="Soul Level Change"></i>
+                  {{/if}}
+                  {{#if damage.spiritGaugeMin}}
+                  {{damage.spiritGaugeMin}}<i class="has-descriptor fa-regular fa-ghost" title="With at least this much Soul Gauge"></i>
+                  {{/if}}
+                </div>
+                <div class="attack-icon">
+                  {{#each damage.values}}
+                  {{this}} -
+                  {{/each}}
+                  <img class="has-descriptor" src="Icons/SheetIcons/{{../damageType}}.png" title="{{../damageType}}" height="18" width="18"/>
+                </div>
+              </div>
+            </div>
+            {{/each}}
+          </div>
+        </div>
+      </div>
+      {{/if}}
+    </div>
+  </div>
+  {{#if chainFlag}}
+  <div>
+    <ul>
+      {{#each this.chain}}
+      {{> "systems/monhunsys/templates/item/parts/longsword-attack-card.html" }}
+      {{/each}}
+    </ul>
+  </div>
+  {{/if}}
+</li>

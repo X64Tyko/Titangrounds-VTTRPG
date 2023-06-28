@@ -1,0 +1,79 @@
+.hexCrop {
+  --cols: 4;
+  --rows: 4;
+  --mini: 1;
+  --width: calc((100px * var(--mini)));
+  --gw: calc(var(--width) / var(--cols) * 2);
+  --hexwidth: min(calc(var(--gw) / 3), 18px);
+  --hexmargin: calc(var(--hexwidth)/4);
+  --hexgridwidth: calc(var(--hexwidth) + var(--hexmargin)*2);
+
+  width: var(--width);
+  min-height: calc(var(--rows)*var(--hexgridwidth));
+  flex: 0 0 var(--width);
+  background: rgba(0, 0, 0, 0.05);
+  border: $border-groove;
+}
+
+.hex-row {
+  position: relative;
+
+  display: grid;
+  grid-col: span var(--cols) / span var(--cols);
+  grid-template-columns: repeat(var(--cols), var(--hexgridwidth));
+  justify-content: center;
+  justify-items: center;
+  margin-bottom: calc(var(--hexwidth)*-1);
+}
+
+.hex-row:nth-child(even) {
+  position: relative;
+
+  display: grid;
+  grid-col: span calc(var(--cols) - 1) / span calc(var(--cols) - 1);
+  grid-template-columns: repeat(calc(var(--cols) - 1), var(--hexgridwidth));
+  justify-content: center;
+  justify-items: center;
+}
+
+.hex {
+  display: inline-block;
+  width: var(--hexwidth);
+  height: var(--hexwidth);
+  margin: calc(var(--hexmargin) + 1px);
+  clip-path: polygon(30% 0%, 70% 0%, 100% 50%, 70% 100%, 30% 100%, 0% 50%);
+  background: rgba(0.1,0.1,0.1,0.1);
+  text-align: center;
+  font-size:initial;
+}
+
+.a {
+  background: red;
+  &:hover {
+    background: white;
+  }
+}
+.m {
+  background: dodgerblue;
+  &:hover {
+    background: white;
+  }
+}
+.p {
+  background: green;
+  &:hover {
+    background: white;
+  }
+}
+.b {
+  background: blueviolet;
+  &:hover {
+    background: white;
+  }
+}
+.h {
+  background: goldenrod;
+  &:hover {
+    background: white;
+  }
+}

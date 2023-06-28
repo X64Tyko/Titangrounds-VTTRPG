@@ -1,0 +1,163 @@
+<form class="{{cssClass}}" autocomplete="off">
+    <header class="sheet-header">
+      <img class="profile-img" src="{{item.img}}" data-edit="img" title="{{item.name}}"/>
+      <div class="header-fields">
+        <h1 class="charname"><input name="name" type="text" value="{{item.name}}" placeholder="Name"></h1>
+        <div class="grid grid-3col">
+          <div class="resource">
+            <label class="resource-label">Damage Die</label>
+            <input type="number" name="system.die" value="{{system.die}}" data-dtype="Number">
+          </div>
+          <div class="resource">
+            <label class="resource-label">Damage Bonus</label>
+            <input type="number" name="system.bonus" value="{{system.bonus}}" data-dtype="Number">
+          </div>
+          <div class="resource">
+            <label class="resource-label">Max Sharpness</label>
+            <input type="number" name="system.sharpness.max" value="{{system.sharpness.max}}" data-dtype="Number">
+          </div>
+        </div>
+      </div>
+    </header>
+
+  <div class="item-fixed-header">
+    <div class="grid grid-3col">
+      <div class="resource">
+        <label class="resource-label">Soul Gauge <i class="has-descriptor fa-solid fa-ghost" title="Demon Gauge"></i></label>
+        <div class="grid grid-2col">
+          <input type="number" name="system.resourceBars.soulGague.value" value="{{system.resourceBars.soulGague.value}}" data-dtype="Number">
+          <span class="resource-uneditable"> / {{system.resourceBars.soulGague.max}} </span>
+        </div>
+      </div>
+      <div class="resource">
+        <label class="resource-label">Soul Level <i class="has-descriptor fa-regular fa-gauge" title="is Demon Mode active"></i></label>
+        <div class="grid grid-2col">
+          <input type="number" name="system.resourceBars.soulLevel.value" value="{{system.resourceBars.soulLevel.value}}" data-dtype="Number">
+          <span class="resource-uneditable"> / {{system.resourceBars.soulLevel.max}} </span>
+        </div>
+      </div>
+    </div>
+    {{!-- Sheet Tab Navigation --}}
+    <nav class="sheet-tabs tabs" data-group="primary">
+      <a class="item" data-tab="description">Description</a>
+      {{#if user.isGM}}<a class="item" data-tab="attributes">Attributes</a>{{/if}}
+      <a class="item" data-tab="attacks">Attacks</a>
+    </nav>
+  </div>
+
+  {{!-- Sheet Body --}}
+  <section class="sheet-body">
+
+    {{!-- Description Tab --}}
+    <div class="tab" data-group="primary" data-tab="description">
+      {{!-- To render inline rolls in a TinyMCE editor, you need to pass the parent actor's (if any) roll data to the rollData prop. --}}
+      {{editor system.description target="system.description" rollData=rollData button=true owner=owner editable=editable}}
+    </div>
+
+    {{#if user.isGM}}
+    {{!-- Attributes Tab --}}
+    <div class="tab attributes" data-group="primary" data-tab="attributes">
+      {{!-- As you add new fields, add them in here! --}}
+      <div class="resource">
+        <label class="resource-label">Roll Formula</label>
+        <input type="text" name="system.formula" value="{{system.formula}}" data-dtype="String"/>
+      </div>
+      <div class="resource grid-3col">
+        <div class="resource">
+          <label class="resource-label">Speed</label>
+          <input type="text" name="system.speed" value="{{system.speed}}" data-dtype="String"/>
+        </div>
+        <div class="resource">
+          <label class="resource-label">Scratch</label>
+          <input type="text" name="system.scratch" value="{{system.scratch}}" data-dtype="String"/>
+        </div>
+        <div class="resource">
+          <label class="resource-label">Crit</label>
+          <input type="text" name="system.crit" value="{{system.crit}}" data-dtype="String"/>
+        </div>
+      </div>
+      <div class="resource grid-2col">
+        <div class="resource">
+        <label class="resource-label">Element Type</label>
+        <input type="text" name="system.element.type" value="{{system.element.type}}" data-dtype="String"/>
+        </div>
+        <div class="resource">
+          <label class="resource-label">Element Formula</label>
+        <input type="text" name="system.element.formula" value="{{system.element.formula}}" data-dtype="String"/>
+      </div>
+      </div>
+    </div>
+    {{/if}}
+    
+    {{!-- Attacks Tab --}}
+    <div class="tab" data-group="primary" data-tab="attacks">
+
+      <ol class="attacks-list">
+        {{#each attacks as |attack key|}}
+        <li class="flexrow">
+          <div class="hexCrop" style="--cols: {{attack.attackGridSize}}; --rows: {{attack.attackGridHeight}};">
+            {{#each attack.attackGrid as |gridrow|}}
+            <div class="hex-row">
+              {{#each gridrow}}
+              <div class="hex {{this}}"></div>
+              {{/each}}
+            </div>
+            {{/each}}
+          </div>
+          <div>
+            <div class="attack-data">
+              <div class="attack-header">
+                <div class="attack-name"><h3>{{attack.name}}</h3></div>
+                <h4 class="attack-icon"> {{attack.clock}} <i class="has-descriptor fa-solid fa-stopwatch" title="clock"></i></h4>
+                {{#if attack.rollOut}}
+                <i class="has-descriptor attack-icon fa-solid fa-arrows-spin" title="dodge roll even with clock"></i>
+                {{/if}}
+                {{#if attack.lockedIn}}
+                <i class="has-descriptor attack-icon fa-solid fa-link" title="must continue combo"></i>
+                {{/if}}
+                {{#if attack.charges}}
+                <i class="has-descriptor attack-icon fa-solid fa-bolt" title="attack can be charged"></i>
+                {{/if}}
+                {{#if attack.interrupt}}
+                <i class="has-descriptor attack-icon fa-solid fa-triangle-exclamation" title="attack can interrupt charge"></i>
+                {{/if}}
+              </div>
+              <div class="attack-note">
+                {{breaklines attack.note}}
+              </div>
+              <div class="attack-damage">
+                {{#each attack.damage as |damage|}}
+                <div class="attack-data">
+                  <div class="attack-rollable" data-attack-string="{{attack.stringified}}"  data-damage-values="{{damage.stringValues}}" data-attack-name="{{attack.name}}" data-attack-type="{{attack.damageType}}">
+                    <div class="attack-icon">
+                      {{#if damage.spiritLevel}}
+                      {{damage.spiritLevel}}<i class="has-descriptor fa-solid fa-gauge" title="Minimum Soul Level"></i>
+                      {{/if}}
+                      {{#if damage.spiritGain}}
+                      {{damage.spiritGain}}<i class="has-descriptor fa-solid fa-ghost" title="Soul Gauge Change"></i>
+                      {{/if}}
+                      {{#if damage.spiritLevelGain}}
+                      {{damage.spiritLevelGain}}<i class="has-descriptor fa-regular fa-gauge" title="Soul Level Change"></i>
+                      {{/if}}
+                      {{#if damage.spiritGaugeMin}}
+                      {{damage.spiritGaugeMin}}<i class="has-descriptor fa-regular fa-ghost" title="With at least this much Soul Gauge"></i>
+                      {{/if}}
+                    </div>
+                    <div class="attack-icon">
+                      {{#each damage.values}}
+                      {{this}} - 
+                      {{/each}}
+                      <img class="has-descriptor" src="Icons/SheetIcons/{{attack.damageType}}.png" title="{{attack.damageType}}" height="18" width="18"/>
+                    </div>
+                  </div>
+                </div>
+                {{/each}}
+              </div>
+            </div>
+          </div>
+        </li>
+        {{/each}}
+      </ol>
+    </div>
+  </section>
+</form>

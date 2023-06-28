@@ -1,0 +1,82 @@
+/* ----------------------------------------- */
+/*  parts Lists                              */
+/* ----------------------------------------- */
+
+.parts-list {
+  margin: 0;
+  padding: 5px;
+  overflow-y: scroll;
+  color: $c-tan;
+  
+  .part-data {
+    display: flex;
+    flex-direction: column;
+    background: rgba(0, 0, 0, 0.05);
+    border: $border-groove;
+    .part-header {
+      display: flex;
+      flex-direction: row;
+    }
+    .part-damage {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      gap: 5px;
+      .part-rollable {
+        flex: 1 1 0;
+        text-align: center;
+        padding: 5px;
+        &:hover {
+          background: rgba(255, 0, 0, 0.05);
+        }
+      }
+    }
+    .part-name {
+      flex: 5 1 100%;
+      overflow: hidden;
+      font-size: 14px;
+      text-align: left;
+      h3, h4, h5 {
+        margin: 0;
+        font-weight: bold;
+        white-space: nowrap;
+        overflow-x: hidden;
+      }
+    }
+    .part-icon {
+      flex: 1 1 10%;
+      text-align: center;
+      font-weight: bold;
+      vertical-align: middle;
+    }
+    .has-descriptor {
+      &:hover {
+        text-shadow: 0 0 10px blue;
+      }
+    }
+  }
+}
+.combat-data-list {
+  margin: 0;
+  padding: 5px;
+  overflow-y: scroll;
+  color: $c-tan;
+
+  .combat-data {
+    display: flex;
+    flex-direction: column;
+    background: rgba(0, 0, 0, 0.05);
+    border: $border-groove;
+
+    .combat-data-header {
+      display: grid;
+      grid-column: span 4 / span 4;
+      grid-template-columns: 100px repeat(3, minmax(0, 1fr));
+      gap: 10px;
+    }
+  }
+
+  .combat-round {
+    text-align: right;
+  }
+}

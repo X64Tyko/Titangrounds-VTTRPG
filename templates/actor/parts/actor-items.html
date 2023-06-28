@@ -1,0 +1,52 @@
+<div class="flexrow items-header">
+  <div class="item-name">Weapons</div>
+</div>
+<div class="gridChest chestGrid grid-10col">
+  {{#each weapons as |item id|}}
+  <div class="item item-name weapon-chest" data-item-id="{{item._id}}">
+    <div class="chestGridSlot">
+      <div class="item-image">
+        <img src="{{item.img}}" title="{{item.name}}" width="50" height="50"/>
+        {{#if item.system.equipped}}
+        <i class="fas fa-sword item-inBag"></i>
+        {{/if}}
+      </div>
+    </div>
+  </div>
+  {{/each}}
+</div>
+<div class="flexrow items-header">
+  <div class="item-name">Armor</div>
+</div>
+<div class="gridChest chestGrid grid-10col">
+  {{#each armorChest as |item id|}}
+  <div class="item item-name armor-chest" data-item-id="{{item._id}}">
+    <div class="chestGridSlot">
+      <div class="item-image">
+        <img src="{{item.img}}" title="{{item.name}}" width="50" height="50"/>
+        {{#if item.system.equipped}}
+        <i class="fas fa-sword item-inBag"></i>
+        {{/if}}
+      </div>
+    </div>
+  </div>
+  {{/each}}
+</div>
+<div class="flexrow items-header">
+  <div class="item-name">Items</div>
+</div>
+<div class="gridChest chestGrid grid-10col">
+  {{#each chest as |item id|}}
+  <div class="item item-name item-chest" data-item-id="{{item._id}}">
+    <div class="chestGridSlot">
+      <div class="item-image">
+        <img src="{{item.img}}" title="{{item.name}}" width="50" height="50"/>
+        <div class="item-inBag"> {{item.system.inChest}} </div>
+        {{#if ../inTown}}
+        <div class="item-sale">${{item.system.salePrice}} </div>
+        {{/if}}
+      </div>
+    </div>
+  </div>
+  {{/each}}
+</div>
