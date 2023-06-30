@@ -1,10 +1,10 @@
-<div>
+<div class="attack-roll-card" data-damage-data="{{applyDamageData}}">
     <div>
     {{#if attackName}}
-    <label>{{attackName}}</label>
+    <h2>{{attackName}}</h2>
     {{/if}}
     {{#if flavor}}
-    <div class="dice-flavor">{{flavor}}</div>
+    <h3 class="dice-flavor">{{flavor}}</h3>
     {{/if}}
     </div>
     <div class="dice-roll grid grid-3col">
@@ -38,13 +38,6 @@
                 <h4 class="dice-total">{{elementTotal}} <img src="Icons/SheetIcons/{{elementType}}.png" height="24" width="24"/></h4>
             </div>
             {{/if}}
-        </div>
-    </div>
-    <div class="dice-result">
-        <div class="attack-data">
-            <button type="button" class="apply-damage attack-icon" data-damage-data="{{applyDamageData}}" data-damage-mod="0.5">Apply Half Damage</button>
-            <button type="button" class="apply-damage attack-icon" data-damage-data="{{applyDamageData}}" data-damage-mod="1">Apply Full Damage</button>
-            <button type="button" class="apply-damage attack-icon" data-damage-data="{{applyDamageData}}" data-damage-mod="1.5">Apply Crit Damage</button>
         </div>
     </div>
 </div>

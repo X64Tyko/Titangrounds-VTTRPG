@@ -4,10 +4,6 @@
     <div class="header-fields">
       <h1 class="charname"><input name="name" type="text" value="{{item.name}}" placeholder="Name"/></h1>
       <div class="grid grid-2col">
-        <div class="resource">
-          <label class="resource-label">Sale Price: </label>
-          <label type="text" name="system.weight">{{system.salePrice}}</label>
-        </div>
         {{#if system.highQuality}}
         <div class="resource">
           <label class="resource-label">High Quality <i class="fa-light fa-sparkle fa-spin-pulse"></i></label>

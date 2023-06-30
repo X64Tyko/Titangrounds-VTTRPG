@@ -12,13 +12,15 @@ export class MonHunSysActorSheet extends ActorSheet {
    * @type {string}
    */
   static ATTACKROLL_TEMPLATE = "systems/monhunsys/templates/chat/AttackRoll.html";
+  static ITEM_PURCHASE_TEMPLATE = "systems/monhunsys/templates/chat/PurchaseRequest.html";
+  static ITEM_SALE_TEMPLATE = "systems/monhunsys/templates/chat/SaleCard.html";
 
   /** @override */
   static get defaultOptions() {
     return mergeObject(super.defaultOptions, {
       classes: ["monhunsys", "sheet", "actor"],
       template: "systems/monhunsys/templates/actor/actor-sheet.html",
-      width: 600,
+      width: 800,
       height: 775,
       tabs: [{navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "features"}]
     });
@@ -97,7 +99,7 @@ export class MonHunSysActorSheet extends ActorSheet {
     for (let [k, v] of Object.entries(context.system.skills)) {
       v.label = game.i18n.localize(CONFIG.TITANGROUND.skills[k]) ?? k;
       v.total = v.value + v.bonus + v.temp;
-      v.img = "Icons/SheetIcons/" + k + ".png";
+      v.img = "Icons/SheetIcons/" + k + "skill.png";
     }
     
     // Handle Zoology scores.
@@ -497,7 +499,7 @@ export class MonHunSysActorSheet extends ActorSheet {
       callback: element => {
         let label = "Strength " + element.data("statName");
         let statTotal = Number(element.data("statTotal"));
-        let roll = new Roll(this.statRoll.concat("+", statTotal, "+@abilities.str.total"), this.actor.getRollData());
+        let roll = new Roll(this.statRoll.concat("+", statTotal, "+@str.total"), this.actor.getRollData());
         roll.toMessage({
           speaker: ChatMessage.getSpeaker({actor: this.actor}),
           flavor: label,
@@ -512,7 +514,7 @@ export class MonHunSysActorSheet extends ActorSheet {
       callback: element => {
         let label = "Constitution " + element.data("statName");
         let statTotal = Number(element.data("statTotal"));
-        let roll = new Roll(this.statRoll.concat("+", statTotal, "+@abilities.con.total"), this.actor.getRollData());
+        let roll = new Roll(this.statRoll.concat("+", statTotal, "+@con.total"), this.actor.getRollData());
         roll.toMessage({
           speaker: ChatMessage.getSpeaker({actor: this.actor}),
           flavor: label,
@@ -527,7 +529,7 @@ export class MonHunSysActorSheet extends ActorSheet {
       callback: element => {
         let label = "Spirit " + element.data("statName");
         let statTotal = Number(element.data("statTotal"));
-        let roll = new Roll(this.statRoll.concat("+", statTotal, "+@abilities.spr.total"), this.actor.getRollData());
+        let roll = new Roll(this.statRoll.concat("+", statTotal, "+@spr.total"), this.actor.getRollData());
         roll.toMessage({
           speaker: ChatMessage.getSpeaker({actor: this.actor}),
           flavor: label,
@@ -542,7 +544,7 @@ export class MonHunSysActorSheet extends ActorSheet {
       callback: element => {
         let label = "Intelligence " + element.data("statName");
         let statTotal = Number(element.data("statTotal"));
-        let roll = new Roll(this.statRoll.concat("+", statTotal, "+@abilities.int.total"), this.actor.getRollData());
+        let roll = new Roll(this.statRoll.concat("+", statTotal, "+@int.total"), this.actor.getRollData());
         roll.toMessage({
           speaker: ChatMessage.getSpeaker({actor: this.actor}),
           flavor: label,
@@ -715,6 +717,18 @@ export class MonHunSysActorSheet extends ActorSheet {
       const item = this.actor.items.get(li.data("itemId"));
       item.sheet.render(true);
     });
+    
+    html.find('.request-purchase').click(async ev => {
+      const li = $(ev.currentTarget).parents(".item");
+      const item = this.actor.items.get(li.data("itemId"));
+
+      Dialog.prompt({
+        title: "Buy How Many?",
+        content: '<form><label for=\"quantity\">Num to Purchase </label><input id=\"quantity\" name=\"quantity\" type=\"number\" value="1" min=\"1\" max=\"{{item.system.inBag}}\" data-dtype="Number"></form>',
+        label: "Confirm",
+        callback: (html) => this.onRequestPurchase(html, item)
+      });
+    });
 
     html.find('.inline-edit').change(ev => {
       let element = ev.currentTarget;
@@ -819,6 +833,33 @@ export class MonHunSysActorSheet extends ActorSheet {
     html.find('.m').prop('title', "optional movement to this hex");
     html.find('.b').prop('title', "full damage hex and optional movement to this hex");
     html.find('.h').prop('title', "half damage hex");
+  }
+  
+  async onRequestPurchase(html, item) {
+    var value = Math.min(html.find("input#quantity").val(), item.system.inBag);
+    let chatData = {
+      item: item,
+      user: game.user,
+      shop: this.actor,
+      quantity: value,
+      id: foundry.utils.randomID(16)
+    }
+
+    chatData.purchaseData = JSON.stringify(chatData);
+    
+    // whisper the DM.
+    let itemData = await renderTemplate(this.constructor.ITEM_PURCHASE_TEMPLATE, chatData);
+    const speaker = ChatMessage.getSpeaker({actor: this.actor});
+    const message = await ChatMessage.create({
+      flags: { "purchaseID": chatData.id},
+      speaker: speaker,
+      user: game.user.id,
+      content: itemData,
+      sound: CONFIG.sounds.notification,
+      whisper: ChatMessage.getWhisperRecipients("gm")
+    });
+    
+    message.update({_id: chatData.id});
   }
 
   onUpdateAttackCard(ev) {
@@ -1067,6 +1108,24 @@ export class MonHunSysActorSheet extends ActorSheet {
           "system.inBag": item.system.inBag - 1
         }]
       })
+      
+      let chatData = {
+        item: item,
+        value: Math.round(item.system.cost * 0.72315),
+        user: game.user,
+        shop: this.actor,
+      }
+
+      chatData.purchaseData = JSON.stringify(chatData);
+      let itemData = await renderTemplate(this.constructor.ITEM_SALE_TEMPLATE, chatData);
+      const speaker = ChatMessage.getSpeaker({actor: this.actor});
+      const message = await ChatMessage.create({
+        speaker: speaker,
+        user: game.user.id,
+        content: itemData,
+        sound: CONFIG.sounds.notification,
+        whisper: ChatMessage.getWhisperRecipients("gm")
+      });
     }
 
     var bUpdatedItem = true;

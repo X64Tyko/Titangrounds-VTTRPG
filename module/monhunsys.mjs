@@ -44,15 +44,15 @@ Hooks.once('init', async function() {
    * @type {String}
    */
   CONFIG.Combat.initiative = {
-    formula: "0",
+    formula: null,
     decimals: 2
   };
+  CONFIG.Combat.documentClass = MonHunCombat;
 
   // Define custom Document classes
   CONFIG.Actor.documentClass = MonHunSysActor;
   CONFIG.RollTable.documentClass = AdvRollTable;
   CONFIG.Item.documentClass = MonHunSysItem;
-  CONFIG.Combat.documentClass = MonHunCombat;
   CONFIG.ui.combat = MonHunCombatTracker;
   
 
@@ -166,7 +166,7 @@ Hooks.once("ready", async function() {
 /* -------------------------------------------- */
 /*  Damage buttons                              */
 /* -------------------------------------------- */
-Hooks.on("renderChatMessage", (app, html, data) => Chat.addChatListeners(html));
+Hooks.on("renderChatMessage", (message, html, data) => Chat.addChatListeners(message, html));
 
 /* -------------------------------------------- */
 /*  Drag drop between actor sheet handling                              */

@@ -1,3 +1,20 @@
+.purchase-info {
+  display: flex;
+  flex-direction: row;
+  
+  .right-align {
+    flex: 0 0 3rem;
+  }
+
+  .item-image {
+    flex: 0 0 2rem;
+  }
+
+  .purchase-name {
+    flex: 1 1 100%;
+  }
+}
+
 // Section Header
 .items-header {
   height: 28px;
@@ -233,10 +250,56 @@
       // font-size: 16px;
     }
   }
-}
 
-/* Example style for MonHunSys (can be removed if not needed) */
-.item-formula {
-  flex: 0 0 200px;
-  padding: 0 8px;
+  .store {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    // Store Item
+    .item {
+      width: 15rem;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      margin: 0.1rem 0.25rem; // to align with the header border
+      border: 1px solid $c-faint;
+      border-radius: 1rem;
+      &:last-child { border-bottom: none; }
+      .item-name {
+        color: $c-dark;
+        position: relative;
+        text-align: center;
+        display: flex;
+        flex-direction: row;
+        .item-image {
+          position: relative;
+          text-align: center;
+          flex: 0 0 60px;
+          background-size: 60px;
+          border: none;
+          margin-right: 5px;
+          background-color: rgba(20,20,20,0.1);
+        }
+        .item-inBag {
+          position: absolute;
+          bottom: 1rem;
+          right: 1rem;
+          background-color: rgba(20,20,20,0.2);
+        }
+
+        .item-sale {
+          position: absolute;
+          top: 1rem;
+          left: 1rem;
+          background-color: rgba(20,20,20,0.2);
+        }
+      }
+
+      .item-price {
+        flex: 0 0 3rem;
+        background-color: rgba(20,20,20,0.1);
+      }
+    }
+  }
 }

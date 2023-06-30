@@ -126,6 +126,7 @@ export class MonHunSysActor extends Actor {
     if (data.abilities) {
       for (let [k, v] of Object.entries(data.abilities)) {
         data[k] = foundry.utils.deepClone(v);
+        data[k].total = data[k].value + data[k].bonus + data[k].temp;
       }
     }
 

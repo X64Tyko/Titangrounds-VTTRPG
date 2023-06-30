@@ -19,7 +19,11 @@
       "systems/monhunsys/templates/item/parts/item-effects.html",
       
       // Chat partials
-      "systems/monhunsys/templates/chat/AttackRoll.html",
+    "systems/monhunsys/templates/chat/AttackRoll.html",
+    "systems/monhunsys/templates/chat/AttackRollButtons.html",
+    "systems/monhunsys/templates/chat/PurchaseRequest.html",
+    "systems/monhunsys/templates/chat/PurchaseRequestButtons.html",
+    "systems/monhunsys/templates/chat/SaleCard.html",
       
       // Weapon Partials
       "systems/monhunsys/templates/item/parts/bow-sheet.html",

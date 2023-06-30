@@ -1,12 +1,16 @@
-export function addChatListeners(html) {
-    html.on('click', 'button.apply-damage', applyDamage);
+export async function addChatListeners(message, html) {
+    
+    if (game.user.isGM) {
+        await renderDamageButtons(message, html);
+        await renderPurchaseButtons(message, html);
+    }
 }
-
 async function applyDamage(event) {
     const element = event.currentTarget;
-    const dataset = element.dataset;
+    const attackCard = $(event.currentTarget).parents('.attack-roll-card');
+    const dataset = attackCard[0].dataset;
     const damageData = JSON.parse(dataset.damageData);
-    const damageMod = dataset.damageMod;
+    const damageMod = element.dataset.damageMod;
     
     const tokens = canvas.tokens.controlled;
     
@@ -56,16 +60,19 @@ async function applyDamage(event) {
                 chosenPart.staggerDamage += rawDamage + eleDamage;
                 if (chosenPart.breakDamageType === "Any" || chosenPart.breakDamageType === damageData.damageType)
                     chosenPart.breakDamage += rawDamage;
-                chosenPart.breakDamage += eleDamage;
+                if (chosenPart.breakDamageType === damageData.elementType)
+                    chosenPart.breakDamage += eleDamage;
                 
                 if (chosenPart.staggerDamage >= chosenPart.staggerLimit) {
                     chosenPart.staggerDamage = 0;
                     chosenPart.staggerNum++;
+                    ui.notifications.info(`Staggered ${chosenPart.name}`);
                 }
                 
                 if (chosenPart.breakDamage >= chosenPart.breakLimit && chosenPart.breakNum === 0) {
                     chosenPart.breakDamage = 0;
                     chosenPart.breakNum = 1;
+                    ui.notifications.info(`Broke ${chosenPart.name}`);
                 }
                 
                 if (tokenActor.system.statusData.hasOwnProperty(damageData.elementType.toLowerCase()))
@@ -80,6 +87,7 @@ async function applyDamage(event) {
                         status.value = 0;
                         status.currentLimit = (50 * status.initialRes) + (50 * status.nextRes * Math.min(status.num, status.maxRes));
                         status.roundsRemaining = (status.effectivity + 1) * 2;
+                        ui.notifications.info(`Status ${damageData.elementType} Applied`);
                     }
                     updates[statusID] = status;
                 }
@@ -112,4 +120,51 @@ async function applyDamage(event) {
             }
         }).render(true);
     }
+}
+
+async function renderDamageButtons(message, html) {
+    let damageButtons = await renderTemplate(`systems/monhunsys/templates/chat/AttackRollButtons.html`, {});
+    const elements = html.find('.attack-roll-card').toArray();
+
+    elements.forEach(element => {
+        element = $(element);
+        element.append($(damageButtons));
+    });
+
+    html.find('.apply-damage').click(async ev => {
+        applyDamage(ev)
+    });
+}
+async function renderPurchaseButtons(message, html) {
+    let purcahseButtons = await renderTemplate(`systems/monhunsys/templates/chat/PurchaseRequestButtons.html`, {});
+    const elements = html.find('.purchase-request-card').toArray();
+
+    elements.forEach(element => {
+        element = $(element);
+        element.append($(purcahseButtons));
+    });
+
+    html.find('.accept-purchase').click(async ev => {
+        handlePurchase(message, ev)
+    });
+    html.find('.deny-purchase').click(async ev => {
+        handlePurchase(message, ev)
+    });
+}
+
+async function handlePurchase (message, event) {
+
+    const element = $(event.currentTarget).parents('.purchase-request-card');
+    if (element.length > 1) {
+        ui.notifications.error(`Purchase has multiple requests associated.`);
+        return;
+    }
+    else if (element.length < 1) {
+        ui.notification.error('Purchase data not found on card');
+        return;
+    }
+    const dataset = element[0].dataset;
+    const purchaseData = JSON.parse(dataset.purchaseData);
+    
+    message.delete();
 }
