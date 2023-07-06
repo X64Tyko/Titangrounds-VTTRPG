@@ -405,8 +405,7 @@
           "type": "N/A",
           "strength": 0,
           "formula": "1d4"
-        },
-        "equipped": true
+        }
       }
     },
     "item": {
@@ -474,8 +473,7 @@
       },
       "abilities": {},
       "materials": {},
-      "slot": "none",
-      "equipped": true
+      "slot": "none"
     },
     "greatsword": {
       "templates": ["base", "weapon"],

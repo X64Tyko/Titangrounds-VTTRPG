@@ -22,6 +22,7 @@ export class MonHunSysActorSheet extends ActorSheet {
       template: "systems/monhunsys/templates/actor/actor-sheet.html",
       width: 800,
       height: 775,
+      dragDrop: [{dragSelector: ".item-drag", dropSelector: null}],
       tabs: [{navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "features"}]
     });
   }
@@ -187,7 +188,6 @@ export class MonHunSysActorSheet extends ActorSheet {
     this.healthEditing = false;
     this.sharpEditing = false;
     
-    console.log(updates);
     await this.actor.update(updates);
     this.render(false);
   }
@@ -235,6 +235,10 @@ export class MonHunSysActorSheet extends ActorSheet {
     const chest = [];
     const armorChest = [];
     let armor = {};
+    
+    const equippedWeapon = this.actor.getFlag('monhunsys', 'equippedWeapon');
+    const expandedItem = this.actor.getFlag('monhunsys', 'expandedItem');
+    const inTown = game.settings.get('monhunsys', 'bInTown');
 
     // clear our resistance values so armor can fill it.
     if (this.actor.type == 'character') {
@@ -248,17 +252,16 @@ export class MonHunSysActorSheet extends ActorSheet {
       i.img = i.img || DEFAULT_TOKEN;
       // Append to gear.
       if (i.type === 'item') {
-        if (i.system.inBag <= 0 && i.system.inChest <= 0 && this.actor.type !='npc') {
-          await this.actor.deleteEmbeddedDocuments("Item", [i._id]);
-          continue;
-        }
-        
         gear.push(i);
         i.system.salePrice = Math.round(i.system.cost * 0.72315);
         if (i.system.inBag > 0)
           bag.push(i);
         if (i.system.inChest > 0)
           chest.push(i);
+
+        if (i._id === expandedItem || this.expandBag) {
+          i.expanded = true;
+        }
       }
       // Append to features.
       else if (i.type === 'feature') {
@@ -272,51 +275,27 @@ export class MonHunSysActorSheet extends ActorSheet {
       }
       // Append to weapons.
       else if (i.system.type === 'weapon') {
+        i.equipped = false;
         weapons.push(i);
-        if (i.system.equipped) {
-          this.actor.system.activeWeaponID = i._id;
+        if (i._id === equippedWeapon) {
+          i.equipped = true;
           context.activeWeapon = i;
           context.activeWeapon.attacks = await this.getWeaponAttacks(i);
           context.weaponSpeed = 30 + (5 * Number(i.system.speed));
+          if (i.type === 'bow') {
+            this.updateAmmoData(i);
+            context.activeWeapon.activeAmmoCount = i.system.ammoTypes[i.system.ammo].inBag;
+          }
         }
       }
       else if (i.type === 'armor') {
+        i.equipped = false;
         armorChest.push(i);
-        if (i.system.equipped) {
-          if (i.system.slot === 'head') {
-            armor.head = i;
-            this.actor.system.armorHeadID = i._id;
-            for (let [k, v] of Object.entries(i.system.resistances)) {
-              context.system.resistances[k].value += Number(v.value);
-            }
-          }
-          if (i.system.slot === 'chest') {
-            armor.chest = i;
-            this.actor.system.armorChestID = i._id;
-            for (let [k, v] of Object.entries(i.system.resistances)) {
-              context.system.resistances[k].value += Number(v.value);
-            }
-          }
-          if (i.system.slot === 'hands') {
-            armor.hands = i;
-            this.actor.system.armorHandsID = i._id;
-            for (let [k, v] of Object.entries(i.system.resistances)) {
-              context.system.resistances[k].value += Number(v.value);
-            }
-          }
-          if (i.system.slot === 'waist') {
-            armor.waist = i;
-            this.actor.system.armorWaistID = i._id;
-            for (let [k, v] of Object.entries(i.system.resistances)) {
-              context.system.resistances[k].value += Number(v.value);
-            }
-          }
-          if (i.system.slot === 'legs') {
-            armor.legs = i;
-            this.actor.system.armorLegsID = i._id;
-            for (let [k, v] of Object.entries(i.system.resistances)) {
-              context.system.resistances[k].value += Number(v.value);
-            }
+        if (i._id == this.actor.getFlag('monhunsys', 'equipped' + i.system.slot)) {
+          i.equipped = true;
+          armor[i.system.slot] = i;
+          for (let [k, v] of Object.entries(i.system.resistances)) {
+            context.system.resistances[k].value += Number(v.value);
           }
         }
       }
@@ -325,6 +304,7 @@ export class MonHunSysActorSheet extends ActorSheet {
     // Assign and return
     context.gear = gear;
     context.bag = bag;
+    context.bagSize = bag.length;
     context.chest = chest;
     context.features = features;
     context.spells = spells;
@@ -339,7 +319,18 @@ export class MonHunSysActorSheet extends ActorSheet {
       relativeTo: this.actor
     });
     
-    context.inTown = game.settings.get('monhunsys', 'bInTown');
+    context.inTown = inTown;
+    context.expandBag = this.expandBag;
+  }
+  
+  async updateAmmoData(weapon) {
+    for (let [k,a] of Object.entries(weapon.system.ammoTypes)) {
+      const ammo = this.actor.items.getName(k);
+      if (!ammo) continue;
+      
+      if (ammo.system.inBag > 0)
+        a.inBag = ammo.system.inBag;
+    }
   }
   
   async getWeaponAttacks(weapon) {
@@ -407,22 +398,11 @@ export class MonHunSysActorSheet extends ActorSheet {
         if (!bInTown)
           return;
         const item = this.actor.items.get(element.data("itemId"));
-        let weaponItem = this.actor.items.get(this.actor.system.activeWeaponID);
         var updates = {
-          "system.sharpness.base": item.system.sharpness.max,
-          items: [{
-            _id: item._id,
-            "system.equipped": true
-          }]
+          "system.sharpness.base": item.system.sharpness.max
         };
-        if (weaponItem) {
-          updates.items.push ({
-            _id: this.actor.system.activeWeaponID,
-            "system.equipped": false
-          });
-        }
-        console.log(updates);
         await this.actor.update(updates);
+        await this.actor.setFlag('monhunsys', 'equippedWeapon', item.id);
       }
     }
   ]
@@ -436,58 +416,40 @@ export class MonHunSysActorSheet extends ActorSheet {
         if (!bInTown)
           return;
         const i = this.actor.items.get(element.data("itemId"));
-        var updates = {
-          items: [{
-            _id: i._id,
-            "system.equipped": true
-          }]
-        };
-        if (i.system.slot === 'head') {
-          const oldI = this.actor.items.get(this.actor.system.armorHeadID);
-          if (oldI) {
-            updates.items.push({
-              _id: this.actor.system.armorHeadID,
-              "system.equipped": false
-            });
+        await this.actor.setFlag('monhunsys', 'equipped' + i.system.slot, i._id);
+
+        // Update our ability levels
+        let updates = {};
+        await this.actor.unsetFlag('monhunsys', 'armorAbilityLevels');
+        for (let i of this.actor.items) {
+          if (i.type === 'armor') {
+            i.equipped = false;
+            if (i._id === this.actor.getFlag('monhunsys', 'equipped' + i.system.slot)) {
+              i.equipped = true;
+              for (let [k,a] of Object.entries(i.system.abilities)) {
+                updates[a.name] = (updates[a.name] || 0) + Number(a.level);
+              }
+            }
           }
         }
-        if (i.system.slot === 'chest') {
-          const oldI = this.actor.items.get(this.actor.system.armorChestID);
-          if (oldI) {
-            updates.items.push({
-              _id: this.actor.system.armorHeadID,
-              "system.equipped": false
-            });
+        await this.actor.setFlag('monhunsys', 'armorAbilityLevels', updates);
+      }
+    },
+    {
+      name: "Delete",
+      icon: '<i class="fas fa-trash"></i>',
+      callback: async element => {
+        Dialog.confirm({
+          title: "Delete?",
+          content: "Delete?",
+          label: "Confirm",
+          yes: async (html) => {
+            const item = this.actor.items.get(element.data("itemId"));
+            await item.delete();
+          },
+          no: (html) => {
           }
-        }
-        if (i.system.slot === 'hands') {
-          const oldI = this.actor.items.get(this.actor.system.armorHandsID);
-          if (oldI) {
-            updates.items.push({
-              _id: this.actor.system.armorHeadID,
-              "system.equipped": false
-            });
-          }
-        }
-        if (i.system.slot === 'waist') {
-          const oldI = this.actor.items.get(this.actor.system.armorWaistID);
-          if (oldI) {
-            updates.items.push({
-              _id: this.actor.system.armorHeadID,
-              "system.equipped": false
-            });
-          }
-        }
-        if (i.system.slot === 'legs') {
-          const oldI = this.actor.items.get(this.actor.system.armorLegsID);
-          if (oldI) {
-            updates.items.push({
-              _id: this.actor.system.armorHeadID,
-              "system.equipped": false
-            });
-          }
-        }
-        await this.actor.update(updates);
+        });
       }
     }
   ]
@@ -806,6 +768,21 @@ export class MonHunSysActorSheet extends ActorSheet {
       this.sharpEditing = !this.sharpEditing;
       this.render(false);
     });
+    html.find(".expand-bag").click(ev => {
+      this.expandBag = !this.expandBag;
+      this.render(false);
+    });
+    html.find(".item-expand").click(async ev => {
+      const li = $(ev.currentTarget).parents(".item");
+      const item = this.actor.items.get(li.data("itemId"));
+      if (this.actor.getFlag('monhunsys', 'expandedItem') === item.id) {
+        await this.actor.unsetFlag('monhunsys', 'expandedItem');
+      }
+      else {
+        await this.actor.setFlag('monhunsys', 'expandedItem', item.id);
+      }
+      this.render(false);
+    });
 
     // Rollable abilities.
     html.find('.rollable').click(this._onRoll.bind(this));
@@ -862,20 +839,20 @@ export class MonHunSysActorSheet extends ActorSheet {
     message.update({_id: chatData.id});
   }
 
-  onUpdateAttackCard(ev) {
+  async onUpdateAttackCard(ev) {
     const el = $(ev.currentTarget).parents(".attack-block");
     const chainID = el.data("chainId");
     const current = this.actor.getFlag('monhunsys', chainID + 'expanded');
-    this.actor.setFlag('monhunsys', chainID + 'expanded', !current);
+    await this.actor.setFlag('monhunsys', chainID + 'expanded', !current);
     
     return false;
   }
 
-  onUpdatAttackChainState(ev) {
+  async onUpdatAttackChainState(ev) {
     const el = $(ev.currentTarget).parents(".attack-block");
     const chainID = el.data("chainId");
     const current = this.actor.getFlag('monhunsys', chainID);
-    this.actor.setFlag('monhunsys', chainID, !current);
+    await this.actor.setFlag('monhunsys', chainID, !current);
   }
 
   /**
@@ -940,17 +917,18 @@ export class MonHunSysActorSheet extends ActorSheet {
   async _updateObject(event, formData) {
     if ( !this.object.id ) return;
     const updateKeys = Object.keys(formData).sort();
-
+    
+    const equippedWeapon = this.actor.getFlag('monhunsys', 'equippedWeapon');
     let weaponID = undefined;
     for (let i of this.actor.items) {
       if (i.system.type === 'weapon') {
-        if (i.system.equipped) {
+        if (i._id === equippedWeapon) {
           weaponID = i._id;
           break;
         }
       }
     }
-
+    
     if (weaponID !== undefined) {
       for (let i = 0; i < updateKeys.length; ++i) {
         let key = updateKeys[i];
@@ -997,99 +975,12 @@ export class MonHunSysActorSheet extends ActorSheet {
     const item = await Item.implementation.fromDropData(data);
     const itemData = item.toObject();
 
-    if (this.actor.type == "character") {
-      if (itemData.system.type == "weapon") {
-        let weaponItem = this.actor.items.get(this.actor.system.activeWeaponID);
-        var updates = {
-          "system.sharpness.base": itemData.system.sharpness.max
-        };
-        if (weaponItem) {
-          updates['items'] = [{
-            _id: this.actor.system.activeWeaponID,
-            "system.equipped": false
-          }]
-        }
-        console.log(updates);
-        await this.actor.update(updates);
-        itemData.system.equipped = true;
-      }
-      if (itemData.type == "item") {
-        const ItemHandled = await this._onDroppedItem(event, item, itemData);
-        if (ItemHandled) {
-          return;
-        }
-      }
-      if (itemData.type == "armor") {
-        const slot = itemData.system.slot;
-        if (itemData.system.slot === 'head') {
-          let armorItem = this.actor.items.get(this.actor.system.armorHeadID);
-          if (armorItem) {
-            var updates = {
-              items: [{
-                _id: this.actor.system.armorHeadID,
-                "system.equipped": false
-              }]
-            };
-            await this.actor.update(updates);
-          }
-        }
-        if (itemData.system.slot === 'chest') {
-          let armorItem = this.actor.items.get(this.actor.system.armorChestID);
-          if (armorItem) {
-            var updates = {
-              items: [{
-                _id: this.actor.system.armorChestID,
-                "system.equipped": false
-              }]
-            };
-            await this.actor.update(updates);
-          }
-        }
-        if (itemData.system.slot === 'hands') {
-          let armorItem = this.actor.items.get(this.actor.system.armorHandsID);
-          if (armorItem) {
-            var updates = {
-              items: [{
-                _id: this.actor.system.armorHandsID,
-                "system.equipped": false
-              }]
-            };
-            await this.actor.update(updates);
-          }
-        }
-        if (itemData.system.slot === 'waist') {
-          let armorItem = this.actor.items.get(this.actor.system.armorWaistID);
-          if (armorItem) {
-            var updates = {
-              items: [{
-                _id: this.actor.system.armorWaistID,
-                "system.equipped": false
-              }]
-            };
-            await this.actor.update(updates);
-          }
-        }
-        if (itemData.system.slot === 'legs') {
-          let armorItem = this.actor.items.get(this.actor.system.armorLegsID);
-          if (armorItem) {
-            var updates = {
-              items: [{
-                _id: this.actor.system.armorLegsID,
-                "system.equipped": false
-              }]
-            };
-            await this.actor.update(updates);
-            itemData.system.equipped = true;
-          }
-        }
-      }
-    } else if (this.actor.type == 'shop') {
+    if (this.actor.type == 'shop' && this.actor.uuid !== item.parent?.uuid) {
       if (itemData.type == "item") {
         const ItemHandled = await this._sellDropItem(event, item, itemData);
-        if (ItemHandled) {
-          return;
-        }
+        if (ItemHandled) return false;
       }
+      else return false; // can't sell non-item, so we don't want the shop creating any weird shit
     }
 
     // Handle item sorting within the same Actor
@@ -1132,63 +1023,12 @@ export class MonHunSysActorSheet extends ActorSheet {
     const actorItem = this.actor.items.getName(itemData.name);
     if (actorItem != null) {
       await actorItem.update({"system.inBag": actorItem.system.inBag + 1});
-      this.render(false);
     } else {
       itemData.system.inBag = 1;
       itemData.system.inChest = 0;
       bUpdatedItem = false;
     }
     return bUpdatedItem;
-  }
-
-  async _onDroppedItem(event, item, itemData) {
-
-    // we're not giving ourselves extra items.
-    if (item.actor == this.actor)
-      return true;
-    
-    let isBagDrop = false;
-    let isChestDrop = false;
-    let target = event.target;
-    do {
-      if (target.classList.contains("BagDrop")) {
-        isBagDrop = true;
-        break;
-      } else if (target.classList.contains("ChestDrop")) {
-        isChestDrop = true;
-        break;
-      }
-      target = target.parentNode;
-    } while (target && !isBagDrop && !isChestDrop);
-
-    if (isBagDrop || isChestDrop) {
-      const contextData = await this.getData();
-      if (isBagDrop && contextData.bag.length > 23) {
-        console.log("Bag Full");
-        return true;
-      } else {
-        const actorItem = this.actor.items.getName(itemData.name);
-        if (actorItem) {
-          if (isBagDrop && actorItem.system.inBag < actorItem.system.stackSize) {
-            await actorItem.update({"system.inBag": actorItem.system.inBag + 1});
-            return true;
-          } else if (isBagDrop) {
-            ui.notifications.info("Bag is Full");
-            return true;
-          } else {
-            await actorItem.update({"system.inChest": actorItem.system.inChest + 1});
-            return true;
-          }
-        }
-        if (isBagDrop) {
-          itemData.system.inBag = 1;
-        } else {
-          itemData.system.inChest = 1;
-        }
-      }
-    }
-
-    return false;
   }
 
   async _onPartCreate(event) {
@@ -1306,7 +1146,6 @@ export class MonHunSysActorSheet extends ActorSheet {
 
     const context = await this.getData();
     const item = context.activeWeapon;
-    console.log(options);
     const attackStringObj = JSON.parse(options.attackString);
 
     // Initialize chat data.

@@ -1,4 +1,7 @@
 import {processTakeDamageButton} from "../monhunsys.mjs";
+import {TITANGROUND} from "../helpers/config.mjs";
+import {TITANGROUND_WEAPONS} from "../helpers/config-weapon-data.mjs";
+import {TITANGROUND_ARMOR} from "../helpers/config-armor-data.mjs";
 
 /**
  * Extend the basic Item with some very simple modifications.
@@ -25,9 +28,19 @@ static TOOLTIP_TEMPLATE = "systems/monhunsys/templates/dice/hitTooltip.html";
     // As with the actor class, items are documents that can have their data
     // preparation methods overridden (such as prepareBaseData()).
     super.prepareData();
-    
-    this.QiB = this.system.inBag;
   }
+
+    prepareDerivedData() {
+        const itemData = this;
+        
+        if (itemData.type === "bow") {
+            itemData.system.ammoTypes = TITANGROUND_WEAPONS.arrowTypes;
+        }
+        
+        if (itemData.type === "armor") {
+            itemData.system.allSlots = TITANGROUND_ARMOR.armorSlots;
+        }
+    }
 
   /**
    * Prepare a data object which is passed to any Roll formulas which are created related to this Item

@@ -1,0 +1,25 @@
+/* ----------------------------------------- */
+/*  ability css                              */
+/* ----------------------------------------- */
+
+.add-ability {
+  padding: 0.2rem;
+  margin: 0.2rem;
+  background: #c9c7b8;
+  border: 2px solid rgba(20, 20, 20, 0.8);
+  border-radius: 5%;
+}
+
+.ability-block {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 0.2rem 0;
+  .ability-level-label {
+    margin-left: 0.2rem;
+    font-size: 1.2rem;
+  }
+  .ability-level {
+    flex: 0 1 2rem;
+  }
+}

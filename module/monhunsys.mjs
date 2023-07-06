@@ -127,7 +127,6 @@ Handlebars.registerHelper('toLowerCase', function(str) {
 });
 
 Handlebars.registerHelper('weaponPartial', function(context, options) {
-  console.log(context);
   switch (context.data.root.item.type) {
     case "bow": return 'systems/monhunsys/templates/item/parts/bow-sheet.html'
   }

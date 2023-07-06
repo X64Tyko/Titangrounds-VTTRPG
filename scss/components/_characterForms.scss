@@ -1,0 +1,185 @@
+.character-header {
+  display: block;
+  overflow-y: auto;
+  border-bottom: 8px solid #bbb;
+  border-radius: 5px;
+  
+  .icon {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 10%;
+    
+    .reset {
+      text-align: center;
+    }
+  }
+  
+  .noncombat-stats {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 90%;
+    h1 {
+      flex-basis: 75%;
+      font-size: 2rem;
+      * {
+        height: 95%;
+      }
+    }
+  }
+  
+  .bank {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    label {
+      font-size: 1.2rem;
+      text-align: right;
+      flex:0 2 3rem;
+      padding: 2px;
+    }
+    input {
+      flex-basis: 3rem;
+    }
+    
+    .spacer {
+      flex-basis: 1rem;
+    }
+  }
+}
+
+.character-data {
+  position: sticky;
+  background-image: url("../../../../Textures/parchment.jpg");
+  top: -10px;
+  z-index: 101;
+  padding: 10px;
+  border-bottom: 8px solid #bbb;
+  border-radius: 5px;
+  
+  .stats {
+    display: flex;
+    flex-direction: row;
+  }
+}
+
+.sheet-body,
+.sheet-body .tab,
+.sheet-body .tab .editor {
+  overflow-y: hidden;
+  height: auto;
+  bottom: 5px;
+}
+
+.shop-body {
+  height: 100%;
+  bottom: 5px;
+}
+
+.features-tab {
+  display: grid;
+  grid-column: span 4 / span 4;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  margin: 10px 0;
+  padding: 0;
+}
+
+.bag {
+  bottom: 5px;
+  overflow-y: scroll;
+  border-right: #222222;
+
+  .bag-title-row {
+    display: flex;
+    height: 28px;
+    margin: 2px 0;
+    padding: 0;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.05);
+    border: $border-groove;
+    font-weight: bold;
+    > * {
+      font-size: 1.1rem;
+      text-align: center;
+    }
+    .item-name {
+      padding-left: 5px;
+      text-align: left;
+      flex: 0 0 50%;
+    }
+    .bag-capacity {
+      padding-right: 5px;
+      text-align: right;
+      flex: 0 0 50%
+    }
+  }
+
+  .bag-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 0;
+    padding: 0;
+
+    .item {
+      --flex-size: 45%;
+      flex: 0 0 var(--flex-size);
+      display: flex;
+      flex-direction: column;
+      border: 1px solid #222222;
+      border-radius: 0.5rem;
+      
+      .itemrow {
+        flex-basis: 100%;
+        padding: 0.1rem 0.25rem; // to align with the header border
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        
+        .item-image {
+          position: relative;
+          text-align: center;
+          flex: 0 0 60px;
+          background-size: 60px;
+          border: none;
+          background-color: rgba(20, 20, 20, 0.1);
+        }
+
+        .item-data {
+          flex-grow: 1;
+          display: flex;
+          flex-direction: column;
+          margin-left: 5px;
+
+          .item-name {
+            flex: 1 0 100%;
+          }
+
+          .item-price {
+            flex: 1 1 10%;
+            padding: 0 0.25rem;
+            background-color: rgba(20, 20, 20, 0.1);
+            border: solid rgba(20, 20, 20, 0.1);
+            border-radius: 0.5rem;
+          }
+
+          .item-quantity {
+            flex: 1 1 20%;
+            text-align: right;
+            padding-right: 5px;
+            font-size: 1.2rem;
+            padding: 0.25rem;
+          }
+        }
+      }
+      
+      .inline-description {
+        padding: 5px;
+        text-align: center;
+        font-size: 0.8rem;
+      }
+    }
+  }
+}

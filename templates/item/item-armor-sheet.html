@@ -9,8 +9,8 @@
   {{!-- Sheet Tab Navigation --}}
   <nav class="sheet-tabs tabs" data-group="primary">
     <a class="item" data-tab="description">Description</a>
-    <a class="item" data-tab="attributes">Attributes</a>
     {{#if user.isGM}}
+    <a class="item" data-tab="attributes">Attributes</a>
     <a class="item" data-tab="effects">effects</a>
     {{/if}}
   </nav>
@@ -24,10 +24,21 @@
       {{editor system.description target="system.description" rollData=rollData button=true owner=owner editable=editable}}
     </div>
 
+    {{#if user.isGM}}
     {{!-- Attributes Tab --}}
     <div class="tab attributes" data-group="primary" data-tab="attributes">
       {{!-- As you add new fields, add them in here! --}}
-      {{#if user.isGM}}
+      <div>
+        <!--<input name="system.slot" type="text" value="{{system.slot}}" placeholder="Slot"/>-->
+        <select class="select-slot render-update" name="system.slot" data-type="String">
+          {{#select system.slot}}
+          {{#each system.allSlots as |slot key|}}
+          <option value="{{slot}}">{{slot}}</option>
+          {{/each}}
+          {{/select}}
+        </select>
+      </div>
+      
       <div class="resistances flexcol">
         <div class="flexrow items-header resistance-edit"><label for="abilities flexcol">Resistances</label></div>
         <div class="abilities grid grid-2col">
@@ -41,15 +52,25 @@
           {{/each}}
         </div>
       </div>
+      
       <div>
-        <input name="system.slot" type="text" value="{{system.slot}}" placeholder="Slot"/>
+        <a class="add-ability">Add Ability</a> 
+        {{#each system.abilities as |ability key|}}
+        <div class="ability-block" data-ability-id="{{key}}">
+          <input type="string" name="system.abilities.{{key}}.name" value="{{ability.name}}"/>
+          <label class="ability-level-label" for="system.abilities.{{key}}.level" > Lv.</label><input class="ability-level" type="number" name="system.abilities.{{key}}.level" value="{{ability.level}}" data-dtype="number"/>
+          <div class="item-controls">
+            <a class="item-control ability-delete" title="Delete Ability"><i class="fas fa-trash"></i></a>
+          </div>
+        </div>
+        {{/each}}
       </div>
-      {{/if}}
     </div>
 
     {{!-- Active Effects Tab --}}
     <div class="tab effects flexcol" data-group="primary" data-tab="effects">
       {{> "systems/monhunsys/templates/item/parts/item-effects.html"}}
     </div>
+    {{/if}}
   </section>
 </form>

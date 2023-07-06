@@ -44,7 +44,7 @@ export class MonHunSysActor extends Actor {
   /**
    * Prepare Character type specific data
    */
-  _prepareCharacterData(actorData) {
+  async _prepareCharacterData(actorData) {
     if (actorData.type !== 'character') return;
 
     // Make modifications to data here. For example:
@@ -150,6 +150,46 @@ export class MonHunSysActor extends Actor {
     if (this.type !== 'npc') return;
 
     // Process additional NPC data here.
+  }
+  
+  async createEmbeddedDocuments(embeddedName, data, context) {
+    let removeEntries = [];
+    let itemUpdates = [];
+    
+    if (this.type === "character") {
+      if (embeddedName === "Item") {
+        for (let [k, item] of Object.entries(data)) {
+          let itemID = item?._id;
+          if (!itemID) continue;
+
+          let ownedItem = this.items.getName(item?.name);
+          if (!ownedItem) {
+            item.system.inBag = Math.max(1, item.system.inBag);
+            continue;
+          }
+
+          if (ownedItem.type === "item") {
+            removeEntries.push(k);
+            itemUpdates.push({
+              _id: ownedItem._id,
+              "system.inBag": ownedItem.system.inBag + 1
+            });
+          }
+        }
+      }
+    }
+    
+    if (itemUpdates.length > 0) {
+      const update = {
+        items: itemUpdates
+      }
+      this.update(update);
+    }
+    
+    if (removeEntries.length > 0)
+      return;
+    
+    super.createEmbeddedDocuments(embeddedName, data, context);
   }
 
 }

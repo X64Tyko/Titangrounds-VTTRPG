@@ -1,101 +1,89 @@
-<form class="{{cssClass}}" autocomplete="off">
+<form class="{{cssClass}} {{actor.type}} flexcol" autocomplete="off">
 
   {{!-- Sheet Header --}}
-  <header class="character-header">
-    <div class="sheet-header">
-      <div class="icon">
-        <img class="" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="100" width="100"/>
-        <a class="reset reset-button">Reset Sheet</a>
-      </div>
-      <div class="noncombat-stats">
-        <h1><input name="name" type="text" value="{{actor.name}}" placeholder="Name"/></h1>
-        <div class="bank">
-          <label for="system.money">Shells: </label><input type="text" name="system.money" value="{{system.money}}" max="{{system.money}}" data-dtype="Number"/>
-          <div class="spacer"></div>
-          <label for="system.qi">Qi: </label><input type="text" name="system.qi" value="{{system.qi}}" max="{{system.qi}}" data-dtype="Number"/>
+  <header class="sheet-header">
+    <div class="profile-block">
+      <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="100" width="100"/>
+      <div class="reset reset-button">Reset Sheet</div>
+    </div>
+    <div class="header-fields">
+      <h1 class="charname"><input name="name" type="text" value="{{actor.name}}" placeholder="Name"/></h1>
+      {{!-- The grid classes are defined in scss/global/_grid.scss. To use,
+      use both the "grid" and "grid-Ncol" class where "N" can be any number
+      from 1 to 12 and will create that number of columns.  --}}
+      <div class="resources grid grid-4col">
+
+        {{!-- "flex-group-center" is also defined in the _grid.scss file
+        and it will add a small amount of padding, a border, and will
+        center all of its child elements content and text. --}}
+        <div class="resource flex-group-center">
+          <label for="system.health.value" class="resource-label health-edit">Health {{#if healthEditing}}<i class="fas fa-chevron-up resource-justify-right"></i>{{else}}<i class="fas fa-chevron-down resource-justify-right"></i>{{/if}}</label>
+          <div class="resource-content flexrow flex-center flex-between">
+            {{#if healthEditing}}
+            <label class="resource-light-label">Base<input type="number" name="system.health.base" value="{{system.health.base}}" data-dtype="Number"/></label>
+            <label class="resource-light-label">Bonus<input type="number" name="system.health.bonus" value="{{system.health.bonus}}" data-dtype="Number"/></label>
+            <label class="resource-light-label">Temp<input type="number" name="system.health.temp" value="{{system.health.temp}}" data-dtype="Number"/></label>
+            {{else}}
+            <input class="render-update" type="text" name="system.health.value" value="{{system.health.value}}" max="{{system.health.max}}" data-dtype="Number"/>
+            <span class="resource-uneditable"> / {{system.health.max}}</span>
+            {{/if}}
+          </div>
         </div>
-  
+
+        <div class="resource flex-group-center">
+          <label for="system.sharpness.value" class="resource-label sharp-edit">Sharpness {{#if sharpEditing}}<i class="fas fa-chevron-up resource-justify-right"></i>{{else}}<i class="fas fa-chevron-down resource-justify-right"></i>{{/if}}</label>
+          <div class="resource-content flexrow flex-center flex-between">
+            {{#if sharpEditing}}
+            <label class="resource-light-label">Bonus<input type="number" name="system.sharpness.bonus" value="{{system.sharpness.bonus}}" data-dtype="Number"/></label>
+            <label class="resource-light-label">Temp<input type="number" name="system.sharpness.temp" value="{{system.sharpness.temp}}" data-dtype="Number"/></label>
+            {{else}}
+            <input class="resource-sharpness render-update" style="--sharpness-color: {{system.sharpness.color}};" type="number" name="system.sharpness.value" value="{{system.sharpness.value}}" min="0" max="{{system.sharpness.max}}" data-dtype="Number"/>
+            <span class="resource-sharpness-uneditable" style="--sharpness-color: {{system.sharpness.maxColor}};"><div class="center"> / {{system.sharpness.max}}</div></span>
+            {{/if}}
+          </div>
+        </div>
+
+        <div class="resource flex-group-center">
+          <label for="system.stamina.value" class="resource-label">Stamina</label>
+          <div class="resource-content flexrow flex-center flex-between">
+            <input type="text" name="system.stamina.value" value="{{system.stamina.value}}" data-dtype="Number"/>
+            <span class="resource-uneditable"> / {{system.stamina.max}} </span>
+            <input class="render-update" type="number" name="system.stamina.mod" value="{{system.stamina.mod}}" data-dtype="Number"/>
+          </div>
+        </div>
+
+        <div class="resource flex-group-center">
+          <label for="system.clock" class="resource-label">Clock</label>
+          <div class="resource-content flexrow flex-center flex-between">
+            <input type="number" name="system.clock" value="{{system.clock}}" data-dtype="Number"/>
+          </div>
+        </div>
+
       </div>
     </div>
   </header>
-  <div class="character-data">
 
-    <section class="grid grid-4col">
-      <div class="resource flex-group-center">
-        <label for="system.health.value" class="resource-label health-edit">Health {{#if healthEditing}}<i class="fas fa-chevron-up resource-justify-right"></i>{{else}}<i class="fas fa-chevron-down resource-justify-right"></i>{{/if}}</label>
-        <div class="resource-content flexrow flex-center flex-between">
-          {{#if healthEditing}}
-          <label class="resource-light-label">Base<input type="number" name="system.health.base" value="{{system.health.base}}" data-dtype="Number"/></label>
-          <label class="resource-light-label">Bonus<input type="number" name="system.health.bonus" value="{{system.health.bonus}}" data-dtype="Number"/></label>
-          <label class="resource-light-label">Temp<input type="number" name="system.health.temp" value="{{system.health.temp}}" data-dtype="Number"/></label>
-          {{else}}
-          <input class="render-update" type="text" name="system.health.value" value="{{system.health.value}}" max="{{system.health.max}}" data-dtype="Number"/>
-          <span class="resource-uneditable"> / {{system.health.max}}</span>
-          {{/if}}
-        </div>
-      </div>
-
-      <div class="resource flex-group-center">
-        <label for="system.sharpness.value" class="resource-label sharp-edit">Sharpness {{#if sharpEditing}}<i class="fas fa-chevron-up resource-justify-right"></i>{{else}}<i class="fas fa-chevron-down resource-justify-right"></i>{{/if}}</label>
-        <div class="resource-content flexrow flex-center flex-between">
-          {{#if sharpEditing}}
-          <label class="resource-light-label">Bonus<input type="number" name="system.sharpness.bonus" value="{{system.sharpness.bonus}}" data-dtype="Number"/></label>
-          <label class="resource-light-label">Temp<input type="number" name="system.sharpness.temp" value="{{system.sharpness.temp}}" data-dtype="Number"/></label>
-          {{else}}
-          <input class="resource-sharpness render-update" style="--sharpness-color: {{system.sharpness.color}};" type="number" name="system.sharpness.value" value="{{system.sharpness.value}}" min="0" max="{{system.sharpness.max}}" data-dtype="Number"/>
-          <span class="resource-sharpness-uneditable" style="--sharpness-color: {{system.sharpness.maxColor}};"><div class="center"> / {{system.sharpness.max}}</div></span>
-          {{/if}}
-        </div>
-      </div>
-
-      <div class="resource flex-group-center">
-        <label for="system.stamina.value" class="resource-label">Stamina</label>
-        <div class="resource-content flexrow flex-center flex-between">
-          <input type="text" name="system.stamina.value" value="{{system.stamina.value}}" data-dtype="Number"/>
-          <span class="resource-uneditable"> / {{system.stamina.max}} </span>
-          <input class="render-update" type="number" name="system.stamina.mod" value="{{system.stamina.mod}}" data-dtype="Number"/>
-        </div>
-      </div>
-
-      <div class="resource flex-group-center">
-        <label for="system.clock" class="resource-label">Clock</label>
-        <div class="resource-content flexrow flex-center flex-between">
-          <input type="number" name="system.clock" value="{{system.clock}}" data-dtype="Number"/>
-        </div>
-      </div>
-    </section>
-
-    {{!-- Sheet Tab Navigation --}}
-    <nav class="sheet-tabs tabs" data-group="primary">
-      {{!-- Default tab is specified in actor-sheet.mjs --}}
-      <a class="item" data-tab="description">Description</a>
-      <a class="item" data-tab="features">Features</a>
-      <a class="item" data-tab="stats">Stats</a>
-      <a class="item" data-tab="items">Chest</a>
-    </nav>
-  </div>
+  {{!-- Sheet Tab Navigation --}}
+  <nav class="sheet-tabs tabs" data-group="primary">
+    {{!-- Default tab is specified in actor-sheet.mjs --}}
+    <a class="item" data-tab="features">Features</a>
+    <a class="item" data-tab="description">Description</a>
+    <a class="item" data-tab="items">Chest</a>
+    <a class="item" data-tab="effects">Effects</a>
+  </nav>
 
   {{!-- Sheet Body --}}
   <section class="sheet-body">
 
     {{!-- Owned Features Tab --}}
     <div class="tab features" data-group="primary" data-tab="features">
-      <section class="features-tab">
-
-        {{!-- For the main weapons list, span the right two columns --}}
-          {{!-- This is a Handlebars partial. They're stored in the `/parts` folder next to this sheet, and defined in module/helpers/templates.mjs --}}
-          {{> "systems/monhunsys/templates/actor/parts/actor-features.html"}}
-      </section>
-    </div>
-
-
-    <div class="tab stats" data-group="primary" data-tab="stats">
       <section class="grid grid-4col">
+        <aside class="sidebar">
 
           {{!-- The grid classes are defined in scss/global/_grid.scss. To use,
           use both the "grid" and "grid-Ncol" class where "N" can be any number
           from 1 to 12 and will create that number of columns.  --}}
-          <div class="abilities grid-span-4 flexcol">
+          <div class="abilities flexcol">
             <div class="flexrow items-header ability-edit"><label for="abilities flexcol">Abilities</label>{{#if abilityEditing}}<i class="fas fa-chevron-up resource-justify-right"></i>{{else}}<i class="fas fa-chevron-down resource-justify-right"></i>{{/if}}</div>
             <div class="abilities grid grid-4col">
               {{#each system.abilities as |ability key|}}
@@ -193,6 +181,13 @@
               {{/each}}
             </div>
           </div>
+        </aside>
+
+        {{!-- For the main weapons list, span the right two columns --}}
+        <div class="main grid-span-3 BagDrop">
+          {{!-- This is a Handlebars partial. They're stored in the `/parts` folder next to this sheet, and defined in module/helpers/templates.mjs --}}
+          {{> "systems/monhunsys/templates/actor/parts/actor-features.html"}}
+        </div>
       </section>
     </div>
 

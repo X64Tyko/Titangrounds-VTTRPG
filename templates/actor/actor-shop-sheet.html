@@ -9,41 +9,25 @@
   </header>
 
   {{!-- Sheet Body --}}
-  <section class="sheet-body ItemSale items-list">
+  <section class="sheet-body ItemSale bag">
 
-    <ol class="store">
-    <!--<div class="gridChest chestGrid grid-2col">-->
+    <ol class="bag-list">
       {{#each gear as |item id|}}
-      <!--<div class="item item-name item-bag" data-item-id="{{item._id}}">
-        <div class="chestGridSlot">
-          <div class="item-image">
-            <img src="{{item.img}}" title="{{item.name}}" width="50" height="50"/>
-            <div class="item-inBag"> {{item.system.inBag}} </div>
-            {{#if ../inTown}}
-            <div class="item-sale">${{item.system.cost}} </div>
-            {{/if}}
-          </div>
-        </div>
-      </div>-->
-
-      <li class="item item-bag" data-item-id="{{item._id}}">
-        <div class="item-name">
-          <div class="item-image">
-            <a class="request-purchase" data-roll-type="item"><img src="{{item.img}}" width="60" height="60"/></a>
-          </div>
-          <div class="item-data flexcol">
-            <div class="item-name item-edit flexrow">
+      <li class="item item-bag" style="--flex-size: 15rem;" data-item-id="{{item._id}}">
+        <div class="itemrow">
+          <a class="item-image request-purchase" data-roll-type="item"><img src="{{item.img}}" width="60" height="60"/></a>
+          <div class="item-data">
+            <div class="item-name">
               <h3><b>{{item.name}}</b></h3>
             </div>
-            <div class="item-data flexrow">
+            <div class="flexrow">
               <h3 class="item-price"><sup>$</sup><b>{{item.system.cost}}</b></h3>
-              <h4>For Sale: {{item.system.inBag}}</h4>
+              <h4 class="item-quantity">{{item.system.inBag}}</h4>
             </div>
           </div>
         </div>
       </li>
       {{/each}}
-    <!--</div>-->
     </ol>
   </section>
 </form>

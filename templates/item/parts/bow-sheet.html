@@ -10,7 +10,13 @@
     <div class="resource">
       <label class="resource-label">Active Ammo <i class="has-descriptor fa-solid fa-bone-break" title="Power Charge Active"></i></label>
       <div class="resource grid-2col">
-        <input type="text" name="activeWeapon.system.ammo" value="{{system.ammo}}">
+        <select class="select-ammo" name="system.ammo" data-type="String">
+          {{#select system.ammo}}
+            {{#each system.ammoTypes as |ammo key|}}
+            <option value="{{key}}">{{key}}</option>
+            {{/each}}
+          {{/select}}
+        </select>
       </div>
     </div>
   </div>

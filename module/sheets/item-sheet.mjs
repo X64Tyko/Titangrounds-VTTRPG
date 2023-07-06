@@ -45,7 +45,6 @@ export class MonHunSysItemSheet extends ItemSheet {
       this._prepareArmorData(context);
     
     // Prepare active effects
-    console.log(this);
     context.effects = prepareActiveEffectCategories(this.item.effects);
 
     // Retrieve the roll data for TinyMCE editors.
@@ -108,6 +107,31 @@ export class MonHunSysItemSheet extends ItemSheet {
     html.find('.m').prop('title', "optional movement to this hex");
     html.find('.b').prop('title', "full damage hex and optional movement to this hex");
     html.find('.h').prop('title', "half damage hex");
+    
+    html.find('.add-ability').click(this.onAddAbility.bind(this));
+    html.find('.ability-delete').click(async (ev) => {
+      const li = $(ev.currentTarget).parents(".ability-block");
+      const idx = li.data("abilityId");
+      const updateString = 'system.abilities.-=' + idx;
+      this.item.update({[updateString]: null});
+      this.render(false);
+    });
+  }
+  
+  async onAddAbility(event) {
+    let currentAbilities = foundry.utils.deepClone(this.item.system.abilities);
+    const abilityKeys = Object.keys(currentAbilities).sort();
+    let newAbilityKey = "ability" + abilityKeys.length;
+    for (let i = 0; i < currentAbilities.length; ++i) {
+      if (abilityKeys[i] !== ("ability" + i)) {
+        newAbilityKey = "ability" + i;
+        break;
+      }
+    }
+    
+    currentAbilities[newAbilityKey] = {"name": "ability Name", "level": 0 };
+    
+    this.item.update({"system.abilities": currentAbilities});
   }
   
   async _onRollBonus(event) {
