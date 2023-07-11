@@ -6,13 +6,13 @@ import {TITANGROUND_WEAPONS} from "../helpers/config-weapon-data.mjs";
  * Extend the basic ActorSheet with some very simple modifications
  * @extends {ActorSheet}
  */
-export class MonHunSysActorSheet extends ActorSheet {
+export class MonHunSysNPCSheet extends ActorSheet {
 
   /**
    * The HTML template path used to render a complete Roll object to the chat log
    * @type {string}
    */
-  static ATTACKROLL_TEMPLATE = "systems/monhunsys/templates/chat/AttackRoll.html";
+  static ATTACKROLL_TEMPLATE = "systems/monhunsys/templates/chat/TitanAttackRoll.html";
   static ITEM_PURCHASE_TEMPLATE = "systems/monhunsys/templates/chat/PurchaseRequest.html";
   static ITEM_SALE_TEMPLATE = "systems/monhunsys/templates/chat/SaleCard.html";
 
@@ -50,16 +50,8 @@ export class MonHunSysActorSheet extends ActorSheet {
     context.system = actorData.system;
     context.flags = actorData.flags;
 
-    // Prepare character data and items.
-    if (actorData.type == 'character') {
-      await this._prepareItems(context);
-      this._prepareCharacterData(context);
-    }
-    
-    // Prepare Shop Items
-    if (actorData.type == 'shop') {
-      this._prepareItems(context);
-    }
+    // Prepare NPC data and items.
+    await this._prepareItems(context);
 
     // Add roll data for TinyMCE editors.
     context.rollData = context.actor.getRollData();
@@ -68,139 +60,6 @@ export class MonHunSysActorSheet extends ActorSheet {
     context.effects = prepareActiveEffectCategories(this.actor.effects);
 
     return context;
-  }
-
-  /**
-   * Organize and classify Items for Character sheets.
-   *
-   * @param {Object} actorData The actor to prepare.
-   *
-   * @return {undefined}
-   */
-  _prepareCharacterData(context) {
-    // Handle ability scores.
-    for (let [k, v] of Object.entries(context.system.abilities)) {
-      v.label = game.i18n.localize(CONFIG.TITANGROUND.abilities[k]) ?? k;
-      v.abbrLabel = game.i18n.localize(CONFIG.TITANGROUND.abilityAbbreviations[k]) ?? k;
-      v.total = v.value + v.bonus + v.temp;
-    }
-
-    // Handle resistance scores.
-    for (let [k, v] of Object.entries(context.system.resistances)) {
-      v.label = game.i18n.localize(CONFIG.TITANGROUND.resistances[k]) ?? k;
-      v.total = v.value + v.bonus + v.temp;
-      v.img = "Icons/SheetIcons/" + v.label + ".png";
-    }
-    
-    // Handle skill scores.
-    for (let [k, v] of Object.entries(context.system.skills)) {
-      v.label = game.i18n.localize(CONFIG.TITANGROUND.skills[k]) ?? k;
-      v.total = v.value + v.bonus + v.temp;
-      v.img = "Icons/SheetIcons/" + k + "skill.png";
-    }
-    
-    // Handle Zoology scores.
-    for (let [k, v] of Object.entries(context.system.Disciplines.Zoology)) {
-      v.label = game.i18n.localize(CONFIG.TITANGROUND.disciplines[k]) ?? k;
-      v.total = v.value + v.bonus + v.temp;
-      //v.img = "Icons/SheetIcons/" + v.label + ".png";
-    }
-
-    // Handle Ecology scores.
-    for (let [k, v] of Object.entries(context.system.Disciplines.Ecology)) {
-      v.label = game.i18n.localize(CONFIG.TITANGROUND.disciplines[k]) ?? k;
-      v.total = v.value + v.bonus + v.temp;
-      //v.img = "Icons/SheetIcons/" + v.label + ".png";
-    }
-
-    context.system.sharpness.max = context.system.sharpness.base + context.system.sharpness.bonus + context.system.sharpness.temp;
-    context.system.sharpness.value = Math.min(context.system.sharpness.value, context.system.sharpness.max);
-    context.system.sharpness.color = this._getSharpnessColor(context.system.sharpness.value);
-    context.system.sharpness.maxColor = this._getSharpnessColor(context.system.sharpness.max);
-    context.system.stamina.max = context.system.abilities.con.value * context.system.stamina.mod;
-    context.system.stamina.value = Math.min(context.system.stamina.value, context.system.stamina.max);
-    context.system.health.max = context.system.health.base + context.system.health.bonus + context.system.health.temp;
-    context.system.health.value = Math.min(context.system.health.value, context.system.health.max);
-
-    context.abilityEditing = this.abilityEditing != undefined ? this.abilityEditing : false;
-    context.resistanceEditing = this.resistanceEditing != undefined ? this.resistanceEditing : false;
-    context.skillEditing = this.skillEditing != undefined ? this.skillEditing : false;
-    context.zoologyEditing = this.zoologyEditing != undefined ? this.zoologyEditing : false;
-    context.ecologyEditing = this.ecologyEditing != undefined ? this.ecologyEditing : false;
-    context.healthEditing = this.healthEditing != undefined ? this.healthEditing : false;
-    context.sharpEditing = this.sharpEditing != undefined ? this.sharpEditing : false;
-  }
-  
-  async onReset() {
-    console.log("resetting");
-
-
-    // Use a safe clone of the actor data for further operations.
-    const context = this.actor.toObject(false);
-    var updates = {
-      "system.sharpness.temp": 0,
-      "system.health.value": 2000,
-      "system.health.temp": 0,
-      "system.clock": 0,
-      "system.stamina.mod": 4,
-      "system.stamina.value": 2000,
-      "system.sharpness.value": 2000
-    }
-
-    for (let [k, v] of Object.entries(context.system.abilities)) {
-      var key = 'system.abilities.' + k + '.temp';
-      updates[key] = 0;
-    }
-
-    // Handle resistance scores.
-    for (let [k, v] of Object.entries(context.system.resistances)) {
-      var key = 'system.resistances.' + k + '.temp';
-      updates[key] = 0;
-    }
-
-    // Handle skill scores.
-    for (let [k, v] of Object.entries(context.system.skills)) {
-      var key = 'system.skills.' + k + '.temp';
-      updates[key] = 0;
-    }
-
-    // Handle Zoology scores.
-    for (let [k, v] of Object.entries(context.system.Disciplines.Zoology)) {
-      var key = 'system.Disciplines.Zoology.' + k + '.temp';
-      updates[key] = 0;
-    }
-
-    // Handle Ecology scores.
-    for (let [k, v] of Object.entries(context.system.Disciplines.Ecology)) {
-      var key = 'system.Disciplines.Ecology.' + k + '.temp';
-      updates[key] = 0;
-    }
-    
-    this.abilityEditing = false;
-    this.resistanceEditing = false;
-    this.skillEditing = false;
-    this.zoologyEditing = false;
-    this.ecologyEditing = false;
-    this.healthEditing = false;
-    this.sharpEditing = false;
-    
-    await this.actor.update(updates);
-    this.render(false);
-  }
-
-  /**
-   * Get the sharpness color for the actor's current sharpness level
-   *
-   * @param {Object} actorData The actor to prepare.
-   *
-   * @return {undefined}
-   */
-  _getSharpnessColor(sharpnessValue) {
-    for (let [k, v] of Object.entries(TITANGROUND.sharpnessLevels)) {
-      if (v.max >= sharpnessValue && v.min <= sharpnessValue) {
-        return v.color;
-      }
-    }
   }
 
   /**
@@ -226,22 +85,8 @@ export class MonHunSysActorSheet extends ActorSheet {
       8: [],
       9: []
     };
-    const weapons = [];
-    const bag = [];
-    const chest = [];
-    const armorChest = [];
-    let armor = {};
     
-    const equippedWeapon = this.actor.getFlag('monhunsys', 'equippedWeapon');
-    const expandedItem = this.actor.getFlag('monhunsys', 'expandedItem');
     const inTown = game.settings.get('monhunsys', 'bInTown');
-
-    // clear our resistance values so armor can fill it.
-    if (this.actor.type == 'character') {
-      for (let [k, v] of Object.entries(context.system.resistances)) {
-        v.value = 0;
-      }
-    }
 
     // Iterate through items, allocating to containers
     for (let i of context.items) {
@@ -249,15 +94,6 @@ export class MonHunSysActorSheet extends ActorSheet {
       // Append to gear.
       if (i.type === 'item') {
         gear.push(i);
-        i.system.salePrice = Math.round(i.system.cost * 0.72315);
-        if (i.system.inBag > 0)
-          bag.push(i);
-        if (i.system.inChest > 0)
-          chest.push(i);
-
-        if (i._id === expandedItem || this.expandBag) {
-          i.expanded = true;
-        }
       }
       // Append to features.
       else if (i.type === 'feature') {
@@ -269,44 +105,13 @@ export class MonHunSysActorSheet extends ActorSheet {
           spells[i.system.spellLevel].push(i);
         }
       }
-      // Append to weapons.
-      else if (i.system.type === 'weapon') {
-        i.equipped = false;
-        weapons.push(i);
-        if (i._id === equippedWeapon) {
-          i.equipped = true;
-          context.activeWeapon = i;
-          context.weaponSpeed = 30 + (5 * Number(i.system.speed));
-          if (i.type === 'bow') {
-            this.updateAmmoData(i);
-            context.activeWeapon.activeAmmoCount = i.system.ammoTypes[i.system.ammo].inBag;
-          }
-          context.activeWeapon.attacks = await this.getWeaponAttacks(i);
-        }
-      }
-      else if (i.type === 'armor') {
-        i.equipped = false;
-        armorChest.push(i);
-        if (i._id == this.actor.getFlag('monhunsys', 'equipped' + i.system.slot)) {
-          i.equipped = true;
-          armor[i.system.slot] = i;
-          for (let [k, v] of Object.entries(i.system.resistances)) {
-            context.system.resistances[k].value += Number(v.value);
-          }
-        }
-      }
     }
 
     // Assign and return
+    context.attacks = await this.getNPCAttacks();
     context.gear = gear;
-    context.bag = bag;
-    context.bagSize = bag.length;
-    context.chest = chest;
     context.features = features;
     context.spells = spells;
-    context.weapons = weapons;
-    context.armor = armor;
-    context.armorChest = armorChest;
     context.user = game.user;
     context.biographyHTML = await TextEditor.enrichHTML(context.system.biography, {
       secrets: this.actor.isOwner,
@@ -317,45 +122,35 @@ export class MonHunSysActorSheet extends ActorSheet {
     
     context.inTown = inTown;
     context.expandBag = this.expandBag;
-    
-    this.actor.getArmorAbilityMods();
   }
-  
-  async updateAmmoData(weapon) {
-    for (let [k,a] of Object.entries(weapon.system.ammoTypes)) {
-      const ammo = this.actor.items.getName(k);
-      if (!ammo) continue;
-      
-      if (ammo.system.inBag > 0)
-        a.inBag = ammo.system.inBag;
-    }
-  }
-  
-  async getWeaponAttacks(weapon) {
-    const json = await foundry.utils.fetchJsonWithTimeout(foundry.utils.getRoute("systems/monhunsys/data/WeaponAttacks.json"));
 
-    var attacks = json[weapon.type];
+  async getNPCAttacks() {
+    const json = await foundry.utils.fetchJsonWithTimeout(foundry.utils.getRoute("systems/monhunsys/data/TitanAttacks.json"));
+
+    if (!json.hasOwnProperty(this.actor.name))
+      return [];
+    
+    var attacks = json[this.actor.name];
     
     var mappedAttacks = {};
-    
+
     for (let [k, attack] of Object.entries(attacks)) {
       attack.stringified = JSON.stringify(attack);
-      attack.ammo = weapon.system?.ammo || undefined;
       for (let [k2, damage] of Object.entries(attack.damage)) {
         damage.stringValues = JSON.stringify(damage);
       }
-      
+
       mappedAttacks[attack.name] = attack;
     }
 
     let processFollowups = (attack, prevAttacks) => {
-      
+
       var chainID = "";
       prevAttacks.forEach(({name}) => {chainID += '-' + name;});
       attack.chainID = chainID + '-' + attack.name + '-open';
       attack.chainFlag = this.actor.getFlag('monhunsys', attack.chainID);
       attack.expanded = this.actor.getFlag('monhunsys', attack.chainID + 'expanded');
-      
+
       if (attack.followups != undefined && attack.followups.length > 0) {
         attack.chain = [];
         attack.followups.forEach((fu) => {
@@ -371,10 +166,10 @@ export class MonHunSysActorSheet extends ActorSheet {
           }
         });
       }
-      
+
       return attack;
     };
-    
+
     var prevAttacks = [];
     var sortedAttacks = [];
     for (let [k, attack] of Object.entries(attacks)) {
@@ -382,76 +177,9 @@ export class MonHunSysActorSheet extends ActorSheet {
         sortedAttacks.push(processFollowups(foundry.utils.deepClone(attack), prevAttacks));
       }
     }
-    
+
     return sortedAttacks;
   }
-  
-  statRoll = "2d10";
-
-  weaponContextMenu = [
-    {
-      name: "Equip",
-      icon: '<i class="fas fa-sword"></i>',
-      callback: async element => {
-        const bInTown = game.settings.get('monhunsys', 'bInTown');
-        if (!bInTown)
-          return;
-        const item = this.actor.items.get(element.data("itemId"));
-        var updates = {
-          "system.sharpness.base": item.system.sharpness.max
-        };
-        await this.actor.update(updates);
-        await this.actor.setFlag('monhunsys', 'equippedWeapon', item.id);
-      }
-    }
-  ]
-  
-  armorContextMenu = [
-    {
-      name: "Equip",
-      icon: '<i class="fas fa-sword"></i>',
-      callback: async element => {
-        const bInTown = game.settings.get('monhunsys', 'bInTown');
-        if (!bInTown)
-          return;
-        const i = this.actor.items.get(element.data("itemId"));
-        await this.actor.setFlag('monhunsys', 'equipped' + i.system.slot, i._id);
-
-        // Update our ability levels
-        let updates = {};
-        await this.actor.unsetFlag('monhunsys', 'armorAbilityLevels');
-        for (let i of this.actor.items) {
-          if (i.type === 'armor') {
-            i.equipped = false;
-            if (i._id === this.actor.getFlag('monhunsys', 'equipped' + i.system.slot)) {
-              i.equipped = true;
-              for (let [k,a] of Object.entries(i.system.abilities)) {
-                updates[a.name] = (updates[a.name] || 0) + Number(a.level);
-              }
-            }
-          }
-        }
-        await this.actor.setFlag('monhunsys', 'armorAbilityLevels', updates);
-      }
-    },
-    {
-      name: "Delete",
-      icon: '<i class="fas fa-trash"></i>',
-      callback: async element => {
-        Dialog.confirm({
-          title: "Delete?",
-          content: "Delete?",
-          label: "Confirm",
-          yes: async (html) => {
-            const item = this.actor.items.get(element.data("itemId"));
-            await item.delete();
-          },
-          no: (html) => {
-          }
-        });
-      }
-    }
-  ]
   
   statContextMenu = [
     {
@@ -667,8 +395,6 @@ export class MonHunSysActorSheet extends ActorSheet {
     if (this.actor.type != "shop" || game.user.isGM) {
       new ContextMenu(html, ".item-bag", this.itemBagContextMenu);
       new ContextMenu(html, ".item-chest", this.itemChestContextMenu);
-      new ContextMenu(html, ".weapon-chest", this.weaponContextMenu);
-      new ContextMenu(html, ".armor-chest", this.armorContextMenu);
     }
     new ContextMenu(html, ".stat-roll", this.statContextMenu);
 
@@ -703,12 +429,15 @@ export class MonHunSysActorSheet extends ActorSheet {
     // -------------------------------------------------------------
     // Everything below here is only needed if the sheet is editable
     if (!this.isEditable) return;
-
-    // Allow sheet reset
-    html.find('.reset-button').click(this.onReset.bind(this));
     
     // Add Inventory Item
     html.find('.item-create').click(this._onItemCreate.bind(this));
+
+    // Add Titan Part
+    html.find('.part-create').click(this._onPartCreate.bind(this));
+
+    // Update statuses and shit
+    html.find('.combat-round').click(this._onUpdateRoundChange.bind(this));
     
     // Toggle Attack card miniState
     html.find('.attack-name').click(this.onUpdateAttackCard.bind(this));
@@ -721,6 +450,14 @@ export class MonHunSysActorSheet extends ActorSheet {
       const item = this.actor.items.get(li.data("itemId"));
       item.delete();
       li.slideUp(200, () => this.render(false));
+    });
+
+    html.find('.part-delete').click(async (ev) => {
+      const li = $(ev.currentTarget).parents(".part");
+      const idx = li.data("partId");
+      const updateString = 'system.parts.-=' + idx;
+      this.actor.update({[updateString]: null});
+      this.render(false);
     });
 
     // Active Effect management
@@ -960,60 +697,67 @@ export class MonHunSysActorSheet extends ActorSheet {
     const item = await Item.implementation.fromDropData(data);
     const itemData = item.toObject();
 
-    if (this.actor.type == 'shop' && this.actor.uuid !== item.parent?.uuid) {
-      if (itemData.type == "item") {
-        const ItemHandled = await this._sellDropItem(event, item, itemData);
-        if (ItemHandled) return false;
-      }
-      else return false; // can't sell non-item, so we don't want the shop creating any weird shit
-    }
-
     // Handle item sorting within the same Actor
     if (this.actor.uuid === item.parent?.uuid) return this._onSortItem(event, itemData);
 
     // Create the owned item
     return this._onDropItemCreate(itemData);
   }
-  
-  async _sellDropItem(event, item, itemData) {
-    if (item.actor) {
-      await item.actor.update({
-        "system.money": item.actor.system.money + Math.round(item.system.cost * 0.72315),
-        items: [{
-          _id: item._id,
-          "system.inBag": item.system.inBag - 1
-        }]
-      })
-      
-      let chatData = {
-        item: item,
-        value: Math.round(item.system.cost * 0.72315),
-        user: game.user,
-        shop: this.actor,
+
+  async _onPartCreate(event) {
+    const Titan = this.actor;
+
+    const parts = Titan.system.parts;
+    const partKeys = Object.keys(parts).sort();
+    let newPartKey = "Part" + partKeys.length;
+
+    for (let i = 0; i < partKeys.length; ++i) {
+      if (partKeys[i] !== ("Part" + i)) {
+        newPartKey = "Part" + i;
+        break;
       }
-
-      chatData.purchaseData = JSON.stringify(chatData);
-      let itemData = await renderTemplate(this.constructor.ITEM_SALE_TEMPLATE, chatData);
-      const speaker = ChatMessage.getSpeaker({actor: this.actor});
-      const message = await ChatMessage.create({
-        speaker: speaker,
-        user: game.user.id,
-        content: itemData,
-        sound: CONFIG.sounds.notification,
-        whisper: ChatMessage.getWhisperRecipients("gm")
-      });
     }
 
-    var bUpdatedItem = true;
-    const actorItem = this.actor.items.getName(itemData.name);
-    if (actorItem != null) {
-      await actorItem.update({"system.inBag": actorItem.system.inBag + 1});
-    } else {
-      itemData.system.inBag = 1;
-      itemData.system.inChest = 0;
-      bUpdatedItem = false;
+    parts[newPartKey] = {
+      "name": "Body",
+      "resistances": {
+        "Slashing": 5,
+        "Blunt": 5,
+        "Explosive": 5,
+        "Piercing": 5,
+        "Sonic": 5,
+        "Water": 1,
+        "Fire": 1,
+        "Lightning": 1,
+        "Ice": 1,
+        "Dragon": 1
+      },
+      "breakReward": "none",
+      "breakPercent": 10,
+      "breakDamageType": "Any",
+      "staggerPercent": 8,
+      "staggerType": "flinch"
+    };
+
+    Titan.update({"system.parts": parts});
+  }
+
+  _onUpdateRoundChange(event) {
+    const Titan = this.actor;
+    const statusData = foundry.utils.deepClone(Titan.system.statusData);
+
+    let updates = {};
+    for (let [k, status] of Object.entries(statusData)) {
+      status.roundsRemaining = Math.max(status.roundsRemaining - 1, 0);
+      status.value = Math.max(status.value - status.Degradation, 0);
     }
-    return bUpdatedItem;
+
+    updates["system.statusData"] = statusData;
+    updates["system.clock"] = Math.max(0,Titan.system.clock - 1);
+    if (Titan.system.exhausted)
+      updates["system.stamina.value"] = Titan.system.stamina.value + 5;
+
+    Titan.update(updates);
   }
 
   handleMoveToChest(html, item) {
@@ -1076,7 +820,6 @@ export class MonHunSysActorSheet extends ActorSheet {
    */
   async roll(options ={}) {
     const context = await this.getData();
-    const item = context.activeWeapon;
     const attackStringObj = JSON.parse(options.attackString);
     const ammoType = options.hasOwnProperty('ammoType') ? options.ammoType : undefined;
 
@@ -1085,46 +828,29 @@ export class MonHunSysActorSheet extends ActorSheet {
     
     // Initialize chat data.
     const speaker = ChatMessage.getSpeaker({actor: this.actor});
-    const rollMode = game.settings.get('core', 'rollMode');
-    const label = `[${item.type}] ${item.name}`;
 
     // Retrieve roll data.
     const rollData = this.actor.getRollData();
     
-    var formula = rollData.sharpness.formula.replace('X', item.system.die).concat("+", context.system.abilities.str.total, "+", item.system.bonus);
-    if (options.hasOwnProperty('attackDamage')) formula = formula.concat("+", options.attackDamage);
-    var elementFormula = item.system.element.type != "N/A" ? item.system.element.formula.concat("+", context.system.abilities.spr.total) : "0";
-    const attackRoll = new Roll(formula, rollData);
-    const hitRoll = new Roll('1d20', rollData);
-    const elementRoll = new Roll(elementFormula, rollData);
+    let damageVal = Math.round((options?.attackDamage || 0) * (this.actor.system.enraged ? 1.25 : 1));
+    const attackRoll = new Roll(damageVal?.toString(), rollData);
 
-    // If you need to store the value first, uncomment the next line.
     await attackRoll.roll({async: true});
-    await hitRoll.roll({async: true});
-    await elementRoll.roll({async: true});
 
     const applyDamageData = {
       "user": this.actor,
-      "damageType": options.hasOwnProperty('attackType') ? options.attackType : "",
-      "elementType": item.system.element.type,
-      "rawDamage": Math.round(attackRoll.total * 100) / 100,
-      "eleDamage": Math.round(elementRoll.total * 100) / 100
+      "damageType": options?.attackType,
+      "rawDamage": Math.round(attackRoll.total * 100) / 100
     };
 
     const chatData = {
-      attackName: options.hasOwnProperty('attackName') ? options.attackName : "",
-      attackType: options.hasOwnProperty('attackType') ? options.attackType : "",
-      hitFormula: hitRoll.formula,
+      attackName: options?.attackName,
+      attackType: options?.attackType,
       damageFormula: attackRoll.formula,
-      elementFormula: item.system.element.type === "N/A" ? "" : elementRoll.formula,
-      elementType: item.system.element.type,
       user: game.user,
-      hitTooltip: await hitRoll.getTooltip(),
+      titan: this.actor,
       damageTooltip: await attackRoll.getTooltip(),
-      elementTooltip: await elementRoll.getTooltip(),
-      hitTotal: Math.round(hitRoll.total * 100) / 100,
       damageTotal: Math.round(attackRoll.total * 100) / 100,
-      elementTotal: Math.round(elementRoll.total * 100) / 100,
       applyDamageData: JSON.stringify(applyDamageData),
       attackGrid: attackStringObj.attackGrid,
       attackGridSize: attackStringObj.attackGridSize,
@@ -1137,11 +863,26 @@ export class MonHunSysActorSheet extends ActorSheet {
       speaker: speaker,
       rollMode: rollData.rollMode,
       content: attackData,
-      rolls: [hitRoll, attackRoll, elementRoll],
+      rolls: [attackRoll],
       sound: CONFIG.sounds.dice,
       type: CONST.CHAT_MESSAGE_TYPES.ROLL
     });
 
+    this.processAttack(attackStringObj);
     return attackRoll;
+  }
+  
+  async processAttack(attackData) {
+    let updates = {
+      "system.clock": attackData?.clock,
+      "system.stamina.value": this.actor.system.stamina.value - attackData?.stamina
+    };
+    
+    if (this.actor.system.stamina.value - attackData?.stamina <= 0) {
+      updates["system.exhausted"] = true;
+      updates["system.enraged"] = false;
+    }
+    
+    this.actor.update(updates);
   }
 }

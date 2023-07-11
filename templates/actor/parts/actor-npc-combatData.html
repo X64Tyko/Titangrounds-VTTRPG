@@ -40,6 +40,19 @@
   <div class="item-controls">
     <label class="has-descriptor combat-round"> </label>
   </div>
+  <div class="attacks-list">
+
+    {{!-- Attacks Tab --}}
+    <div class="attack-window">
+
+      <ul class="attacks-list">
+        {{#each attacks as |attack key|}}
+        {{> "systems/monhunsys/templates/actor/parts/titan-attack-card.html" }}
+        {{/each}}
+      </ul>
+    </div>
+  </div>
+  
   <div class="item-controls">
     <label><b>DAMAGE LOG</b></label>
   </div>

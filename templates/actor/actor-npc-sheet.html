@@ -8,7 +8,7 @@
       {{!-- The grid classes are defined in scss/global/_grid.scss. To use,
       use both the "grid" and "grid-Ncol" class where "N" can be any number
       from 1 to 12 and will create that number of columns.  --}}
-      <div class="resources grid grid-3col">
+      <div class="resources grid grid-5col">
 
         {{!-- "flex-group-center" is also defined in the _grid.scss file
         and it will add a small amount of padding, a border, and will
@@ -35,6 +35,20 @@
           <label for="system.clock" class="resource-label">Clock</label>
           <div class="resource-content flexrow flex-center flex-between">
             <input type="number" name="system.clock" value="{{system.clock}}" data-dtype="Number"/>
+          </div>
+        </div>
+
+        <div class="resource flex-group-center">
+          <label for="system.enraged" class="resource-label">Enraged</label>
+          <div class="resource-content flexrow flex-center flex-between">
+            <input type="checkbox" name="system.enraged" {{checked system.enraged}}/>
+          </div>
+        </div>
+
+        <div class="resource flex-group-center">
+          <label for="system.exhausted" class="resource-label">Exhausted</label>
+          <div class="resource-content flexrow flex-center flex-between">
+            <input type="checkbox" name="system.exhausted" {{checked system.exhausted}}/>
           </div>
         </div>
 

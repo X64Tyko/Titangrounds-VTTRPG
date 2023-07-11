@@ -8,51 +8,51 @@ TITANGROUND_WEAPONS.arrowTypes = {
           "inBag": 99
      },
      "Bleed Arrow": {
-         //arrow data?
+         "damageType": "Bleed"
      },
      "Boom Arrow": {
-         //arrow data?
+          "damageType": "Explosive"
      },
      "Demon Arrow": {
          //arrow data?
      },
      "Dragon Arrow": {
-         //arrow data?
+          "damageType": "Dragon"
      },
      "Fire Arrow": {
-         //arrow data?
+          "damageType": "Fire"
      },
      "Hammer Arrow": {
          //arrow data?
      },
      "Ice Arrow": {
-         //arrow data?
+          "damageType": "Ice"
      },
      "Lightning Arrow": {
-         //arrow data?
+          "damageType": "Lightning"
      },
      "Para Arrow": {
-         //arrow data?
+          "damageType": "Paralysis"
      },
      "Poison Arrow": {
-         //arrow data?
+          "damageType": "Poison"
      },
      "Recovery Arrow": {
          //arrow data?
      },
      "Sleep Arrow": {
-         //arrow data?
+          "damageType": "Sleep"
      },
      "Slicing Arrow": {
-         //arrow data?
+          "damageType": "Slashing"
      },
      "Sonic Arrow": {
-         //arrow data?
+          "damageType": "Sonic"
      },
      "Stun Arrow": {
-         //arrow data?
+          "damageType": "Stun"
      },
      "Water Arrow": {
-         //arrow data?
+          "damageType": "Water"
      }
  }

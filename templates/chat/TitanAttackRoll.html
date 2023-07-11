@@ -1,0 +1,43 @@
+<div class="titan-attack attack-roll-card" data-damage-data="{{applyDamageData}}">
+    <div>
+    {{#if attackName}}
+    <h2>{{attackName}}</h2>
+    {{/if}}
+    {{#if flavor}}
+    <h3 class="dice-flavor">{{flavor}}</h3>
+    {{/if}}
+    </div>
+    <div class="dice-roll grid grid-3col">
+        <div class="hexCrop grid-span-1" style="--cols: {{attackGridSize}}; --rows: {{attackGridHeight}};">
+            {{#each attackGrid as |gridrow|}}
+            <div class="hex-row">
+                {{#each gridrow}}
+                <div class="hex {{this}}"></div>
+                {{/each}}
+            </div>
+            {{/each}}
+        </div>
+        <div class="attack-data grid-span-2">
+            <div class="dice-result">
+                <label>To Hit:</label>
+                <div class="dice-formula">{{hitFormula}}</div>
+                {{{hitTooltip}}}
+                <h4 class="dice-total">{{hitTotal}}</h4>
+            </div>
+            <div class="dice-result">
+                <label>Base Damage:</label>
+                <div class="dice-formula">{{damageFormula}}</div>
+                {{{damageTooltip}}}
+                <h4 class="dice-total">{{damageTotal}} <img src="Icons/SheetIcons/{{attackType}}.png" height="24" width="24"/></h4>
+            </div>
+            {{#if elementFormula}}
+            <div class="dice-result">
+                <label>{{elementType}} Damage:</label>
+                <div class="dice-formula">{{elementFormula}}</div>
+                {{{elementTooltip}}}
+                <h4 class="dice-total">{{elementTotal}} <img src="Icons/SheetIcons/{{elementType}}.png" height="24" width="24"/></h4>
+            </div>
+            {{/if}}
+        </div>
+    </div>
+</div>

@@ -6,7 +6,7 @@ import {TITANGROUND_WEAPONS} from "../helpers/config-weapon-data.mjs";
  * Extend the basic ActorSheet with some very simple modifications
  * @extends {ActorSheet}
  */
-export class MonHunSysActorSheet extends ActorSheet {
+export class MonHunSysShopSheet extends ActorSheet {
 
   /**
    * The HTML template path used to render a complete Roll object to the chat log

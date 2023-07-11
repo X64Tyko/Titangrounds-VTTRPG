@@ -1,0 +1,674 @@
+﻿{
+  "Mossbeak": [
+    {
+      "name": "Slam",
+      "pre-clock": 0,
+      "clock": 1,
+      "stamina": 2,
+      "DCs": {
+        "Knockdown": 10
+      },
+      "damage": {
+        "0": {
+          "values": {
+            "hit1": 75
+          }
+        }
+      },
+      "damageType": "Blunt",
+      "note": "The Mossbeak jumps up and then slams down onto the ground, causing a shockwave. This attack is slow but deals high damage.",
+      "tell": "Jumps into the air",
+      "attackGridSize": "3",
+      "attackGridHeight": "5",
+      "attackGrid": {
+        "row1a": ["0","0","0"],
+        "row1b":   ["0","0"],
+        "row2a": ["0","m","0"],
+        "row2b":   ["0","0"],
+        "row3a": ["0","b","0"],
+        "row3b":   ["a","a"],
+        "row4a": ["0","p","0"],
+        "row4b":   ["a","a"],
+        "row5a": ["0","a","0"]
+      },
+      "opener": true,
+      "followups": [
+        "Wing Buffet"
+      ]
+    },
+    {
+      "name": "Peck",
+      "pre-clock": 0,
+      "clock": 0,
+      "stamina": 1,
+      "DCs": {
+      },
+      "damage": {
+        "0": {
+          "values": {
+            "hit1": 13
+          }
+        }
+      },
+      "damageType": "Piercing",
+      "note": "The Mossbeak pecks with its beak, dealing moderate damage. It can perform this attack multiple times in a row.",
+      "tell": "raises its beak",
+      "attackGridSize": "3",
+      "attackGridHeight": "5",
+      "attackGrid": {
+        "row1a": ["0","0","0"],
+        "row1b":   ["0","0"],
+        "row2a": ["0","m","0"],
+        "row2b":   ["m","m"],
+        "row3a": ["0","b","0"],
+        "row3b":   ["m","m"],
+        "row4a": ["0","p","0"],
+        "row4b":   ["0","0"],
+        "row5a": ["0","0","0"]
+      },
+      "opener": true,
+      "followups": [
+        "Wing Buffet",
+        "Feather Barrage",
+        "Poison Spray",
+        "Peck"
+      ]
+    },
+    {
+      "name": "Poison Spray",
+      "pre-clock": 1,
+      "clock": 0,
+      "stamina": 1,
+      "DCs": {
+      },
+      "damage": {
+        "0": {
+          "values": {
+            "hit1": 10
+          }
+        }
+      },
+      "damageType": "Poison",
+      "note": "The Mossbeak sprays a cloud of poisonous gas in front of it, dealing damage over time to any hunters caught in the cloud.",
+      "tell": "Sacks in its throat swell",
+      "attackGridSize": "3",
+      "attackGridHeight": "5",
+      "attackGrid": {
+        "row1a": ["0","0","0"],
+        "row1b":   ["0","0"],
+        "row2a": ["0","a","0"],
+        "row2b":   ["a","a"],
+        "row3a": ["0","a","0"],
+        "row3b":   ["a","a"],
+        "row4a": ["0","p","0"],
+        "row4b":   ["0","0"],
+        "row5a": ["0","0","0"]
+      },
+      "opener": true,
+      "followups": [
+        "Wing Whip",
+        "Peck"
+      ]
+    },
+    {
+      "name": "Wing Buffet",
+      "pre-clock": 0,
+      "clock": 1,
+      "stamina": 2,
+      "DCs": {
+        "Knockback": 16
+      },
+      "damage": {
+        "0": {
+          "values": {
+            "hit1": 35
+          }
+        }
+      },
+      "damageType": "Blunt",
+      "note": "The Mossbeak flaps its wings, causing a gust of wind that knocks hunters back and deals moderate damage.\n\nNo KB if a wing is broken.",
+      "tell": "Pulls it's wings back",
+      "attackGridSize": "3",
+      "attackGridHeight": "5",
+      "attackGrid": {
+        "row1a": ["0","0","0"],
+        "row1b":   ["a","a"],
+        "row2a": ["0","a","0"],
+        "row2b":   ["a","a"],
+        "row3a": ["0","a","0"],
+        "row3b":   ["a","a"],
+        "row4a": ["0","a","0"],
+        "row4b":   ["a","a"],
+        "row5a": ["0","p","0"]
+      },
+      "opener": true,
+      "followups": [
+        "Poison Spit",
+        "Wing Whip"
+      ]
+    },
+    {
+      "name": "Charge",
+      "pre-clock": 0,
+      "clock": 1,
+      "stamina": 2,
+      "DCs": {
+        "Knockdown": 8
+      },
+      "damage": {
+        "0": {
+          "values": {
+            "hit1": 64
+          }
+        }
+      },
+      "damageType": "Blunt",
+      "note": "The Mossbeak charges forward, dealing high damage to any hunters in its path. It can also perform a combo where it charges multiple times in a row.\n\nWill trip if it's legs are broken.",
+      "tell": "bends over pointing it's beak straight ahead",
+      "attackGridSize": "3",
+      "attackGridHeight": "5",
+      "attackGrid": {
+        "row1a": ["0","a","0"],
+        "row1b":   ["0","0"],
+        "row2a": ["0","a","0"],
+        "row2b":   ["0","0"],
+        "row3a": ["0","a","0"],
+        "row3b":   ["0","0"],
+        "row4a": ["0","a","0"],
+        "row4b":   ["0","0"],
+        "row5a": ["0","p","0"]
+      },
+      "opener": true,
+      "followups": [
+        "Slam",
+        "Charge"
+      ]
+    },
+    {
+      "name": "Swoop Slam",
+      "pre-clock": 1,
+      "clock": 0,
+      "stamina": 3,
+      "DCs": {
+        "Knockdown": 13
+      },
+      "damage": {
+        "0": {
+          "values": {
+            "hit1": 21
+          }
+        }
+      },
+      "damageType": "Blunt",
+      "note": "The Mossbeak takes flight and swoops down on its target, Whipping with it's tail as it passed by. This attack has a chance to knock down the target.",
+      "tell": "Flies into the air/ brings it's talons in front of it",
+      "attackGridSize": "4",
+      "attackGridHeight": "9",
+      "attackGrid": {
+        "row1a": ["0","0","0","0"],
+        "row1b":   ["0","m","0"],
+        "row2a": ["0","0","0","0"],
+        "row2b":   ["0","m","0"],
+        "row3a": ["0","0","0","0"],
+        "row3b":   ["0","m","0"],
+        "row4a": ["0","0","0","0"],
+        "row4b":   ["0","m","0"],
+        "row5a": ["0","0","0","0"],
+        "row5b":   ["0","m","0"],
+        "row6a": ["a","0","0","0"],
+        "row6b":   ["0","p","a"],
+        "row7a": ["a","0","a","a"],
+        "row7b":   ["a","a","a"],
+        "row8a": ["a","a","a","a"],
+        "row8b":   ["a","a","a"],
+        "row9a": ["0","0","a","0"]
+      },
+      "opener": true,
+      "followups": [
+        "Dive Bomb",
+        "Slam",
+        "Swoop Slam"
+      ]
+    },
+    {
+      "name": "Wing Whip",
+      "pre-clock": 0,
+      "clock": 1,
+      "stamina": 2,
+      "DCs": {
+        "Knockdown": 14
+      },
+      "damage": {
+        "0": {
+          "values": {
+            "hit1": 8
+          }
+        }
+      },
+      "damageType": "Blunt",
+      "note": "The Mossbeak flaps its wings violently, creating a gust of wind that knocks down nearby hunters. This attack can also cause the hunters to lose their footing.",
+      "tell": "Raises it's wings above it",
+      "attackGridSize": "3",
+      "attackGridHeight": "5",
+      "attackGrid": {
+        "row1a": ["0","a","0"],
+        "row1b":   ["a","a"],
+        "row2a": ["a","a","a"],
+        "row2b":   ["a","a"],
+        "row3a": ["a","p","a"],
+        "row3b":   ["a","a"],
+        "row4a": ["a","a","a"],
+        "row4b":   ["a","a"],
+        "row5a": ["0","a","0"]
+      },
+      "opener": true,
+      "followups": [
+        "Peck",
+        "Feather Barrage",
+        "Swoop Slam"
+      ]
+    },
+    {
+      "name": "Poison Spit",
+      "pre-clock": 0,
+      "clock": 0,
+      "stamina": 1,
+      "DCs": {
+        "Poison": 18
+      },
+      "damage": {
+        "0": {
+          "values": {
+            "hit1": 28
+          }
+        }
+      },
+      "damageType": "Poison",
+      "note": "The Mossbeak spits a glob of poisonous saliva at its target, causing damage over time and potentially poisoning the hunter.",
+      "tell": "Raises head and opens it's mouth",
+      "attackGridSize": "3",
+      "attackGridHeight": "5",
+      "attackGrid": {
+        "row1a": ["0","a","0"],
+        "row1b":   ["0","0"],
+        "row2a": ["0","a","0"],
+        "row2b":   ["0","0"],
+        "row3a": ["0","a","0"],
+        "row3b":   ["0","0"],
+        "row4a": ["0","a","0"],
+        "row4b":   ["0","0"],
+        "row5a": ["0","p","0"]
+      },
+      "opener": true,
+      "followups": [
+        "Peck"
+      ]
+    },
+    {
+      "name": "Feather Barrage",
+      "pre-clock": 1,
+      "clock": 0,
+      "stamina": 3,
+      "DCs": {
+        "Bleed": 12
+      },
+      "damage": {
+        "0": {
+          "values": {
+            "hit1": 41
+          }
+        }
+      },
+      "damageType": "Piercing",
+      "note": "The Mossbeak shakes its feathers, sending a barrage of sharp feathers flying in all directions. This attack can hit multiple hunters at once and has a chance to cause bleeding.",
+      "tell": "wraps its wings around it's head",
+      "attackGridSize": "5",
+      "attackGridHeight": "9",
+      "attackGrid": {
+        "row1a": ["0","0","a","0","0"],
+        "row1b":   ["0","0","0","0"],
+        "row2a": ["0","0","a","0","0"],
+        "row2b":   ["0","0","0","0"],
+        "row3a": ["a","0","a","0","a"],
+        "row3b":   ["a","0","0","a"],
+        "row4a": ["0","a","a","a","0"],
+        "row4b":   ["0","a","a","0"],
+        "row5a": ["0","0","p","0","0"],
+        "row5b":   ["0","a","a","0"],
+        "row6a": ["0","a","a","a","0"],
+        "row6b":   ["a","0","0","a"],
+        "row7a": ["a","0","a","0","a"],
+        "row7b":   ["0","0","0","0"],
+        "row8a": ["0","0","a","0","0"],
+        "row8b":   ["0","0","0","0"],
+        "row9a": ["0","0","a","0","0"]
+      },
+      "opener": true,
+      "followups": [
+        "Peck"
+      ]
+    },
+    {
+      "name": "Dive Bomb",
+      "pre-clock": 1,
+      "clock": 2,
+      "stamina": 4,
+      "DCs": {
+        "Knockdown": 23
+      },
+      "damage": {
+        "0": {
+          "values": {
+            "hit1": 104
+          }
+        }
+      },
+      "damageType": "Piercing",
+      "note": "The Mossbeak takes flight and quickly dives at its target, striking with its beak and talons. This attack does massive damage but leaves the Mossbeak vulnerable if it misses.",
+      "tell": "Pulls it's talons behind it",
+      "attackGridSize": "3",
+      "attackGridHeight": "5",
+      "attackGrid": {
+        "row1a": ["0","a","0"],
+        "row1b":   ["0","0"],
+        "row2a": ["0","a","0"],
+        "row2b":   ["0","0"],
+        "row3a": ["0","a","0"],
+        "row3b":   ["0","0"],
+        "row4a": ["0","a","0"],
+        "row4b":   ["0","0"],
+        "row5a": ["0","p","0"]
+      },
+      "opener": true,
+      "followups": [
+        "Wing Whip"
+      ]
+    }
+  ],
+  "Kumodo": [
+    {
+      "name": "Swipe",
+      "pre-clock": 0,
+      "clock": 0,
+      "stamina": 1,
+      "DCs": {
+      },
+      "damage": {
+        "0": {
+          "values": {
+            "hit1": 35
+          }
+        }
+      },
+      "damageType": "Slashing",
+      "note": "",
+      "tell": "Claws above head",
+      "attackGridSize": "3",
+      "attackGridHeight": "5",
+      "attackGrid": {
+        "row1a": ["0","0","0"],
+        "row1b":   ["0","0"],
+        "row2a": ["0","0","0"],
+        "row2b":   ["0","0"],
+        "row3a": ["0","a","0"],
+        "row3b":   ["b","b"],
+        "row4a": ["0","p","0"],
+        "row4b":   ["0","0"],
+        "row5a": ["0","0","0"]
+      },
+      "opener": true,
+      "followups": [
+        "Spot Spin",
+        "Rush",
+        "Swipe"
+      ]
+    },
+    {
+      "name": "Tackle",
+      "pre-clock": 0,
+      "clock": 1,
+      "stamina": 1,
+      "DCs": {
+        "Knockdown": 12
+      },
+      "damage": {
+        "0": {
+          "values": {
+            "hit1": 60
+          }
+        }
+      },
+      "damageType": "Blunt",
+      "note": "Clock 2 if legs are broken",
+      "tell": "Rises up on hind legs",
+      "attackGridSize": "3",
+      "attackGridHeight": "5",
+      "attackGrid": {
+        "row1a": ["0","a","0"],
+        "row1b":   ["a","a"],
+        "row2a": ["0","a","0"],
+        "row2b":   ["a","a"],
+        "row3a": ["0","m","0"],
+        "row3b":   ["0","0"],
+        "row4a": ["0","p","0"],
+        "row4b":   ["0","0"],
+        "row5a": ["0","0","0"]
+      },
+      "opener": true,
+      "followups": [
+        "Headbutt"
+      ]
+    },
+    {
+      "name": "Rush",
+      "pre-clock": 0,
+      "clock": 0,
+      "stamina": 1,
+      "DCs": {
+      },
+      "damage": {
+        "0": {
+          "values": {
+            "hit1": 20
+          }
+        }
+      },
+      "damageType": "Blunt",
+      "note": "",
+      "tell": "Lowers its head",
+      "attackGridSize": "3",
+      "attackGridHeight": "5",
+      "attackGrid": {
+        "row1a": ["0","b","0"],
+        "row1b":   ["0","0"],
+        "row2a": ["0","b","0"],
+        "row2b":   ["0","0"],
+        "row3a": ["0","b","0"],
+        "row3b":   ["0","0"],
+        "row4a": ["0","b","0"],
+        "row4b":   ["0","0"],
+        "row5a": ["0","p","0"]
+      },
+      "opener": true,
+      "followups": [
+        "Rush"
+      ]
+    },
+    {
+      "name": "Headbutt",
+      "pre-clock": 0,
+      "clock": 0,
+      "stamina": 1,
+      "DCs": {
+      },
+      "damage": {
+        "0": {
+          "values": {
+            "hit1": 35
+          }
+        }
+      },
+      "damageType": "Stun",
+      "note": "",
+      "tell": "Pulls head back",
+      "attackGridSize": "3",
+      "attackGridHeight": "5",
+      "attackGrid": {
+        "row1a": ["0","0","0"],
+        "row1b":   ["0","0"],
+        "row2a": ["0","0","0"],
+        "row2b":   ["0","0"],
+        "row3a": ["0","b","0"],
+        "row3b":   ["0","0"],
+        "row4a": ["0","p","0"],
+        "row4b":   ["0","0"],
+        "row5a": ["0","0","0"]
+      },
+      "opener": true,
+      "followups": [
+        "Swipe"
+      ]
+    },
+    {
+      "name": "Spot Spin",
+      "pre-clock": 0,
+      "clock": 1,
+      "stamina": 2,
+      "DCs": {
+      },
+      "damage": {
+        "0": {
+          "values": {
+            "hit1": 75
+          }
+        }
+      },
+      "damageType": "Slashing",
+      "note": "Does 180 after the attack",
+      "tell": "Twisting its body",
+      "attackGridSize": "3",
+      "attackGridHeight": "5",
+      "attackGrid": {
+        "row1a": ["0","0","0"],
+        "row1b":   ["0","0"],
+        "row2a": ["0","0","0"],
+        "row2b":   ["0","0"],
+        "row3a": ["0","a","0"],
+        "row3b":   ["a","a"],
+        "row4a": ["0","p","0"],
+        "row4b":   ["0","0"],
+        "row5a": ["0","0","0"]
+      },
+      "opener": true,
+      "followups": [
+      ]
+    },
+    {
+      "name": "Spin Attack",
+      "pre-clock": 1,
+      "clock": 0,
+      "stamina": 1,
+      "DCs": {
+      },
+      "damage": {
+        "0": {
+          "values": {
+            "hit1": 45
+          }
+        }
+      },
+      "damageType": "Slashing",
+      "note": "Rotates one hex side before the attack",
+      "tell": "One arm overhead",
+      "attackGridSize": "3",
+      "attackGridHeight": "5",
+      "attackGrid": {
+        "row1a": ["0","0","0"],
+        "row1b":   ["0","0"],
+        "row2a": ["0","0","0"],
+        "row2b":   ["0","0"],
+        "row3a": ["0","b","0"],
+        "row3b":   ["a","a"],
+        "row4a": ["0","p","0"],
+        "row4b":   ["0","0"],
+        "row5a": ["0","0","0"]
+      },
+      "opener": true,
+      "followups": [
+        "Rush",
+        "Spin Attack"
+      ]
+    },
+    {
+      "name": "Shimmy",
+      "pre-clock": 0,
+      "clock": 2,
+      "stamina": 1,
+      "DCs": {
+        "Knockdown": 16
+      },
+      "damage": {
+        "0": {
+          "values": {
+            "hit1": 74
+          }
+        }
+      },
+      "damageType": "Blunt",
+      "note": "",
+      "tell": "Looks over shoulder",
+      "attackGridSize": "3",
+      "attackGridHeight": "5",
+      "attackGrid": {
+        "row1a": ["0","0","0"],
+        "row1b":   ["0","0"],
+        "row2a": ["0","0","0"],
+        "row2b":   ["0","0"],
+        "row3a": ["0","p","0"],
+        "row3b":   ["a","a"],
+        "row4a": ["0","b","0"],
+        "row4b":   ["0","0"],
+        "row5a": ["0","0","0"]
+      },
+      "opener": true,
+      "followups": [
+      ]
+    }
+  ],
+  "Fenrakor": [
+    {
+      "name": "Slam",
+      "pre-clock": 1,
+      "clock": 1,
+      "stamina": 2,
+      "DCs": {
+        "Knockdown": 10
+      },
+      "damage": {
+        "0": {
+          "values": {
+            "hit1": 75
+          }
+        }
+      },
+      "damageType": "Blunt",
+      "note": "The Mossbeak jumps up and then slams down onto the ground, causing a shockwave. This attack is slow but deals high damage.",
+      "attackGridSize": "3",
+      "attackGridHeight": "5",
+      "attackGrid": {
+        "row1a": ["0","0","0"],
+        "row1b":   ["0","0"],
+        "row2a": ["0","m","0"],
+        "row2b":   ["0","0"],
+        "row3a": ["0","b","0"],
+        "row3b":   ["a","a"],
+        "row4a": ["0","p","0"],
+        "row4b":   ["a","a"],
+        "row5a": ["0","a","0"]
+      },
+      "opener": true,
+      "followups": [
+      ]
+    }
+  ]
+}

@@ -1,13 +1,16 @@
 export async function addChatListeners(message, html) {
+
+    await renderDamageButtons(message, html);
     
     if (game.user.isGM) {
-        await renderDamageButtons(message, html);
         await renderPurchaseButtons(message, html);
     }
 }
 async function applyDamage(event) {
     const element = event.currentTarget;
-    const attackCard = $(event.currentTarget).parents('.attack-roll-card');
+    var attackCard = $(event.currentTarget).parents('.attack-roll-card');
+    
+    console.log(attackCard);
     const dataset = attackCard[0].dataset;
     const damageData = JSON.parse(dataset.damageData);
     const damageMod = element.dataset.damageMod;
@@ -124,7 +127,11 @@ async function applyDamage(event) {
 
 async function renderDamageButtons(message, html) {
     let damageButtons = await renderTemplate(`systems/monhunsys/templates/chat/AttackRollButtons.html`, {});
-    const elements = html.find('.attack-roll-card').toArray();
+    let elements = [];
+    if (game.user.isGM)
+        elements = html.find('.attack-roll-card').toArray();
+    else
+        elements = html.find('.titan-attack').toArray();
 
     elements.forEach(element => {
         element = $(element);
@@ -135,6 +142,7 @@ async function renderDamageButtons(message, html) {
         applyDamage(ev)
     });
 }
+
 async function renderPurchaseButtons(message, html) {
     let purcahseButtons = await renderTemplate(`systems/monhunsys/templates/chat/PurchaseRequestButtons.html`, {});
     const elements = html.find('.purchase-request-card').toArray();

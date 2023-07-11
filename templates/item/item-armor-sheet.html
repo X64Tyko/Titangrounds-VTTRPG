@@ -57,7 +57,14 @@
         <a class="add-ability">Add Ability</a> 
         {{#each system.abilities as |ability key|}}
         <div class="ability-block" data-ability-id="{{key}}">
-          <input type="string" name="system.abilities.{{key}}.name" value="{{ability.name}}"/>
+          <!--<input type="string" name="system.abilities.{{key}}.name" value="{{ability.name}}"/>-->
+          <select class="select-ammo render-update" name="system.abilities.{{key}}.name" data-type="String">
+            {{#select ability.name}}
+            {{#each ../system.allAbilities as |abilityOp opKey|}}
+            <option value="{{opKey}}">{{opKey}}</option>
+            {{/each}}
+            {{/select}}
+          </select>
           <label class="ability-level-label" for="system.abilities.{{key}}.level" > Lv.</label><input class="ability-level" type="number" name="system.abilities.{{key}}.level" value="{{ability.level}}" data-dtype="number"/>
           <div class="item-controls">
             <a class="item-control ability-delete" title="Delete Ability"><i class="fas fa-trash"></i></a>

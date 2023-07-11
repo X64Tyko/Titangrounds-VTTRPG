@@ -12,6 +12,7 @@
     "systems/monhunsys/templates/actor/parts/actor-npc-items.html",
     "systems/monhunsys/templates/actor/parts/actor-npc-parts.html",
     "systems/monhunsys/templates/actor/parts/actor-npc-combatData.html",
+    "systems/monhunsys/templates/actor/parts/titan-attack-card.html",
     "systems/monhunsys/templates/actor/parts/actor-spells.html",
     "systems/monhunsys/templates/actor/parts/actor-effects.html",
       
@@ -20,6 +21,7 @@
       
       // Chat partials
     "systems/monhunsys/templates/chat/AttackRoll.html",
+    "systems/monhunsys/templates/chat/TitanAttackRoll.html",
     "systems/monhunsys/templates/chat/AttackRollButtons.html",
     "systems/monhunsys/templates/chat/PurchaseRequest.html",
     "systems/monhunsys/templates/chat/PurchaseRequestButtons.html",

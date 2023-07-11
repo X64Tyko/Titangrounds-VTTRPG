@@ -39,6 +39,7 @@ static TOOLTIP_TEMPLATE = "systems/monhunsys/templates/dice/hitTooltip.html";
         
         if (itemData.type === "armor") {
             itemData.system.allSlots = TITANGROUND_ARMOR.armorSlots;
+            itemData.system.allAbilities = TITANGROUND_ARMOR.armorAbilities;
         }
     }
 

@@ -192,4 +192,7 @@ export class MonHunSysActor extends Actor {
     super.createEmbeddedDocuments(embeddedName, data, context);
   }
 
+  getArmorAbilityMods() {
+    const abilityLevels = this.getFlag('monhunsys', 'armorAbilityLevels');
+  }
 }

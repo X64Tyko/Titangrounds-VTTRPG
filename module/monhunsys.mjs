@@ -10,6 +10,8 @@ import { onGatherRollRequest } from "./helpers/Dialog.mjs";
 // Import sheet classes.
 import { MonHunSysActorSheet } from "./sheets/actor-sheet.mjs";
 import { MonHunSysItemSheet } from "./sheets/item-sheet.mjs";
+import { MonHunSysNPCSheet } from "./sheets/NPC-sheet.mjs";
+import { MonHunSysShopSheet } from "./sheets/shop-sheet.mjs";
 // Import helper/utility classes and constants.
 import { preloadHandlebarsTemplates } from "./helpers/templates.mjs";
 import { TITANGROUND } from "./helpers/config.mjs";
@@ -58,7 +60,9 @@ Hooks.once('init', async function() {
 
   // Register sheet application classes
   Actors.unregisterSheet("core", ActorSheet);
-  Actors.registerSheet("monhunsys", MonHunSysActorSheet, { makeDefault: true });
+  Actors.registerSheet("monhunsys", MonHunSysActorSheet, {types:["character"], makeDefault: true });
+  Actors.registerSheet("monhunsys", MonHunSysNPCSheet, {types: ["npc"], makeDefault: true});
+  Actors.registerSheet("monhunsys", MonHunSysShopSheet, {types: ["shop"], makeDefault: true});
   Items.unregisterSheet("core", ItemSheet);
   Items.registerSheet("monhunsys", MonHunSysItemSheet, { makeDefault: true });
   
