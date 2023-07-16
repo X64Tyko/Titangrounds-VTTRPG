@@ -32,7 +32,7 @@ async function applyDamage(event) {
     {
         const partKeys = Object.keys(tokenActor.system.parts).sort();
         const Buttons = {};
-        let part = "Part0";
+        let part = undefined;
         partKeys.forEach( partKey => {
             Buttons[partKey] = {
                 label: tokenActor.system.parts[partKey].name,
@@ -48,6 +48,9 @@ async function applyDamage(event) {
             buttons: Buttons,
             close: html => {
 
+                if (!part)
+                    return;
+                
                 var rawAdd = html.find("input#rawAdd").val();
                 var eleAdd = html.find("input#eleAdd").val();
                 

@@ -46,7 +46,7 @@ Hooks.once('init', async function() {
    * @type {String}
    */
   CONFIG.Combat.initiative = {
-    formula: null,
+    formula: "0",
     decimals: 2
   };
   CONFIG.Combat.documentClass = MonHunCombat;

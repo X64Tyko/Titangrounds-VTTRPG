@@ -62,10 +62,16 @@
   }
 }
 
+#context-menu.expand-left {
+  left: calc(-100% + 2px);
+}
+#context-menu.expand-right {
+  right: calc(100% + 2px);
+}
+
 .sheet-body,
 .sheet-body .tab,
 .sheet-body .tab .editor {
-  overflow-y: hidden;
   height: auto;
   bottom: 5px;
 }

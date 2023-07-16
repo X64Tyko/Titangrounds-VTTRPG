@@ -1,6 +1,7 @@
 import {onManageActiveEffect, prepareActiveEffectCategories} from "../helpers/effects.mjs";
 import {TITANGROUND} from "../helpers/config.mjs";
 import {TITANGROUND_WEAPONS} from "../helpers/config-weapon-data.mjs";
+import { TitanContextMenu } from "../documents/TitanContextMenu.js";
 
 /**
  * Extend the basic ActorSheet with some very simple modifications
@@ -665,12 +666,12 @@ export class MonHunSysActorSheet extends ActorSheet {
     super.activateListeners(html);
 
     if (this.actor.type != "shop" || game.user.isGM) {
-      new ContextMenu(html, ".item-bag", this.itemBagContextMenu);
-      new ContextMenu(html, ".item-chest", this.itemChestContextMenu);
-      new ContextMenu(html, ".weapon-chest", this.weaponContextMenu);
-      new ContextMenu(html, ".armor-chest", this.armorContextMenu);
+      new TitanContextMenu(html, ".item-bag", this.itemBagContextMenu);
+      new TitanContextMenu(html, ".item-chest", this.itemChestContextMenu);
+      new TitanContextMenu(html, ".weapon-chest", this.weaponContextMenu);
+      new TitanContextMenu(html, ".armor-chest", this.armorContextMenu);
     }
-    new ContextMenu(html, ".stat-roll", this.statContextMenu);
+    new TitanContextMenu(html, ".stat-roll", this.statContextMenu);
 
     // Render the item sheet for viewing/editing prior to the editable check.
     html.find('.item-edit').click(ev => {

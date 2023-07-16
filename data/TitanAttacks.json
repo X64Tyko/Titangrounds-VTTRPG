@@ -670,5 +670,185 @@
       "followups": [
       ]
     }
+  ],
+  "Ketos": [
+    {
+      "name": "Left Swipe",
+      "pre-clock": 0,
+      "clock": 0,
+      "stamina": 1,
+      "DCs": {
+      },
+      "damage": {
+        "0": {
+          "values": {
+            "hit1": 20
+          }
+        }
+      },
+      "damageType": "Slashing",
+      "note": "",
+      "tell": "Raises its left claw into he air.",
+      "attackGridSize": "3",
+      "attackGridHeight": "5",
+      "attackGrid": {
+        "row1a": ["0","0","0"],
+        "row1b":   ["0","0"],
+        "row2a": ["0","m","0"],
+        "row2b":   ["a","0"],
+        "row3a": ["0","b","0"],
+        "row3b":   ["b","b"],
+        "row4a": ["0","p","0"],
+        "row4b":   ["0","0"],
+        "row5a": ["0","p","0"]
+      },
+      "opener": true,
+      "followups": [
+        "Right Swipe"
+      ]
+    },
+    {
+      "name": "Right Swipe",
+      "pre-clock": 0,
+      "clock": 0,
+      "stamina": 1,
+      "DCs": {
+      },
+      "damage": {
+        "0": {
+          "values": {
+            "hit1": 20
+          }
+        }
+      },
+      "damageType": "Slashing",
+      "note": "",
+      "tell": "Raises its right claw into he air.",
+      "attackGridSize": "3",
+      "attackGridHeight": "5",
+      "attackGrid": {
+        "row1a": ["0","0","0"],
+        "row1b":   ["0","0"],
+        "row2a": ["0","m","0"],
+        "row2b":   ["0","a"],
+        "row3a": ["0","b","0"],
+        "row3b":   ["b","b"],
+        "row4a": ["0","p","0"],
+        "row4b":   ["0","0"],
+        "row5a": ["0","p","0"]
+      },
+      "opener": true,
+      "followups": [
+        "Left Swipe"
+      ]
+    },
+    {
+      "name": "Bite",
+      "pre-clock": "1d4-2",
+      "clock": 0,
+      "stamina": 1,
+      "DCs": {
+      },
+      "damage": {
+        "0": {
+          "values": {
+            "hit1": 30
+          }
+        }
+      },
+      "damageType": "Piercing",
+      "note": "Lunges up to 10 ft forward to bite a target.",
+      "tell": "Snarling",
+      "attackGridSize": "3",
+      "attackGridHeight": "5",
+      "attackGrid": {
+        "row1a": ["0","0","0"],
+        "row1b":   ["0","0"],
+        "row2a": ["0","b","0"],
+        "row2b":   ["a","0"],
+        "row3a": ["0","b","0"],
+        "row3b":   ["0","0"],
+        "row4a": ["0","p","0"],
+        "row4b":   ["0","0"],
+        "row5a": ["0","p","0"]
+      },
+      "opener": true,
+      "followups": [
+      ]
+    },
+    {
+      "name": "Tail Swipe",
+      "pre-clock": 1,
+      "clock": 0,
+      "stamina": 2,
+      "DCs": {
+      },
+      "damage": {
+        "0": {
+          "values": {
+            "hit1": 24
+          }
+        }
+      },
+      "damageType": "Blunt",
+      "note": "Spins and swipes tain in an area around it.",
+      "tell": "Coiling",
+      "attackGridSize": "4",
+      "attackGridHeight": "6",
+      "attackGrid": {
+        "row1a": ["0","0","0","0"],
+        "row1b":   ["0","a","0"],
+        "row2a": ["0","0","a","0"],
+        "row2b":   ["0","a","a"],
+        "row3a": ["0","0","a","a"],
+        "row3b":   ["0","p","a"],
+        "row4a": ["0","0","a","a"],
+        "row4b":   ["0","p","a"],
+        "row5a": ["0","0","a","a"],
+        "row5b":   ["a","a","a"],
+        "row6a": ["0","a","a","0"],
+        "row6b":   ["0","a","0"]
+      },
+      "opener": true,
+      "followups": [
+      ]
+    }
+  ],
+  "Mightfly": [
+    {
+      "name": "Spike",
+      "pre-clock": "1d6",
+      "clock": 0,
+      "stamina": 1,
+      "DCs": {
+        "Paralysis": 11
+      },
+      "damage": {
+        "0": {
+          "values": {
+            "hit1": 15
+          }
+        }
+      },
+      "damageType": "Slashing",
+      "note": "Moves into position near a hunter when possible. Moves away immediately after their attack.\n\n pre-clock: \n 1: Move again\n 2-3: wait 1 attack next round\n 4-6: Attack immediately",
+      "tell": "Hovers Menacingly",
+      "attackGridSize": "3",
+      "attackGridHeight": "5",
+      "attackGrid": {
+        "row1a": ["0","0","0"],
+        "row1b":   ["0","0"],
+        "row2a": ["0","0","0"],
+        "row2b":   ["0","0"],
+        "row3a": ["0","a","0"],
+        "row3b":   ["0","0"],
+        "row4a": ["0","p","0"],
+        "row4b":   ["0","0"],
+        "row5a": ["0","0","0"]
+      },
+      "opener": true,
+      "followups": [
+      ]
+    }
   ]
 }
