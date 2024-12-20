@@ -69,44 +69,44 @@ TITANGROUND.abilityAbbreviations = {
  TITANGROUND.sharpnessLevels = {
      "Red": {
          "min": 0,
-         "max": 50,
+         "max": 25,
          "formula": "bounce",
          "color": 'red'
      },
      "Orange": {
-         "min": 51,
-         "max": 75,
+         "min": 26,
+         "max": 37,
          "formula": "1dX",
          "color": 'orange'
      },
      "Yellow": {
-         "min": 76,
-         "max": 95,
-         "formula": "1dX+1",
+         "min": 38,
+         "max": 49,
+         "formula": "2dX",
          "color": 'yellow'
      },
      "Green": {
-         "min": 96,
-         "max": 110,
-         "formula": "2dX",
+         "min": 50,
+         "max": 60,
+         "formula": "3dX",
          "color": 'limegreen'
      },
      "Blue": {
-         "min": 111,
-         "max": 125,
-         "formula": "2dX+2",
+         "min": 61,
+         "max": 70,
+         "formula": "4dX",
          "color": 'dodgerblue'
      },
      "White": {
-         "min": 126,
-         "max": 135,
-         "formula": "3dX",
+         "min": 71,
+         "max": 80,
+         "formula": "5dX",
          "color": 'white'
      },
      "Purple": {
-         "min": 136,
+         "min": 81,
          "max": 200,
-         "formula": "4dX+4",
+         "formula": "6dX",
          "color": 'mediumorchid'
      }
  }

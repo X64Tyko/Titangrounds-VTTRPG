@@ -519,6 +519,17 @@ export class MonHunSysActorSheet extends ActorSheet {
 
   itemBagContextMenu = [
     {
+      name: "Move All to Chest",
+      icon: '<i class="fas fa-treasure-chest"></i>',
+      callback: element => {
+        const bInTown = game.settings.get('monhunsys', 'bInTown');
+        if (!bInTown)
+          return;
+        const item = this.actor.items.get(element.data("itemId"));
+        this.handleMoveToChest(html, item, item.system.inBag)
+      }
+    },
+    {
       name: "Move to Chest",
       icon: '<i class="fas fa-treasure-chest"></i>',
       callback: element => {
@@ -1017,8 +1028,8 @@ export class MonHunSysActorSheet extends ActorSheet {
     return bUpdatedItem;
   }
 
-  handleMoveToChest(html, item) {
-    var value = Math.min(html.find("input#quantity").val(), item.system.inBag);
+  handleMoveToChest(html, item, overrideVal = -1) {
+    var value = overrideVal >= 0 ? Math.min(overrideVal, item.system.inBag) : Math.min(html.find("input#quantity").val(), item.system.inBag);
     
     item.update({"system.inBag": item.system.inBag - value, "system.inChest": item.system.inChest + value});
   }
@@ -1082,7 +1093,7 @@ export class MonHunSysActorSheet extends ActorSheet {
     const ammoType = options.hasOwnProperty('ammoType') ? options.ammoType : undefined;
 
     // update the attack type with the ammo damage type if applicable
-    options.attackType = TITANGROUND_WEAPONS.arrowTypes[ammoType]?.damageType || options?.attackType;
+    //options.attackType = TITANGROUND_WEAPONS.arrowTypes[ammoType]?.damageType || options?.attackType;
     
     // Initialize chat data.
     const speaker = ChatMessage.getSpeaker({actor: this.actor});
@@ -1109,12 +1120,13 @@ export class MonHunSysActorSheet extends ActorSheet {
       "damageType": options.hasOwnProperty('attackType') ? options.attackType : "",
       "elementType": item.system.element.type,
       "rawDamage": Math.round(attackRoll.total * 100) / 100,
-      "eleDamage": Math.round(elementRoll.total * 100) / 100
+      "eleDamage": Math.round(elementRoll.total * 100) / 100,
+      "ammoType": TITANGROUND_WEAPONS.arrowTypes[ammoType]?.damageType
     };
 
     const chatData = {
-      attackName: options.hasOwnProperty('attackName') ? options.attackName : "",
-      attackType: options.hasOwnProperty('attackType') ? options.attackType : "",
+      attackName: options?.attackName || "",
+      attackType: TITANGROUND_WEAPONS.arrowTypes[ammoType]?.damageType || options.attackType,
       hitFormula: hitRoll.formula,
       damageFormula: attackRoll.formula,
       elementFormula: item.system.element.type === "N/A" ? "" : elementRoll.formula,

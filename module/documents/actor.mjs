@@ -57,9 +57,9 @@ export class MonHunSysActor extends Actor {
     }
 
     // Loop through resistance scores, and add their modifiers to our sheet output.
-    for (let [key, resistance] of Object.entries(systemData.resistances)) {
-      // Calculate the modifier using d20 rules.
-      resistance.mod = -resistance.value;//Math.floor((ability.value - 10) / 2);
+    for (let [key, v] of Object.entries(systemData.resistances)) {
+      v.total = v.value + v.bonus + v.temp;
+      v.img = "Icons/SheetIcons/" + v.label + ".png";
     }
   }
 

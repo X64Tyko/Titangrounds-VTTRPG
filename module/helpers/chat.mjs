@@ -24,9 +24,16 @@ async function applyDamage(event) {
     const tokenActor = firstToken.actor;
     
     if (tokenActor.type === "character") {
-        const totalDamage = (damageData.rawDamage * damageMod) - tokenActor.system.resistances[damageData.damageType].value;
+        console.log(tokenActor.system.resistances);
+        const totalDamage = (damageData.rawDamage * damageMod) - tokenActor.system.resistances[damageData.damageType].total;
         const newHealth = Math.max(tokenActor.system.health.value - totalDamage, 0);
         tokenActor.update({"system.health.value": newHealth});
+        const styleColor = "color:red;";
+        ChatMessage.create({
+            user: game.user._id,
+            speaker: ChatMessage.getSpeaker({token: firstToken}),
+            content: '<h2 style="'+styleColor+'">'+ (totalDamage) + '</h2>'
+        });
     }
     else if (tokenActor.type === "npc")
     {
@@ -58,11 +65,13 @@ async function applyDamage(event) {
                 const chosenPart = foundry.utils.deepClone(tokenActor.system.parts[part]);
                 const rawResist = chosenPart.resistances[damageData.damageType];
                 const eleResist = (chosenPart.resistances.hasOwnProperty(damageData.elementType) ? chosenPart.resistances[damageData.elementType] : 1);
-                const rawDamage = Math.round(((damageData.rawDamage + Number(rawAdd)) * damageMod) * rawResist * 0.1);
+                const ammoResist = (chosenPart.resistances.hasOwnProperty(damageData?.ammoType) ? chosenPart.resistances[damageData?.ammoType] : 1);
+                const rawDamage = Math.round(((damageData.rawDamage + Number(rawAdd)) * damageMod) * rawResist * 0.1 * ammoResist);
                 const eleDamage = Math.round(((damageData.eleDamage + Number(eleAdd)) * damageMod) * eleResist);
-
+                
                 const styleColor = (eleResist > 3 || rawResist > 4) ? "color:red;" : "color:black;";
 
+                
                 chosenPart.staggerDamage += rawDamage + eleDamage;
                 if (chosenPart.breakDamageType === "Any" || chosenPart.breakDamageType === damageData.damageType)
                     chosenPart.breakDamage += rawDamage;
@@ -81,22 +90,28 @@ async function applyDamage(event) {
                     ui.notifications.info(`Broke ${chosenPart.name}`);
                 }
                 
-                if (tokenActor.system.statusData.hasOwnProperty(damageData.elementType.toLowerCase()))
-                {
-                    const status = foundry.utils.deepClone(tokenActor.system.statusData[damageData.elementType.toLowerCase()]);
-                    status.value += eleDamage;
-                    const statusID = "system.statusData." + damageData.elementType.toLowerCase();
-                    
-                    if (status.value >= status.currentLimit)
-                    {
-                        status.num++;
-                        status.value = 0;
-                        status.currentLimit = (50 * status.initialRes) + (50 * status.nextRes * Math.min(status.num, status.maxRes));
-                        status.roundsRemaining = (status.effectivity + 1) * 2;
-                        ui.notifications.info(`Status ${damageData.elementType} Applied`);
+                let applyStatus = (statusType, totalDamage) => {
+                    if (!statusType)
+                        return;
+                    let statusString = statusType.toLowerCase();
+                    if (tokenActor.system.statusData.hasOwnProperty(statusString)) {
+                        const status = foundry.utils.deepClone(tokenActor.system.statusData[statusString]);
+                        status.value += totalDamage;
+                        const statusID = "system.statusData." + statusString;
+
+                        if (status.value >= status.currentLimit) {
+                            status.num++;
+                            status.value = 0;
+                            status.currentLimit = (50 * status.initialRes) + (50 * status.nextRes * Math.min(status.num, status.maxRes));
+                            status.roundsRemaining = (status.effectivity + 1) * 2;
+                            ui.notifications.info(`Status ${statusString} Applied`);
+                        }
+                        updates[statusID] = status;
                     }
-                    updates[statusID] = status;
-                }
+                };
+                
+                applyStatus(damageData?.elementType, eleDamage);
+                applyStatus(damageData?.ammoType, rawDamage);
                 
                 const accessor = "system.parts." + part;
                 const attacker = "system.damageLog." + damageData.user.name;
